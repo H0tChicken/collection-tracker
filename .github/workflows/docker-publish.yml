@@ -43,7 +43,10 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          platforms: linux/amd64,linux/arm64
+          # amd64 only: the vast majority of self-hosted servers are x86_64,
+          # and emulated arm64 `npm ci` fails on @next/swc platform binaries.
+          # For arm64 (e.g. Apple Silicon / Pi) build locally: `docker compose build`.
+          platforms: linux/amd64
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}

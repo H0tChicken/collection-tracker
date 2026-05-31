@@ -28,9 +28,10 @@ Next.js (App Router, TypeScript) · Prisma · PostgreSQL · Tailwind CSS.
 ```bash
 cp .env.example .env          # adjust POSTGRES_PASSWORD if you like
 docker compose up -d          # app on http://localhost:3000
-# First run (optional): load sample data
-SEED_ON_START=true docker compose up -d
 ```
+
+To load the sample data on first run, set `SEED_ON_START=true` in your `.env`
+before the first `up` (it must be a real file — `cp .env.example .env`, then edit).
 
 Data persists in two named volumes: `pgdata` (database) and `uploads` (images).
 

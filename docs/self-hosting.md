@@ -14,10 +14,13 @@ docker compose up -d
 
 ## Using the prebuilt image (GHCR)
 
-GitHub Actions publishes a multi-arch image to
+GitHub Actions publishes an **amd64** image to
 `ghcr.io/h0tchicken/collection-tracker`. To pull the prebuilt image instead of
 building locally, remove the `build: .` line from the `app` service in
 `docker-compose.yml`.
+
+On **arm64** hosts (Apple Silicon, Raspberry Pi), build locally instead — keep
+the `build: .` line and run `docker compose up -d --build`.
 
 ## Persistence & backup
 
