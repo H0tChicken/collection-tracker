@@ -1,0 +1,44 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: cardtracker
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-cardtracker}
+      POSTGRES_DB: cardtracker
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cardtracker"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app:
+    # Use the prebuilt image from GHCR, or `build: .` for a local build.
+    image: ghcr.io/OWNER/collection-tracker:latest
+    build: .
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://cardtracker:${POSTGRES_PASSWORD:-cardtracker}@db:5432/cardtracker?schema=public
+      UPLOAD_DIR: /data/uploads
+      SEED_ON_START: ${SEED_ON_START:-false}
+      NODE_ENV: production
+    volumes:
+      - uploads:/data/uploads
+    ports:
+      - "3000:3000"
+    # --- Optional: expose via Traefik + Authentik forward-auth ---
+    # labels:
+    #   - "traefik.enable=true"
+    #   - "traefik.http.routers.cards.rule=Host(`cards.example.com`)"
+    #   - "traefik.http.routers.cards.entrypoints=websecure"
+    #   - "traefik.http.routers.cards.tls.certresolver=le"
+    #   - "traefik.http.routers.cards.middlewares=authentik@docker"
+
+volumes:
+  pgdata:
+  uploads:

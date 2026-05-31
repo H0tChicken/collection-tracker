@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(docker --version)",
+      "Bash(gh --version)",
+      "Bash(git --version)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(echo \"npm: $\\(npm --version 2>&1\\)\")",
+      "Bash(echo \"docker: $\\(docker --version 2>&1\\)\")",
+      "Bash(echo \"gh: $\\(gh --version 2>&1)",
+      "Bash(command -v node npm docker python3 gh git)"
+    ]
+  }
+}

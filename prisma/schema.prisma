@@ -1,0 +1,258 @@
+// Sport Card Collection Tracker — data model
+// Two layers: CATALOG (shared master data — what exists) and OWNERSHIP (your collection).
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ---------------------------------------------------------------------------
+// Enums
+// ---------------------------------------------------------------------------
+
+enum TeamType {
+  CLUB
+  NATIONAL
+}
+
+// Which kit a player is depicted in on a given card. Powers the
+// "view by player in club vs country kits" requirement.
+enum KitType {
+  CLUB
+  COUNTRY
+  NONE
+}
+
+enum OwnershipStatus {
+  OWNED
+  WANTED
+  DUPLICATE
+}
+
+enum GradingCompany {
+  RAW
+  PSA
+  BGS
+  SGC
+  CSG
+  OTHER
+}
+
+enum ImportFormat {
+  JSON_TEMPLATE
+  CSV
+  XLSX
+  PDF
+  MANUAL
+}
+
+enum ImportStatus {
+  PREVIEW
+  COMMITTED
+  FAILED
+}
+
+// ---------------------------------------------------------------------------
+// Catalog
+// ---------------------------------------------------------------------------
+
+model Sport {
+  id        String       @id @default(cuid())
+  name      String       @unique
+  slug      String       @unique
+  sets      SetEntity[]
+  teams     Team[]
+  players   Player[]
+  createdAt DateTime     @default(now())
+}
+
+model Manufacturer {
+  id      String      @id @default(cuid())
+  name    String      @unique
+  sets    SetEntity[]
+}
+
+model SetEntity {
+  id             String        @id @default(cuid())
+  sport          Sport         @relation(fields: [sportId], references: [id])
+  sportId        String
+  manufacturer   Manufacturer? @relation(fields: [manufacturerId], references: [id])
+  manufacturerId String?
+  brand          String? // e.g. "Prizm", "Select"
+  name           String
+  year           Int? // release year
+  season         String? // e.g. "2023-24"
+  description    String?
+  slug           String        @unique
+  totalBaseCards Int           @default(0)
+  cards          Card[]
+  parallels      Parallel[]
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  @@index([sportId])
+  @@index([year])
+}
+
+// A parallel / variant definition for a set, e.g. "Base", "Silver", "Gold /10".
+model Parallel {
+  id        String           @id @default(cuid())
+  set       SetEntity        @relation(fields: [setId], references: [id], onDelete: Cascade)
+  setId     String
+  name      String
+  printRun  Int? // serial-numbered run size, e.g. 10 for /10
+  isNumbered Boolean         @default(false)
+  isBase    Boolean         @default(false)
+  sortOrder Int             @default(0)
+  items     CollectionItem[]
+
+  @@unique([setId, name])
+  @@index([setId])
+}
+
+model Player {
+  id                 String   @id @default(cuid())
+  sport              Sport    @relation(fields: [sportId], references: [id])
+  sportId            String
+  fullName           String
+  knownAs            String?
+  dateOfBirth        DateTime?
+  primaryNationality String?
+  positions          String? // comma-separated
+  slug               String   @unique
+  cards              Card[]
+  createdAt          DateTime @default(now())
+
+  @@index([sportId])
+  @@index([fullName])
+}
+
+model Team {
+  id        String    @id @default(cuid())
+  sport     Sport     @relation(fields: [sportId], references: [id])
+  sportId   String
+  name      String
+  teamType  TeamType
+  country   String?
+  league    String? // null for national teams
+  slug      String    @unique
+  cards     Card[]
+  createdAt DateTime  @default(now())
+
+  @@unique([name, teamType])
+  @@index([sportId])
+  @@index([teamType])
+}
+
+// A single checklist entry within a set (the master "what exists").
+model Card {
+  id          String           @id @default(cuid())
+  set         SetEntity        @relation(fields: [setId], references: [id], onDelete: Cascade)
+  setId       String
+  cardNumber  String // string to allow "RC-12", "100a", etc.
+  player      Player?          @relation(fields: [playerId], references: [id])
+  playerId    String?
+  team        Team?            @relation(fields: [teamId], references: [id])
+  teamId      String?
+  kitType     KitType          @default(NONE)
+  subset      String? // e.g. "Rookies", "Legends"
+  description String?
+  isRookie    Boolean          @default(false)
+  isAutograph Boolean          @default(false)
+  isRelic     Boolean          @default(false)
+  images      CardImage[]
+  items       CollectionItem[]
+  createdAt   DateTime         @default(now())
+
+  @@unique([setId, cardNumber])
+  @@index([setId])
+  @@index([playerId])
+  @@index([teamId])
+  @@index([kitType])
+}
+
+// ---------------------------------------------------------------------------
+// Ownership (your collection)
+// ---------------------------------------------------------------------------
+
+model StorageLocation {
+  id          String           @id @default(cuid())
+  name        String           @unique // e.g. "Bin A", "Binder 3"
+  label       String? // physical label text
+  description String?
+  items       CollectionItem[]
+  createdAt   DateTime         @default(now())
+}
+
+model CollectionItem {
+  id             String           @id @default(cuid())
+  card           Card             @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  cardId         String
+  parallel       Parallel?        @relation(fields: [parallelId], references: [id])
+  parallelId     String?
+  status         OwnershipStatus  @default(OWNED)
+  quantity       Int              @default(1)
+
+  // Condition / grading
+  gradingCompany GradingCompany   @default(RAW)
+  grade          String? // "9.5", "MINT", etc.
+  certNumber     String?
+  conditionNote  String?
+
+  // Serial numbering captured on the physical card, e.g. "23/99"
+  serialNumber   String?
+
+  // Value / purchase (money stored as integer cents)
+  purchasePriceCents Int?
+  purchaseDate       DateTime?
+  purchaseSource     String?
+  estimatedValueCents Int?
+
+  // Storage
+  storageLocation   StorageLocation? @relation(fields: [storageLocationId], references: [id])
+  storageLocationId String?
+
+  notes     String?
+  images    CardImage[]
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+
+  @@index([cardId])
+  @@index([status])
+  @@index([parallelId])
+  @@index([storageLocationId])
+}
+
+model CardImage {
+  id               String          @id @default(cuid())
+  // Attached to either a catalog Card or a specific CollectionItem.
+  card             Card?           @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  cardId           String?
+  collectionItem   CollectionItem? @relation(fields: [collectionItemId], references: [id], onDelete: Cascade)
+  collectionItemId String?
+  path             String? // local uploaded file path under UPLOAD_DIR
+  externalUrl      String? // optional external image URL
+  isPrimary        Boolean         @default(false)
+  createdAt        DateTime        @default(now())
+
+  @@index([cardId])
+  @@index([collectionItemId])
+}
+
+model ImportLog {
+  id          String       @id @default(cuid())
+  format      ImportFormat
+  status      ImportStatus @default(PREVIEW)
+  sourceName  String? // original filename
+  setId       String? // target set, if applicable
+  rowsTotal   Int          @default(0)
+  rowsCreated Int          @default(0)
+  rowsUpdated Int          @default(0)
+  rowsSkipped Int          @default(0)
+  message     String?
+  createdAt   DateTime     @default(now())
+}

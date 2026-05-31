@@ -1,0 +1,21 @@
+{
+  "name": "Prizm Premier League (Sample)",
+  "sport": "Soccer",
+  "manufacturer": "Panini",
+  "brand": "Prizm",
+  "year": 2024,
+  "season": "2023-24",
+  "description": "Sample template demonstrating club vs country kit cards.",
+  "parallels": [
+    { "name": "Base", "isBase": true },
+    { "name": "Silver" },
+    { "name": "Gold", "printRun": 10 }
+  ],
+  "cards": [
+    { "cardNumber": "1", "playerName": "Lionel Messi", "teamName": "Inter Miami CF", "teamType": "CLUB", "kitType": "CLUB" },
+    { "cardNumber": "2", "playerName": "Lionel Messi", "teamName": "Argentina", "teamType": "NATIONAL", "kitType": "COUNTRY" },
+    { "cardNumber": "3", "playerName": "Erling Haaland", "teamName": "Manchester City", "teamType": "CLUB", "kitType": "CLUB" },
+    { "cardNumber": "4", "playerName": "Erling Haaland", "teamName": "Norway", "teamType": "NATIONAL", "kitType": "COUNTRY" },
+    { "cardNumber": "5", "playerName": "Jude Bellingham", "teamName": "Real Madrid", "teamType": "CLUB", "kitType": "CLUB", "isRookie": true }
+  ]
+}
