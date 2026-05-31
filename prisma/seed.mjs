@@ -1,9 +1,11 @@
+// Plain-JS (ESM) seed so it runs with `node` in the slim runtime image
+// (no tsx/devDependencies needed). Used by both `npm run db:seed` and the
+// container's SEED_ON_START path.
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
 async function main() {
-  // Core sport.
   const soccer = await prisma.sport.upsert({
     where: { slug: "soccer" },
     update: {},
@@ -16,7 +18,6 @@ async function main() {
     create: { name: "Panini" },
   });
 
-  // A small sample set so the app isn't empty on first run.
   const set = await prisma.setEntity.upsert({
     where: { slug: "2023-24-panini-prizm-premier-league" },
     update: {},
@@ -33,7 +34,6 @@ async function main() {
     },
   });
 
-  // Parallels for the sample set.
   const parallels = [
     { name: "Base", isBase: true, sortOrder: 0 },
     { name: "Silver", isNumbered: false, sortOrder: 1 },
@@ -47,7 +47,6 @@ async function main() {
     });
   }
 
-  // A couple of sample players/teams/cards (club + country kit demo).
   const messiClub = await prisma.team.upsert({
     where: { name_teamType: { name: "Inter Miami CF", teamType: "CLUB" } },
     update: {},

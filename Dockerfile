@@ -17,7 +17,7 @@ ENV NEXT_TELEMETRY_DISABLED=1
 RUN npx prisma generate
 RUN npm run build
 
-# ---- runner: minimal runtime image ----
+# ---- runner: runtime image ----
 FROM node:22-alpine AS runner
 RUN apk add --no-cache openssl
 WORKDIR /app
@@ -34,11 +34,13 @@ COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/public ./public
 
-# Prisma schema + migrations + CLI (for `migrate deploy` at startup)
+# Prisma schema + migrations + seed (for `migrate deploy` + optional seed at startup)
 COPY --from=builder /app/prisma ./prisma
-COPY --from=builder /app/node_modules/prisma ./node_modules/prisma
-COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
-COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
+
+# Full node_modules so the Prisma CLI (and its transitive deps like
+# @prisma/config -> effect) work at runtime for `prisma migrate deploy`.
+# This overlays the minimal set Next traced into the standalone output.
+COPY --from=builder /app/node_modules ./node_modules
 
 COPY entrypoint.sh ./entrypoint.sh
 RUN chmod +x ./entrypoint.sh && mkdir -p /data/uploads && chown -R nextjs:nodejs /data /app
