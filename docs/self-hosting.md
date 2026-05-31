@@ -15,9 +15,9 @@ docker compose up -d
 ## Using the prebuilt image (GHCR)
 
 GitHub Actions publishes a multi-arch image to
-`ghcr.io/<owner>/collection-tracker`. In `docker-compose.yml`, replace `OWNER`
-in the `image:` line with your GitHub user/org and remove the `build: .` line to
-pull instead of building locally.
+`ghcr.io/h0tchicken/collection-tracker`. To pull the prebuilt image instead of
+building locally, remove the `build: .` line from the `app` service in
+`docker-compose.yml`.
 
 ## Persistence & backup
 

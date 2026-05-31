@@ -16,7 +16,7 @@ services:
 
   app:
     # Use the prebuilt image from GHCR, or `build: .` for a local build.
-    image: ghcr.io/seanwilliams1375/collection-tracker:latest
+    image: ghcr.io/h0tchicken/collection-tracker:latest
     build: .
     restart: unless-stopped
     depends_on:
