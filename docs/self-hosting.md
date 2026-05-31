@@ -22,6 +22,17 @@ building locally, remove the `build: .` line from the `app` service in
 On **arm64** hosts (Apple Silicon, Raspberry Pi), build locally instead — keep
 the `build: .` line and run `docker compose up -d --build`.
 
+The package is **private** by default. To pull it on your server, authenticate
+Docker with a GitHub Personal Access Token that has the `read:packages` scope:
+
+```bash
+echo "$GHCR_PAT" | docker login ghcr.io -u h0tchicken --password-stdin
+docker pull ghcr.io/h0tchicken/collection-tracker:latest
+```
+
+(Make the package public in the repo's *Packages* settings to skip auth, or keep
+it private and use the PAT.)
+
 ## Persistence & backup
 
 Two named volumes hold all state:
