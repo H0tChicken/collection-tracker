@@ -14,7 +14,7 @@ CREATE TYPE "OwnershipStatus" AS ENUM ('OWNED', 'WANTED', 'DUPLICATE');
 CREATE TYPE "GradingCompany" AS ENUM ('RAW', 'PSA', 'BGS', 'SGC', 'CSG', 'OTHER');
 
 -- CreateEnum
-CREATE TYPE "ImportFormat" AS ENUM ('JSON_TEMPLATE', 'CSV', 'XLSX', 'PDF', 'MANUAL');
+CREATE TYPE "ImportFormat" AS ENUM ('JSON_TEMPLATE', 'CSV', 'XLSX', 'PDF', 'PANINI_CSV', 'MANUAL');
 
 -- CreateEnum
 CREATE TYPE "ImportStatus" AS ENUM ('PREVIEW', 'COMMITTED', 'FAILED');
@@ -59,6 +59,7 @@ CREATE TABLE "SetEntity" (
 CREATE TABLE "Parallel" (
     "id" TEXT NOT NULL,
     "setId" TEXT NOT NULL,
+    "subset" TEXT NOT NULL DEFAULT '',
     "name" TEXT NOT NULL,
     "printRun" INTEGER,
     "isNumbered" BOOLEAN NOT NULL DEFAULT false,
@@ -105,7 +106,7 @@ CREATE TABLE "Card" (
     "playerId" TEXT,
     "teamId" TEXT,
     "kitType" "KitType" NOT NULL DEFAULT 'NONE',
-    "subset" TEXT,
+    "subset" TEXT NOT NULL DEFAULT '',
     "description" TEXT,
     "isRookie" BOOLEAN NOT NULL DEFAULT false,
     "isAutograph" BOOLEAN NOT NULL DEFAULT false,
@@ -202,7 +203,7 @@ CREATE INDEX "SetEntity_year_idx" ON "SetEntity"("year");
 CREATE INDEX "Parallel_setId_idx" ON "Parallel"("setId");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Parallel_setId_name_key" ON "Parallel"("setId", "name");
+CREATE UNIQUE INDEX "Parallel_setId_subset_name_key" ON "Parallel"("setId", "subset", "name");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Player_slug_key" ON "Player"("slug");
@@ -229,6 +230,9 @@ CREATE UNIQUE INDEX "Team_name_teamType_key" ON "Team"("name", "teamType");
 CREATE INDEX "Card_setId_idx" ON "Card"("setId");
 
 -- CreateIndex
+CREATE INDEX "Card_setId_subset_idx" ON "Card"("setId", "subset");
+
+-- CreateIndex
 CREATE INDEX "Card_playerId_idx" ON "Card"("playerId");
 
 -- CreateIndex
@@ -238,7 +242,7 @@ CREATE INDEX "Card_teamId_idx" ON "Card"("teamId");
 CREATE INDEX "Card_kitType_idx" ON "Card"("kitType");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Card_setId_cardNumber_key" ON "Card"("setId", "cardNumber");
+CREATE UNIQUE INDEX "Card_setId_subset_cardNumber_key" ON "Card"("setId", "subset", "cardNumber");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "StorageLocation_name_key" ON "StorageLocation"("name");

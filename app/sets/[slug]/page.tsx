@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/db";
-import { getSetCompletion } from "@/lib/completion";
+import { getSubsetCompletion } from "@/lib/completion";
 import { Card, PageHeader, Badge, EmptyState } from "@/components/ui";
-import { CompletionList } from "@/components/completion-bar";
+import { CompletionBar } from "@/components/completion-bar";
 import { CardStatusToggle } from "@/components/card-status-toggle";
 
 export const dynamic = "force-dynamic";
@@ -13,60 +13,90 @@ export default async function SetDetailPage({
   searchParams,
 }: {
   params: Promise<{ slug: string }>;
-  searchParams: Promise<{ missing?: string }>;
+  searchParams: Promise<{ missing?: string; subset?: string }>;
 }) {
   const { slug } = await params;
-  const { missing } = await searchParams;
+  const sp = await searchParams;
   const set = await prisma.setEntity.findUnique({
     where: { slug },
-    include: {
-      manufacturer: true,
-      sport: true,
-      cards: {
-        include: {
-          player: true,
-          team: true,
-          items: { select: { status: true, parallelId: true } },
-        },
-        orderBy: { cardNumber: "asc" },
-      },
-    },
+    include: { manufacturer: true, sport: true },
   });
   if (!set) notFound();
 
-  const completion = await getSetCompletion(set.id);
-  const showMissingOnly = missing === "1";
+  const subsets = await getSubsetCompletion(set.id);
+  // Selected subset defaults to base (""), which always exists if there are cards.
+  const selected =
+    sp.subset !== undefined
+      ? sp.subset
+      : (subsets.find((s) => s.subset === "")?.subset ?? subsets[0]?.subset ?? "");
+  const showMissingOnly = sp.missing === "1";
 
-  const cards = set.cards.filter((c) => {
+  const cards = await prisma.card.findMany({
+    where: { setId: set.id, subset: selected },
+    include: {
+      player: true,
+      team: true,
+      items: { select: { status: true, parallelId: true } },
+    },
+    orderBy: { cardNumber: "asc" },
+  });
+
+  const visible = cards.filter((c) => {
     if (!showMissingOnly) return true;
     return !c.items.some((i) => i.parallelId === null && i.status !== "WANTED");
   });
+
+  const subsetHref = (subset: string, missing: boolean) =>
+    `/sets/${slug}?subset=${encodeURIComponent(subset)}${missing ? "&missing=1" : ""}`;
 
   return (
     <div>
       <PageHeader
         title={`${set.season ?? set.year ?? ""} ${set.brand ?? ""} ${set.name}`.trim()}
-        subtitle={`${set.manufacturer?.name ?? ""} · ${set.sport.name} · ${set.totalBaseCards} cards`}
+        subtitle={`${set.manufacturer?.name ?? ""} · ${set.sport.name} · ${set.totalBaseCards} base cards`}
       />
 
       <div className="grid gap-4 md:grid-cols-3">
         <Card className="md:col-span-1">
-          <h3 className="mb-3 text-sm font-semibold">Completion</h3>
-          <CompletionList parallels={completion.parallels} />
+          <h3 className="mb-3 text-sm font-semibold">
+            Subsets ({subsets.length})
+          </h3>
+          <div className="space-y-3">
+            {subsets.map((s) => (
+              <Link
+                key={s.subset || "base"}
+                href={subsetHref(s.subset, showMissingOnly)}
+                className={
+                  s.subset === selected
+                    ? "block rounded-md bg-brand-50 p-2 dark:bg-white/10"
+                    : "block rounded-md p-2 hover:bg-black/5 dark:hover:bg-white/5"
+                }
+              >
+                <CompletionBar
+                  label={s.label}
+                  owned={s.owned}
+                  total={s.totalCards}
+                  ratio={s.ratio}
+                />
+              </Link>
+            ))}
+          </div>
         </Card>
 
         <Card className="md:col-span-2">
           <div className="mb-3 flex items-center justify-between">
-            <h3 className="text-sm font-semibold">Checklist</h3>
+            <h3 className="text-sm font-semibold">
+              Checklist · {selected === "" ? "Base" : selected}
+            </h3>
             <div className="flex gap-2 text-xs">
               <Link
-                href={`/sets/${slug}`}
+                href={subsetHref(selected, false)}
                 className={!showMissingOnly ? "font-semibold text-brand-600" : "text-foreground/60"}
               >
                 All
               </Link>
               <Link
-                href={`/sets/${slug}?missing=1`}
+                href={subsetHref(selected, true)}
                 className={showMissingOnly ? "font-semibold text-brand-600" : "text-foreground/60"}
               >
                 Missing only
@@ -74,11 +104,11 @@ export default async function SetDetailPage({
             </div>
           </div>
 
-          {cards.length === 0 ? (
+          {visible.length === 0 ? (
             <EmptyState message="No cards to show." />
           ) : (
             <div className="divide-y divide-black/5 dark:divide-white/10">
-              {cards.map((c) => {
+              {visible.map((c) => {
                 const baseItem = c.items.find((i) => i.parallelId === null);
                 const status = (baseItem?.status ?? "NONE") as
                   | "OWNED"
@@ -86,10 +116,7 @@ export default async function SetDetailPage({
                   | "DUPLICATE"
                   | "NONE";
                 return (
-                  <div
-                    key={c.id}
-                    className="flex items-center gap-3 py-2 text-sm"
-                  >
+                  <div key={c.id} className="flex items-center gap-3 py-2 text-sm">
                     <span className="w-12 shrink-0 font-mono text-xs text-foreground/60">
                       {c.cardNumber}
                     </span>

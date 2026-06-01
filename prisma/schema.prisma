@@ -47,6 +47,7 @@ enum ImportFormat {
   CSV
   XLSX
   PDF
+  PANINI_CSV
   MANUAL
 }
 
@@ -98,11 +99,14 @@ model SetEntity {
   @@index([year])
 }
 
-// A parallel / variant definition for a set, e.g. "Base", "Silver", "Gold /10".
+// A parallel / variant definition, scoped to a subset within a set.
+// Scoped to subset because the same parallel name can have a different print
+// run per subset (e.g. "Blue" is /49 in Base but /199 in Craftsmen).
 model Parallel {
   id        String           @id @default(cuid())
   set       SetEntity        @relation(fields: [setId], references: [id], onDelete: Cascade)
   setId     String
+  subset    String           @default("") // "" = the set's base subset
   name      String
   printRun  Int? // serial-numbered run size, e.g. 10 for /10
   isNumbered Boolean         @default(false)
@@ -110,7 +114,7 @@ model Parallel {
   sortOrder Int             @default(0)
   items     CollectionItem[]
 
-  @@unique([setId, name])
+  @@unique([setId, subset, name])
   @@index([setId])
 }
 
@@ -159,7 +163,7 @@ model Card {
   team        Team?            @relation(fields: [teamId], references: [id])
   teamId      String?
   kitType     KitType          @default(NONE)
-  subset      String? // e.g. "Rookies", "Legends"
+  subset      String           @default("") // "" = base; e.g. "Rated Rookies", "Craftsmen"
   description String?
   isRookie    Boolean          @default(false)
   isAutograph Boolean          @default(false)
@@ -168,8 +172,9 @@ model Card {
   items       CollectionItem[]
   createdAt   DateTime         @default(now())
 
-  @@unique([setId, cardNumber])
+  @@unique([setId, subset, cardNumber])
   @@index([setId])
+  @@index([setId, subset])
   @@index([playerId])
   @@index([teamId])
   @@index([kitType])

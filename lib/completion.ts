@@ -109,3 +109,50 @@ export async function getSetCompletion(setId: string): Promise<SetCompletion> {
     parallels,
   );
 }
+
+export interface SubsetCompletion {
+  subset: string; // "" = base
+  label: string; // display name ("Base" for "")
+  totalCards: number;
+  owned: number;
+  ratio: number;
+}
+
+/**
+ * Per-subset base completion for a set (one bar per subset). Counts a card as
+ * owned when any non-WANTED item exists for it at the base parallel level.
+ */
+export async function getSubsetCompletion(
+  setId: string,
+): Promise<SubsetCompletion[]> {
+  const [cards, items] = await Promise.all([
+    prisma.card.findMany({ where: { setId }, select: { id: true, subset: true } }),
+    prisma.collectionItem.findMany({
+      where: { card: { setId }, parallelId: null, status: { not: "WANTED" } },
+      select: { cardId: true },
+    }),
+  ]);
+
+  const ownedIds = new Set(items.map((i) => i.cardId));
+  const bySubset = new Map<string, { total: number; owned: number }>();
+  for (const c of cards) {
+    const g = bySubset.get(c.subset) ?? { total: 0, owned: 0 };
+    g.total++;
+    if (ownedIds.has(c.id)) g.owned++;
+    bySubset.set(c.subset, g);
+  }
+
+  return [...bySubset.entries()]
+    .map(([subset, g]) => ({
+      subset,
+      label: subset === "" ? "Base" : subset,
+      totalCards: g.total,
+      owned: g.owned,
+      ratio: g.total > 0 ? g.owned / g.total : 0,
+    }))
+    .sort((a, b) => {
+      if (a.subset === "") return -1; // base first
+      if (b.subset === "") return 1;
+      return b.totalCards - a.totalCards;
+    });
+}

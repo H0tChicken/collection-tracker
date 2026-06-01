@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Card } from "@/components/ui";
 
-type Format = "JSON_TEMPLATE" | "CSV" | "XLSX" | "PDF";
+type Format = "JSON_TEMPLATE" | "CSV" | "XLSX" | "PDF" | "PANINI_CSV";
 
 interface PreviewResult {
   rowCount: number;
@@ -19,11 +19,14 @@ export function ImportForm({ sets }: { sets: { id: string; label: string }[] }) 
   const [setId, setSetId] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const [jsonText, setJsonText] = useState("");
+  const [kitType, setKitType] = useState<"NONE" | "COUNTRY" | "CLUB">("NONE");
   const [preview, setPreview] = useState<PreviewResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
-  const needsSet = format !== "JSON_TEMPLATE";
+  // PANINI_CSV creates its own set; only CSV/XLSX/PDF import into an existing one.
+  const needsSet = format === "CSV" || format === "XLSX" || format === "PDF";
+  const isPanini = format === "PANINI_CSV";
 
   function buildForm(action: "preview" | "commit") {
     const fd = new FormData();
@@ -32,6 +35,7 @@ export function ImportForm({ sets }: { sets: { id: string; label: string }[] }) 
     if (needsSet && setId) fd.set("setId", setId);
     if (file) fd.set("file", file);
     if (format === "JSON_TEMPLATE" && jsonText) fd.set("json", jsonText);
+    if (isPanini) fd.set("kitType", kitType);
     return fd;
   }
 
@@ -83,11 +87,33 @@ export function ImportForm({ sets }: { sets: { id: string; label: string }[] }) 
               className="mt-1 w-full rounded-md border border-black/15 bg-white px-3 py-2 text-sm dark:border-white/15 dark:bg-white/5"
             >
               <option value="JSON_TEMPLATE">JSON template (creates the set)</option>
+              <option value="PANINI_CSV">
+                Panini/Donruss CSV (creates the set)
+              </option>
               <option value="CSV">CSV (into existing set)</option>
               <option value="XLSX">Excel .xlsx (into existing set)</option>
               <option value="PDF">PDF checklist (into existing set)</option>
             </select>
           </div>
+
+          {isPanini && (
+            <div>
+              <label className="block text-xs font-medium text-foreground/60">
+                Kit type for all cards
+              </label>
+              <select
+                value={kitType}
+                onChange={(e) =>
+                  setKitType(e.target.value as "NONE" | "COUNTRY" | "CLUB")
+                }
+                className="mt-1 w-full rounded-md border border-black/15 bg-white px-3 py-2 text-sm dark:border-white/15 dark:bg-white/5"
+              >
+                <option value="NONE">None / mixed</option>
+                <option value="COUNTRY">Country (national-team product)</option>
+                <option value="CLUB">Club</option>
+              </select>
+            </div>
+          )}
 
           {needsSet && (
             <div>

@@ -1,7 +1,13 @@
 // Shared types for the import subsystem. Every parser (CSV/XLSX/PDF/JSON)
 // produces a list of ChecklistRow; the commit step turns those into catalog rows.
 
-export type ImportFormat = "JSON_TEMPLATE" | "CSV" | "XLSX" | "PDF" | "MANUAL";
+export type ImportFormat =
+  | "JSON_TEMPLATE"
+  | "CSV"
+  | "XLSX"
+  | "PDF"
+  | "PANINI_CSV"
+  | "MANUAL";
 
 export interface ChecklistRow {
   cardNumber: string;

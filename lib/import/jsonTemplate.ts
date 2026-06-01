@@ -62,10 +62,13 @@ export async function ensureSetFromTemplate(template: SetTemplate) {
 
   for (const [i, p] of (template.parallels ?? []).entries()) {
     await prisma.parallel.upsert({
-      where: { setId_name: { setId: set.id, name: p.name } },
+      where: {
+        setId_subset_name: { setId: set.id, subset: "", name: p.name },
+      },
       update: { printRun: p.printRun ?? null, isBase: p.isBase ?? false },
       create: {
         setId: set.id,
+        subset: "",
         name: p.name,
         printRun: p.printRun ?? null,
         isNumbered: p.printRun != null,
