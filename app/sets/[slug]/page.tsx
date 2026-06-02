@@ -32,7 +32,7 @@ export default async function SetDetailPage({
   const showMissingOnly = sp.missing === "1";
 
   const cards = await prisma.card.findMany({
-    where: { setId: set.id, subset: selected },
+    where: { setId: set.id, subset: selected, retired: false },
     include: {
       player: true,
       team: true,

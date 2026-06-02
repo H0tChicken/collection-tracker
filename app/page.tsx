@@ -35,11 +35,12 @@ export default async function DashboardPage() {
       <h2 className="mb-3 mt-8 text-lg font-semibold">Sets in progress</h2>
       {completions.length === 0 ? (
         <Card>
-          No sets yet.{" "}
-          <Link href="/import" className="text-brand-600 underline">
-            Import a checklist
-          </Link>{" "}
-          to get started.
+          No sets loaded yet. The bundled catalog syncs automatically on
+          startup —{" "}
+          <Link href="/sets" className="text-brand-600 underline">
+            browse sets
+          </Link>
+          .
         </Card>
       ) : (
         <div className="grid gap-3 md:grid-cols-2">

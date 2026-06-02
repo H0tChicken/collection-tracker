@@ -4,7 +4,6 @@ node_modules
 .github
 data
 *.md
-!set-templates/**
 .env
 .env*.local
 coverage

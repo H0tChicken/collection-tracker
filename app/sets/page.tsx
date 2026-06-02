@@ -19,18 +19,10 @@ export default async function SetsPage() {
     <div>
       <PageHeader
         title="Sets"
-        subtitle="Track your collection against any set"
-        action={
-          <Link
-            href="/import"
-            className="rounded-md bg-brand-600 px-3 py-2 text-sm font-medium text-white hover:bg-brand-700"
-          >
-            Import a set
-          </Link>
-        }
+        subtitle="Track your collection against the bundled sets"
       />
       {withCompletion.length === 0 ? (
-        <EmptyState message="No sets yet. Import a checklist to get started." />
+        <EmptyState message="No sets loaded yet. The bundled catalog syncs on startup." />
       ) : (
         <div className="grid gap-3 md:grid-cols-2">
           {withCompletion.map(({ set, c }) => (

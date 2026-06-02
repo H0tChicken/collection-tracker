@@ -87,7 +87,7 @@ export function computeCompletion(
 /** DB wrapper: compute completion for a given set. */
 export async function getSetCompletion(setId: string): Promise<SetCompletion> {
   const [totalCards, items, parallels] = await Promise.all([
-    prisma.card.count({ where: { setId } }),
+    prisma.card.count({ where: { setId, retired: false } }),
     prisma.collectionItem.findMany({
       where: { card: { setId } },
       select: { cardId: true, parallelId: true, status: true },
@@ -126,7 +126,10 @@ export async function getSubsetCompletion(
   setId: string,
 ): Promise<SubsetCompletion[]> {
   const [cards, items] = await Promise.all([
-    prisma.card.findMany({ where: { setId }, select: { id: true, subset: true } }),
+    prisma.card.findMany({
+      where: { setId, retired: false },
+      select: { id: true, subset: true },
+    }),
     prisma.collectionItem.findMany({
       where: { card: { setId }, parallelId: null, status: { not: "WANTED" } },
       select: { cardId: true },

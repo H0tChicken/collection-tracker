@@ -5,7 +5,6 @@ import {
   Users,
   Shield,
   Boxes,
-  Upload,
   Heart,
   Archive,
 } from "lucide-react";
@@ -18,7 +17,6 @@ const links = [
   { href: "/collection", label: "Collection", icon: Boxes },
   { href: "/wishlist", label: "Wishlist", icon: Heart },
   { href: "/storage", label: "Storage", icon: Archive },
-  { href: "/import", label: "Import", icon: Upload },
 ];
 
 export function Nav() {

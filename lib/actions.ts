@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { prisma } from "./db";
-import { parseMoneyToCents, slugify } from "./utils";
+import { parseMoneyToCents } from "./utils";
 
 /** Quick-set a card's ownership status (creates or removes a CollectionItem). */
 export async function setCardStatus(
@@ -32,28 +32,6 @@ export async function setCardStatus(
     }
   }
   revalidatePath("/", "layout");
-}
-
-/** Create a new (empty) set from a form. */
-export async function createSet(formData: FormData) {
-  const name = String(formData.get("name") ?? "").trim();
-  if (!name) return;
-  const sportSlug = String(formData.get("sport") ?? "soccer");
-  const sport = await prisma.sport.findUnique({ where: { slug: sportSlug } });
-  if (!sport) return;
-  const year = formData.get("year") ? Number(formData.get("year")) : null;
-  const brand = String(formData.get("brand") ?? "").trim() || null;
-  const base = slugify(`${year ?? ""}-${brand ?? ""}-${name}`);
-  await prisma.setEntity.create({
-    data: {
-      name,
-      brand,
-      year,
-      slug: base || slugify(name),
-      sportId: sport.id,
-    },
-  });
-  revalidatePath("/sets");
 }
 
 /** Create or update a detailed collection item. */

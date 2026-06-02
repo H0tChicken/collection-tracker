@@ -19,6 +19,9 @@ CREATE TYPE "ImportFormat" AS ENUM ('JSON_TEMPLATE', 'CSV', 'XLSX', 'PDF', 'PANI
 -- CreateEnum
 CREATE TYPE "ImportStatus" AS ENUM ('PREVIEW', 'COMMITTED', 'FAILED');
 
+-- CreateEnum
+CREATE TYPE "SetSource" AS ENUM ('BUNDLED', 'USER');
+
 -- CreateTable
 CREATE TABLE "Sport" (
     "id" TEXT NOT NULL,
@@ -49,6 +52,9 @@ CREATE TABLE "SetEntity" (
     "description" TEXT,
     "slug" TEXT NOT NULL,
     "totalBaseCards" INTEGER NOT NULL DEFAULT 0,
+    "source" "SetSource" NOT NULL DEFAULT 'BUNDLED',
+    "externalId" TEXT,
+    "contentHash" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -111,6 +117,7 @@ CREATE TABLE "Card" (
     "isRookie" BOOLEAN NOT NULL DEFAULT false,
     "isAutograph" BOOLEAN NOT NULL DEFAULT false,
     "isRelic" BOOLEAN NOT NULL DEFAULT false,
+    "retired" BOOLEAN NOT NULL DEFAULT false,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "Card_pkey" PRIMARY KEY ("id")
@@ -192,6 +199,9 @@ CREATE UNIQUE INDEX "Manufacturer_name_key" ON "Manufacturer"("name");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "SetEntity_slug_key" ON "SetEntity"("slug");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "SetEntity_externalId_key" ON "SetEntity"("externalId");
 
 -- CreateIndex
 CREATE INDEX "SetEntity_sportId_idx" ON "SetEntity"("sportId");

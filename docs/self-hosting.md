@@ -8,9 +8,11 @@ docker compose up -d
 ```
 
 - App: `http://localhost:3000`
-- Database migrations run automatically on container start (`prisma migrate
-  deploy` in `entrypoint.sh`).
-- Set `SEED_ON_START=true` once to load the sample data.
+- On container start (`entrypoint.sh`), database migrations run (`prisma migrate
+  deploy`) and the bundled catalog is synced into the database
+  (`prisma/sync-catalog.mjs`). The sync is idempotent — unchanged sets are
+  skipped via a content hash, so it is a fast no-op on most boots.
+- Set `CATALOG_SYNC=false` to skip the catalog sync (e.g. for debugging).
 
 ## Using the prebuilt image (GHCR)
 

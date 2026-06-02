@@ -23,6 +23,12 @@ jobs:
           DATABASE_URL: postgresql://user:pass@localhost:5432/db?schema=public
       - run: npm run typecheck
       - run: npm run test
+      # Rebuild the catalog and fail if committed catalog/dist is out of date
+      # with catalog/sources (keeps compiled output honest).
+      - name: Build catalog
+        run: npm run catalog:build
+      - name: Verify catalog/dist is up to date
+        run: git diff --exit-status -- catalog/dist
       - name: Next build
         run: npm run build
         env:

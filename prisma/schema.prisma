@@ -57,6 +57,13 @@ enum ImportStatus {
   FAILED
 }
 
+// Where a set's catalog data came from. BUNDLED sets are authoritative,
+// shipped with the app, synced from the repo on boot, and read-only to users.
+enum SetSource {
+  BUNDLED
+  USER
+}
+
 // ---------------------------------------------------------------------------
 // Catalog
 // ---------------------------------------------------------------------------
@@ -90,6 +97,10 @@ model SetEntity {
   description    String?
   slug           String        @unique
   totalBaseCards Int           @default(0)
+  // Catalog provenance + sync bookkeeping.
+  source         SetSource     @default(BUNDLED)
+  externalId     String?       @unique // stable key for bundled sets (sync identity)
+  contentHash    String? // hash of the compiled catalog file; skip sync when unchanged
   cards          Card[]
   parallels      Parallel[]
   createdAt      DateTime      @default(now())
@@ -168,6 +179,9 @@ model Card {
   isRookie    Boolean          @default(false)
   isAutograph Boolean          @default(false)
   isRelic     Boolean          @default(false)
+  // Soft-delete: set when a card disappears from an updated bundled checklist,
+  // so existing CollectionItem rows are never orphaned. Hidden in the UI.
+  retired     Boolean          @default(false)
   images      CardImage[]
   items       CollectionItem[]
   createdAt   DateTime         @default(now())

@@ -15,6 +15,8 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
 RUN npx prisma generate
+# Compile the bundled catalog (sources -> catalog/dist/*.json) and build Next.
+RUN npm run catalog:build
 RUN npm run build
 
 # ---- runner: runtime image ----
@@ -34,11 +36,14 @@ COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/public ./public
 
-# Prisma schema + migrations + seed (for `migrate deploy` + optional seed at startup)
+# Prisma schema + migrations + the boot-time catalog sync.
 COPY --from=builder /app/prisma ./prisma
+# Compiled, bundled catalog the sync loads on startup.
+COPY --from=builder /app/catalog/dist ./catalog/dist
 
 # Full node_modules so the Prisma CLI (and its transitive deps like
-# @prisma/config -> effect) work at runtime for `prisma migrate deploy`.
+# @prisma/config -> effect) work at runtime for `prisma migrate deploy`, and so
+# sync-catalog.mjs can import @prisma/client.
 # This overlays the minimal set Next traced into the standalone output.
 COPY --from=builder /app/node_modules ./node_modules
 

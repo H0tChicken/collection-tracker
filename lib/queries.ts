@@ -28,6 +28,7 @@ export async function getPlayerWithCards(slug: string) {
     where: { slug },
     include: {
       cards: {
+        where: { retired: false },
         include: {
           set: true,
           team: true,

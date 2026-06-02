@@ -25,7 +25,8 @@ services:
     environment:
       DATABASE_URL: postgresql://cardtracker:${POSTGRES_PASSWORD:-cardtracker}@db:5432/cardtracker?schema=public
       UPLOAD_DIR: /data/uploads
-      SEED_ON_START: ${SEED_ON_START:-false}
+      # The bundled catalog syncs on every boot (idempotent). Set false to skip.
+      CATALOG_SYNC: ${CATALOG_SYNC:-true}
       NODE_ENV: production
     volumes:
       - uploads:/data/uploads

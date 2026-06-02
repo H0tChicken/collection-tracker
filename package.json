@@ -14,27 +14,22 @@
     "prisma:migrate": "prisma migrate dev",
     "prisma:deploy": "prisma migrate deploy",
     "prisma:studio": "prisma studio",
-    "db:seed": "node prisma/seed.mjs"
-  },
-  "prisma": {
-    "seed": "node prisma/seed.mjs"
+    "catalog:build": "tsx scripts/build-catalog.ts",
+    "catalog:sync": "node prisma/sync-catalog.mjs"
   },
   "dependencies": {
     "@prisma/client": "^6.2.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.469.0",
     "next": "^15.1.4",
-    "papaparse": "^5.4.1",
-    "pdf-parse": "^1.1.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "tailwind-merge": "^2.6.0",
-    "xlsx": "^0.18.5",
-    "zod": "^3.24.1"
+    "tailwind-merge": "^2.6.0"
   },
   "devDependencies": {
     "@types/node": "^22.10.5",
     "@types/papaparse": "^5.3.15",
+    "papaparse": "^5.4.1",
     "@types/react": "^19.0.4",
     "@types/react-dom": "^19.0.2",
     "autoprefixer": "^10.4.20",

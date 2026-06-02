@@ -4,11 +4,12 @@ set -e
 echo "→ Applying database migrations…"
 node node_modules/prisma/build/index.js migrate deploy
 
-# Optional one-time seed: set SEED_ON_START=true to load the sample data.
-# Runs the plain-JS seed directly (no tsx needed in the runtime image).
-if [ "${SEED_ON_START}" = "true" ]; then
-  echo "→ Seeding database…"
-  node prisma/seed.mjs || echo "Seed skipped/failed (continuing)."
+# Sync the bundled, authoritative catalog into the database. Idempotent:
+# unchanged sets are skipped via content hash, so this is a fast no-op on most
+# boots. Set CATALOG_SYNC=false to skip (e.g. for debugging).
+if [ "${CATALOG_SYNC:-true}" = "true" ]; then
+  echo "→ Syncing bundled catalog…"
+  node prisma/sync-catalog.mjs
 fi
 
 echo "→ Starting server on port ${PORT:-3000}…"
