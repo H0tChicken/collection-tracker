@@ -16,24 +16,22 @@ docker compose up -d
 
 ## Using the prebuilt image (GHCR)
 
-GitHub Actions publishes an **amd64** image to
-`ghcr.io/h0tchicken/collection-tracker`. To pull the prebuilt image instead of
-building locally, remove the `build: .` line from the `app` service in
-`docker-compose.yml`.
+GitHub Actions publishes a **multi-arch** image (`linux/amd64` + `linux/arm64`)
+to `ghcr.io/h0tchicken/collection-tracker`, so the same tag runs on both an
+Apple Silicon Mac and an x86_64 server — Docker pulls the right architecture
+automatically.
 
-On **arm64** hosts (Apple Silicon, Raspberry Pi), build locally instead — keep
-the `build: .` line and run `docker compose up -d --build`.
-
-The package is **private** by default. To pull it on your server, authenticate
-Docker with a GitHub Personal Access Token that has the `read:packages` scope:
+To pull the prebuilt image instead of building locally, remove the `build: .`
+line from the `app` service in `docker-compose.yml`, then:
 
 ```bash
-echo "$GHCR_PAT" | docker login ghcr.io -u h0tchicken --password-stdin
-docker pull ghcr.io/h0tchicken/collection-tracker:latest
+docker compose pull && docker compose up -d
 ```
 
-(Make the package public in the repo's *Packages* settings to skip auth, or keep
-it private and use the PAT.)
+The package inherits the repo's visibility. While the repo is **public** the
+image pulls with no authentication. (If you make the repo private again, either
+flip the package back to public in the repo's *Packages* settings, or
+`docker login ghcr.io` with a token that has the `read:packages` scope.)
 
 ## Persistence & backup
 
