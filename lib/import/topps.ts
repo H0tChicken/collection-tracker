@@ -197,6 +197,32 @@ export function parseToppsRows(
   }
   flushCounts();
 
+  // Fold "Base - <X>" continuation sections into the base subset.
+  // Topps splits the base set across a header (e.g. the rookie tail "Base -
+  // Pitch Prodigies"): the numbering continues without a gap, it has no own
+  // parallels (it shares base parallels), and the "Base Set: N cards" total
+  // already includes it. We merge such a section into base ("") only when it is
+  // a true continuation — no own parallels AND card numbers disjoint from base.
+  // This deliberately excludes variation subsets like "Base - Super Short
+  // Prints", which carry their own parallels and reuse base numbers.
+  const baseNumbers = new Set(
+    cards.filter((c) => (c.subset ?? "") === "").map((c) => c.cardNumber),
+  );
+  for (const sub of [...new Set(cards.map((c) => c.subset ?? ""))]) {
+    if (sub === "" || !/^base\s*-/i.test(sub)) continue;
+    const subCards = cards.filter((c) => (c.subset ?? "") === sub);
+    const hasOwnParallels = [...parallelMap.values()].some(
+      (p) => p.subset === sub,
+    );
+    const numbersCollide = subCards.some((c) => baseNumbers.has(c.cardNumber));
+    if (!hasOwnParallels && !numbersCollide) {
+      for (const c of subCards) {
+        c.subset = "";
+        baseNumbers.add(c.cardNumber);
+      }
+    }
+  }
+
   // Ensure every subset has a synthetic "Base" parallel (the card itself).
   const subsets = new Set(cards.map((c) => c.subset ?? ""));
   const parallels: ParallelDef[] = [];
@@ -207,11 +233,22 @@ export function parseToppsRows(
     }
   }
 
-  // Sanity warnings: declared vs counted per subset.
+  // Sanity warnings: declared vs final parsed count per subset (post-merge).
+  // The "Base Set: N" total already includes any merged continuation sections
+  // (e.g. Pitch Prodigies), so compare base against its own declared N and
+  // simply skip the merged sections' separate warnings.
+  const finalCountBySubset = new Map<string, number>();
+  for (const c of cards) {
+    const s = c.subset ?? "";
+    finalCountBySubset.set(s, (finalCountBySubset.get(s) ?? 0) + 1);
+  }
   for (const d of declaredBySubset) {
-    if (d.declared !== d.counted) {
+    // A non-base section with no surviving cards was merged into base — skip it.
+    if (d.subset !== "" && !finalCountBySubset.has(d.subset)) continue;
+    const parsed = finalCountBySubset.get(d.subset) ?? 0;
+    if (d.declared !== parsed) {
       warnings.push(
-        `Subset "${d.subset || "Base"}": declared ${d.declared} cards but parsed ${d.counted}.`,
+        `Subset "${d.subset || "Base"}": declared ${d.declared} cards but parsed ${parsed}.`,
       );
     }
   }

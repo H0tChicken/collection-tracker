@@ -82,6 +82,47 @@ describe("parseToppsRows", () => {
     expect(card?.playerName).toBeUndefined();
   });
 
+  it("folds a 'Base - <X>' continuation (no own parallels, disjoint numbers) into base", () => {
+    const p = parseToppsRows(
+      [
+        ["Base Set"],
+        ["3 cards"],
+        ["Parallels"],
+        ["Refractor"],
+        ["1", "A,", "Team A"],
+        ["2", "B,", "Team B"],
+        ["Base - Pitch Prodiges"],
+        ["1 cards"],
+        ["3", "Rookie C,", "Team C", "RC"],
+      ],
+      { kitType: "CLUB" },
+    );
+    // card 3 should now be a base card (subset "")
+    const c3 = p.cards.find((c) => c.cardNumber === "3");
+    expect(c3?.subset).toBe("");
+    expect(c3?.isRookie).toBe(true);
+    expect(p.cards.filter((c) => c.subset === "")).toHaveLength(3);
+    expect(new Set(p.cards.map((c) => c.subset)).has("Base - Pitch Prodiges")).toBe(false);
+  });
+
+  it("keeps a 'Base - <X>' variation separate when it has own parallels or colliding numbers", () => {
+    const p = parseToppsRows(
+      [
+        ["Base Set"],
+        ["1 cards"],
+        ["68", "Star,", "Team"],
+        ["Base - Super Short Prints"],
+        ["1 cards"],
+        ["Parallels"],
+        ["Gold Refractor /50"],
+        ["68", "Star SP,", "Team"],
+      ],
+      { kitType: "CLUB" },
+    );
+    // SSP has own parallels AND reuses number 68 → must stay its own subset.
+    expect(new Set(p.cards.map((c) => c.subset)).has("Base - Super Short Prints")).toBe(true);
+  });
+
   it("warns when declared count != parsed count", () => {
     // base declared 2, parsed 2 → ok; dual declared 1, parsed 1 → ok.
     // (no count mismatch in this fixture)
