@@ -68,6 +68,20 @@ describe("parseToppsRows", () => {
     expect(dual[0].isRelic).toBe(true); // "Match Ball" → relic
   });
 
+  it("treats a bare serial in the player column as no player (trophy cards)", () => {
+    const trophy = parseToppsRows(
+      [
+        ["MLS Trophy Superfractor"],
+        ["1 card"],
+        ["MLS-1", "/1"],
+      ],
+      { kitType: "CLUB" },
+    );
+    const card = trophy.cards.find((c) => c.cardNumber === "MLS-1");
+    expect(card).toBeTruthy();
+    expect(card?.playerName).toBeUndefined();
+  });
+
   it("warns when declared count != parsed count", () => {
     // base declared 2, parsed 2 → ok; dual declared 1, parsed 1 → ok.
     // (no count mismatch in this fixture)

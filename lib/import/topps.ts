@@ -135,7 +135,11 @@ export function parseToppsRows(
       inParallels = false;
       sawAnyCard = true;
       const cardNumber = c0;
-      const playerName = (cells[1] ?? "").replace(/,\s*$/, "").trim() || undefined;
+      // Some player-less cards (e.g. a trophy Superfractor) put the serial in
+      // the player column ("MLS-1 | /1"). Don't treat a bare serial as a name.
+      const rawPlayer = (cells[1] ?? "").replace(/,\s*$/, "").trim();
+      const isSerialToken = /^\/?-?\d+$/.test(rawPlayer) || /^1\/1$/.test(rawPlayer);
+      const playerName = isSerialToken ? undefined : rawPlayer || undefined;
       const teamName = (cells[2] ?? "").trim() || undefined;
       const flag = (cells[3] ?? "").trim();
 

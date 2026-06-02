@@ -47,4 +47,15 @@ export const CATALOG_SOURCES: CatalogSourceEntry[] = [
     description:
       "2025-26 Topps Merlin UEFA Club Competitions — club product. Compiled from the official checklist.",
   },
+  {
+    externalId: "2025-topps-chrome-mls",
+    format: "TOPPS_XLSX",
+    file: "2025-topps-chrome-mls.xlsx",
+    kitType: "CLUB",
+    name: "Topps Chrome MLS (2025)",
+    brand: "Topps",
+    year: 2025,
+    description:
+      "2025 Topps Chrome MLS — club product. Compiled from the official checklist.",
+  },
 ];
