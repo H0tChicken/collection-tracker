@@ -141,16 +141,18 @@ async function syncSet(doc) {
     const tt = teamType ?? "CLUB";
     const key = `${tt}:${name.toLowerCase()}`;
     if (teamCache.has(key)) return teamCache.get(key);
-    const team = await prisma.team.upsert({
-      where: { name_teamType: { name, teamType: tt } },
-      update: {},
-      create: {
-        sportId: sport.id,
-        name,
-        teamType: tt,
-        slug: slugify(`${name}-${tt}`),
-      },
-    });
+    const slug = slugify(`${name}-${tt}`);
+    // Two distinct source spellings can collapse to one slug (e.g. a stray
+    // unicode lookalike). The slug is unique, so reuse any existing team with
+    // this slug instead of trying to create a duplicate.
+    let team = await prisma.team.findUnique({ where: { slug } });
+    if (!team) {
+      team = await prisma.team.upsert({
+        where: { name_teamType: { name, teamType: tt } },
+        update: {},
+        create: { sportId: sport.id, name, teamType: tt, slug },
+      });
+    }
     teamCache.set(key, team.id);
     return team.id;
   }

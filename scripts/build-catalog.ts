@@ -11,9 +11,19 @@
 import { createHash } from "node:crypto";
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, rmSync } from "node:fs";
 import path from "node:path";
+import * as XLSX from "xlsx";
 import { CATALOG_SOURCES } from "../catalog/manifest";
 import type { CatalogCard, CatalogParallel, CatalogSet } from "../catalog/schema";
+import type { ParsedChecklist } from "../lib/import/checklist";
 import { parsePaniniCsv } from "../lib/import/panini";
+import { parseToppsRows } from "../lib/import/topps";
+
+/** Read the first worksheet of an .xlsx as an array of cell-string rows. */
+function readXlsxRows(srcPath: string): unknown[][] {
+  const wb = XLSX.readFile(srcPath, { cellDates: false });
+  const sheet = wb.Sheets[wb.SheetNames[0]];
+  return XLSX.utils.sheet_to_json(sheet, { header: 1, blankrows: false, raw: false });
+}
 
 const ROOT = path.resolve(import.meta.dirname, "..");
 const SOURCES_DIR = path.join(ROOT, "catalog", "sources");
@@ -48,12 +58,23 @@ function build() {
   const built: string[] = [];
   for (const entry of CATALOG_SOURCES) {
     const srcPath = path.join(SOURCES_DIR, entry.file);
-    const content = readFileSync(srcPath, "utf8");
 
-    if (entry.format !== "PANINI_CSV") {
+    let parsed: ParsedChecklist;
+    if (entry.format === "PANINI_CSV") {
+      parsed = parsePaniniCsv(readFileSync(srcPath, "utf8"), entry.kitType);
+    } else if (entry.format === "TOPPS_XLSX") {
+      const teamType = entry.kitType === "COUNTRY" ? "NATIONAL" : "CLUB";
+      parsed = parseToppsRows(readXlsxRows(srcPath), {
+        kitType: entry.kitType,
+        teamType,
+        meta: { brand: entry.brand, year: entry.year, program: entry.name },
+      });
+    } else {
       throw new Error(`Unknown format ${entry.format} for ${entry.externalId}`);
     }
-    const parsed = parsePaniniCsv(content, entry.kitType);
+    for (const w of parsed.warnings) {
+      console.warn(`  ! ${entry.externalId}: ${w}`);
+    }
 
     const meta = {
       externalId: entry.externalId,

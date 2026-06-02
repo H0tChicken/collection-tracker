@@ -6,12 +6,14 @@
 
 export type CatalogKit = "CLUB" | "COUNTRY" | "NONE";
 
+export type CatalogFormat = "PANINI_CSV" | "TOPPS_XLSX";
+
 export interface CatalogSourceEntry {
   externalId: string;
-  format: "PANINI_CSV";
+  format: CatalogFormat;
   /** Path under catalog/sources/. */
   file: string;
-  /** Kit applied to every card (e.g. COUNTRY for a World Cup product). */
+  /** Kit applied to every card (COUNTRY for national-team, CLUB for club). */
   kitType: CatalogKit;
   /** Display overrides (the parser also infers these from the file). */
   name?: string;
@@ -32,5 +34,17 @@ export const CATALOG_SOURCES: CatalogSourceEntry[] = [
     year: 2025,
     description:
       "2025 Donruss Road to World Cup — national-team product. Compiled from the official checklist.",
+  },
+  {
+    externalId: "2025-26-topps-merlin-uefa-club-competitions",
+    format: "TOPPS_XLSX",
+    file: "2025-26-topps-merlin-uefa-club-competitions.xlsx",
+    kitType: "CLUB",
+    name: "Topps Merlin UEFA Club Competitions (25-26)",
+    brand: "Topps",
+    year: 2025,
+    season: "2025-26",
+    description:
+      "2025-26 Topps Merlin UEFA Club Competitions — club product. Compiled from the official checklist.",
   },
 ];
