@@ -8,6 +8,9 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  # Run JS-based actions under Node 24 (several Docker/artifact actions still
+  # declare Node 20, which GitHub is deprecating). Forces the newer runtime.
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
 
 jobs:
   # Build each architecture natively on its own runner (no QEMU emulation, which
