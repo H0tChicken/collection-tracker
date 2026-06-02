@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { prisma } from "@/lib/db";
 import { Card, PageHeader, Badge, EmptyState } from "@/components/ui";
 import { CardStatusToggle } from "@/components/card-status-toggle";
+import { setLabel } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -75,12 +76,15 @@ export default async function TeamDetailPage({
                     </div>
                     <Link
                       href={`/sets/${c.set.slug}`}
-                      className="text-xs text-foreground/60 hover:underline"
+                      className="block truncate text-xs text-foreground/60 hover:underline"
                     >
-                      {c.set.season ?? c.set.year ?? ""} {c.set.brand} {c.set.name}
+                      {setLabel(c.set)}
+                      {c.subset ? ` · ${c.subset}` : ""}
                     </Link>
                   </div>
-                  <CardStatusToggle cardId={c.id} current={status} />
+                  <div className="shrink-0">
+                    <CardStatusToggle cardId={c.id} current={status} />
+                  </div>
                 </div>
               );
             })}

@@ -2,7 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPlayerWithCards } from "@/lib/queries";
 import { Card, PageHeader, Badge, EmptyState } from "@/components/ui";
-import { CardStatusToggle } from "@/components/card-status-toggle";
+import { CardParallels } from "@/components/card-parallels";
+import { setLabel } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -11,29 +12,27 @@ type PlayerCard = NonNullable<
 >["club"][number];
 
 function CardRow({ c }: { c: PlayerCard }) {
-  const baseItem = c.items.find((i) => true);
-  const status = (baseItem?.status ?? "NONE") as
-    | "OWNED"
-    | "WANTED"
-    | "DUPLICATE"
-    | "NONE";
   return (
-    <div className="flex items-center gap-3 py-2 text-sm">
-      <span className="w-12 shrink-0 font-mono text-xs text-foreground/60">
+    <div className="flex gap-3 py-2 text-sm">
+      <span className="w-14 shrink-0 pt-0.5 font-mono text-xs text-foreground/60">
         {c.cardNumber}
       </span>
       <div className="min-w-0 flex-1">
-        <Link href={`/sets/${c.set.slug}`} className="truncate font-medium hover:underline">
-          {c.set.season ?? c.set.year ?? ""} {c.set.brand} {c.set.name}
+        <Link
+          href={`/sets/${c.set.slug}`}
+          className="block truncate font-medium hover:underline"
+        >
+          {setLabel(c.set)}
         </Link>
-        <div className="flex items-center gap-1.5 text-xs text-foreground/60">
-          {c.team && <span>{c.team.name}</span>}
+        <div className="mb-1 flex flex-wrap items-center gap-1.5 text-xs text-foreground/60">
+          {c.team && <span className="truncate">{c.team.name}</span>}
+          {c.subset && <Badge tone="blue">{c.subset}</Badge>}
           {c.isRookie && <Badge tone="amber">RC</Badge>}
           {c.isAutograph && <Badge>Auto</Badge>}
           {c.isRelic && <Badge>Relic</Badge>}
         </div>
+        <CardParallels cardId={c.id} parallelHint={c.parallelCount} />
       </div>
-      <CardStatusToggle cardId={c.id} current={status} />
     </div>
   );
 }

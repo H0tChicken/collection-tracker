@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { prisma } from "@/lib/db";
 import { Card, PageHeader, Badge, EmptyState } from "@/components/ui";
-import { formatMoney } from "@/lib/utils";
+import { formatMoney, setLabel } from "@/lib/utils";
 import type { Prisma } from "@prisma/client";
 
 export const dynamic = "force-dynamic";
@@ -78,7 +78,7 @@ export default async function CollectionPage({
                   </div>
                   <div className="flex flex-wrap items-center gap-1.5 text-xs text-foreground/60">
                     <Link href={`/sets/${it.card.set.slug}`} className="hover:underline">
-                      {it.card.set.brand} {it.card.set.name}
+                      {setLabel(it.card.set)}
                     </Link>
                     {it.parallel && <Badge tone="blue">{it.parallel.name}</Badge>}
                     {it.serialNumber && <span>/{it.serialNumber}</span>}

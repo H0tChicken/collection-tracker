@@ -6,6 +6,29 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+/**
+ * Build a clean display label for a set without duplicating tokens. The stored
+ * `name` often already contains the brand and/or year (e.g. "Topps Chrome MLS
+ * (2025)"), so we only prepend a prefix token when it isn't already present.
+ */
+export function setLabel(set: {
+  name: string;
+  brand?: string | null;
+  year?: number | null;
+  season?: string | null;
+}): string {
+  const name = set.name.trim();
+  const lower = name.toLowerCase();
+  const parts: string[] = [];
+  // Season/year prefix only if the name doesn't already mention it.
+  const period = set.season ?? (set.year != null ? String(set.year) : null);
+  if (period && !lower.includes(period.toLowerCase())) parts.push(period);
+  // Brand prefix only if the name doesn't already start with / contain it.
+  if (set.brand && !lower.includes(set.brand.toLowerCase())) parts.push(set.brand);
+  parts.push(name);
+  return parts.join(" ");
+}
+
 /** Format a number as a percentage string, e.g. 0.73 -> "73%". */
 export function pct(ratio: number): string {
   if (!Number.isFinite(ratio)) return "0%";

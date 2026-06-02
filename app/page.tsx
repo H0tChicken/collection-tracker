@@ -4,7 +4,7 @@ import { getSetCompletion } from "@/lib/completion";
 import { prisma } from "@/lib/db";
 import { Card, PageHeader, StatCard } from "@/components/ui";
 import { CompletionBar } from "@/components/completion-bar";
-import { formatMoney } from "@/lib/utils";
+import { formatMoney, setLabel } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -48,9 +48,7 @@ export default async function DashboardPage() {
             <Link key={set.id} href={`/sets/${set.slug}`}>
               <Card className="transition hover:shadow-md">
                 <div className="mb-2 flex items-center justify-between">
-                  <span className="font-medium">
-                    {set.season ?? set.year ?? ""} {set.brand} {set.name}
-                  </span>
+                  <span className="font-medium">{setLabel(set)}</span>
                 </div>
                 <CompletionBar
                   label="Base"

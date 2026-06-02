@@ -2,7 +2,81 @@
 
 import { revalidatePath } from "next/cache";
 import { prisma } from "./db";
+import { getCardOwnership } from "./queries";
 import { parseMoneyToCents } from "./utils";
+
+// ---------------------------------------------------------------------------
+// Per-parallel ownership (multiple copies, grading, serials, value, storage)
+// ---------------------------------------------------------------------------
+
+/** Load full per-parallel ownership for a card (client components call this). */
+export async function loadCardOwnership(cardId: string) {
+  return getCardOwnership(cardId);
+}
+
+/** Add one owned copy of a specific parallel (parallelId null = base). */
+export async function addCopy(cardId: string, parallelId: string | null) {
+  await prisma.collectionItem.create({
+    data: { cardId, parallelId, status: "OWNED" },
+  });
+  revalidatePath("/", "layout");
+}
+
+/**
+ * Toggle a "wanted" marker for a parallel. Wanted is tracked as a single
+ * WANTED CollectionItem with no copy details; toggling off removes it.
+ */
+export async function toggleWant(cardId: string, parallelId: string | null) {
+  const existing = await prisma.collectionItem.findFirst({
+    where: { cardId, parallelId, status: "WANTED" },
+  });
+  if (existing) {
+    await prisma.collectionItem.delete({ where: { id: existing.id } });
+  } else {
+    await prisma.collectionItem.create({
+      data: { cardId, parallelId, status: "WANTED" },
+    });
+  }
+  revalidatePath("/", "layout");
+}
+
+/** Update a single copy's detailed tracking fields. */
+export async function updateCopy(formData: FormData) {
+  const id = String(formData.get("id"));
+  await prisma.collectionItem.update({
+    where: { id },
+    data: {
+      status: String(formData.get("status") ?? "OWNED") as
+        | "OWNED"
+        | "WANTED"
+        | "DUPLICATE",
+      quantity: Math.max(1, Number(formData.get("quantity") ?? 1)),
+      gradingCompany: String(formData.get("gradingCompany") ?? "RAW") as
+        | "RAW"
+        | "PSA"
+        | "BGS"
+        | "SGC"
+        | "CSG"
+        | "OTHER",
+      grade: String(formData.get("grade") ?? "").trim() || null,
+      certNumber: String(formData.get("certNumber") ?? "").trim() || null,
+      serialNumber: String(formData.get("serialNumber") ?? "").trim() || null,
+      purchasePriceCents: parseMoneyToCents(String(formData.get("purchasePrice") ?? "")),
+      estimatedValueCents: parseMoneyToCents(String(formData.get("estimatedValue") ?? "")),
+      storageLocationId: formData.get("storageLocationId")
+        ? String(formData.get("storageLocationId"))
+        : null,
+      notes: String(formData.get("notes") ?? "").trim() || null,
+    },
+  });
+  revalidatePath("/", "layout");
+}
+
+/** Remove a single copy. */
+export async function removeCopy(id: string) {
+  await prisma.collectionItem.delete({ where: { id } });
+  revalidatePath("/", "layout");
+}
 
 /** Quick-set a card's ownership status (creates or removes a CollectionItem). */
 export async function setCardStatus(

@@ -5,6 +5,7 @@ import { getSubsetCompletion } from "@/lib/completion";
 import { Card, PageHeader, Badge, EmptyState } from "@/components/ui";
 import { CompletionBar } from "@/components/completion-bar";
 import { CardStatusToggle } from "@/components/card-status-toggle";
+import { setLabel } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -52,7 +53,7 @@ export default async function SetDetailPage({
   return (
     <div>
       <PageHeader
-        title={`${set.season ?? set.year ?? ""} ${set.brand ?? ""} ${set.name}`.trim()}
+        title={setLabel(set)}
         subtitle={`${set.manufacturer?.name ?? ""} · ${set.sport.name} · ${set.totalBaseCards} base cards`}
       />
 

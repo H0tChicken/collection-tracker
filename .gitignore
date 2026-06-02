@@ -36,3 +36,5 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+docker-compose.override.yml
+.env.local

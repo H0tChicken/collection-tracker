@@ -3,6 +3,7 @@ import { prisma } from "@/lib/db";
 import { getSetCompletion } from "@/lib/completion";
 import { Card, PageHeader, EmptyState } from "@/components/ui";
 import { CompletionBar } from "@/components/completion-bar";
+import { setLabel } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -28,9 +29,7 @@ export default async function SetsPage() {
           {withCompletion.map(({ set, c }) => (
             <Link key={set.id} href={`/sets/${set.slug}`}>
               <Card className="transition hover:shadow-md">
-                <div className="mb-1 font-medium">
-                  {set.season ?? set.year ?? ""} {set.brand} {set.name}
-                </div>
+                <div className="mb-1 font-medium">{setLabel(set)}</div>
                 <div className="mb-3 text-xs text-foreground/60">
                   {set.manufacturer?.name} · {set.sport.name}
                 </div>
