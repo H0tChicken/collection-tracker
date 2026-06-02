@@ -28,7 +28,7 @@ jobs:
       - name: Build catalog
         run: npm run catalog:build
       - name: Verify catalog/dist is up to date
-        run: git diff --exit-status -- catalog/dist
+        run: git diff --exit-code -- catalog/dist
       - name: Next build
         run: npm run build
         env:
