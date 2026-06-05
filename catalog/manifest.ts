@@ -58,4 +58,16 @@ export const CATALOG_SOURCES: CatalogSourceEntry[] = [
     description:
       "2025 Topps Chrome MLS — club product. Compiled from the official checklist.",
   },
+  {
+    externalId: "2025-panini-select-ligue-1",
+    format: "PANINI_CSV",
+    file: "2025-panini-select-ligue-1.csv",
+    kitType: "CLUB",
+    name: "Panini Select Ligue 1 (25-26)",
+    brand: "Panini",
+    year: 2025,
+    season: "2025-26",
+    description:
+      "2025 Panini Select Ligue 1 — club product. Compiled from the official checklist.",
+  },
 ];
