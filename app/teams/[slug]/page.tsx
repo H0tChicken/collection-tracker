@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { prisma } from "@/lib/db";
 import { Card, PageHeader, Badge, EmptyState } from "@/components/ui";
 import { CardStatusToggle } from "@/components/card-status-toggle";
-import { setLabel } from "@/lib/utils";
+import { setLabel, compareCardNumbers } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -22,11 +22,18 @@ export default async function TeamDetailPage({
           set: true,
           items: { select: { status: true, parallelId: true } },
         },
-        orderBy: [{ set: { year: "desc" } }, { cardNumber: "asc" }],
       },
     },
   });
   if (!team) notFound();
+
+  // Newest set first, then natural card-number order (DB string sort is wrong).
+  team.cards.sort((a, b) => {
+    const yb = (b.set.year ?? 0) - (a.set.year ?? 0);
+    if (yb !== 0) return yb;
+    if (a.setId !== b.setId) return a.set.name.localeCompare(b.set.name);
+    return compareCardNumbers(a.cardNumber, b.cardNumber);
+  });
 
   return (
     <div>

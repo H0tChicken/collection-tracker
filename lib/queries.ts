@@ -1,4 +1,5 @@
 import { prisma } from "./db";
+import { compareCardNumbers } from "./utils";
 
 /**
  * Full ownership detail for a single card: every parallel it can exist in
@@ -103,10 +104,19 @@ export async function getPlayerWithCards(slug: string) {
     parallelCount.set(k, (parallelCount.get(k) ?? 0) + 1);
   }
 
-  const cards = player.cards.map((c) => ({
-    ...c,
-    parallelCount: parallelCount.get(`${c.setId}|${c.subset}`) ?? 0,
-  }));
+  const cards = player.cards
+    .map((c) => ({
+      ...c,
+      parallelCount: parallelCount.get(`${c.setId}|${c.subset}`) ?? 0,
+    }))
+    // Newest set first, then natural card-number order within each set.
+    .sort((a, b) => {
+      const ya = a.set.year ?? 0;
+      const yb = b.set.year ?? 0;
+      if (ya !== yb) return yb - ya;
+      if (a.setId !== b.setId) return a.set.name.localeCompare(b.set.name);
+      return compareCardNumbers(a.cardNumber, b.cardNumber);
+    });
 
   return {
     player,

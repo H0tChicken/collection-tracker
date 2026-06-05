@@ -29,6 +29,37 @@ export function setLabel(set: {
   return parts.join(" ");
 }
 
+/**
+ * Natural comparison for card numbers. Card numbers are strings that may be
+ * plain ("1", "10"), prefixed ("RC-12", "MG-23"), or fully alphabetic
+ * ("EKA-AG"). A plain DB string sort gives 1, 10, 11, 2…; this compares numeric
+ * runs as numbers and text runs as text so 1, 2, 10 order correctly, and groups
+ * by prefix (all "MG-" together, numerically within).
+ */
+export function compareCardNumbers(a: string, b: string): number {
+  const ax = String(a);
+  const bx = String(b);
+  // Split into alternating non-digit / digit chunks.
+  const re = /(\d+|\D+)/g;
+  const at = ax.match(re) ?? [ax];
+  const bt = bx.match(re) ?? [bx];
+  const n = Math.min(at.length, bt.length);
+  for (let i = 0; i < n; i++) {
+    const ap = at[i];
+    const bp = bt[i];
+    const an = /^\d/.test(ap);
+    const bn = /^\d/.test(bp);
+    if (an && bn) {
+      const d = Number.parseInt(ap, 10) - Number.parseInt(bp, 10);
+      if (d !== 0) return d;
+    } else {
+      const d = ap.localeCompare(bp, undefined, { sensitivity: "base" });
+      if (d !== 0) return d;
+    }
+  }
+  return at.length - bt.length;
+}
+
 /** Format a number as a percentage string, e.g. 0.73 -> "73%". */
 export function pct(ratio: number): string {
   if (!Number.isFinite(ratio)) return "0%";

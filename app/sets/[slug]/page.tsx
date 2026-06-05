@@ -5,7 +5,7 @@ import { getSubsetCompletion } from "@/lib/completion";
 import { Card, PageHeader, Badge, EmptyState } from "@/components/ui";
 import { CompletionBar } from "@/components/completion-bar";
 import { CardParallels } from "@/components/card-parallels";
-import { setLabel } from "@/lib/utils";
+import { setLabel, compareCardNumbers } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -32,7 +32,7 @@ export default async function SetDetailPage({
       : (subsets.find((s) => s.subset === "")?.subset ?? subsets[0]?.subset ?? "");
   const showMissingOnly = sp.missing === "1";
 
-  const [cards, parallelHint] = await Promise.all([
+  const [cardsRaw, parallelHint] = await Promise.all([
     prisma.card.findMany({
       where: { setId: set.id, subset: selected, retired: false },
       include: {
@@ -40,13 +40,16 @@ export default async function SetDetailPage({
         team: true,
         items: { select: { status: true, parallelId: true } },
       },
-      orderBy: { cardNumber: "asc" },
     }),
     // Non-base parallels available for this subset (same for every card here).
     prisma.parallel.count({
       where: { setId: set.id, subset: selected, isBase: false },
     }),
   ]);
+  // Natural sort by card number (DB string sort gives 1,10,11,2…).
+  const cards = cardsRaw.sort((a, b) =>
+    compareCardNumbers(a.cardNumber, b.cardNumber),
+  );
 
   // "Missing only" = no owned/duplicate copy at any level (base or parallel).
   const visible = cards.filter((c) => {
