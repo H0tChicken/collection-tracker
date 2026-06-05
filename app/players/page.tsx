@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { prisma } from "@/lib/db";
 import { Card, PageHeader, EmptyState } from "@/components/ui";
+import { SearchInput } from "@/components/search-input";
 
 export const dynamic = "force-dynamic";
 
@@ -22,14 +23,9 @@ export default async function PlayersPage({
   return (
     <div>
       <PageHeader title="Players" subtitle="Browse cards by player" />
-      <form className="mb-4">
-        <input
-          name="q"
-          defaultValue={q}
-          placeholder="Search players…"
-          className="w-full max-w-sm rounded-md border border-black/15 bg-white px-3 py-2 text-sm dark:border-white/15 dark:bg-white/5"
-        />
-      </form>
+      <div className="mb-4">
+        <SearchInput placeholder="Search players…" />
+      </div>
       {players.length === 0 ? (
         <EmptyState message="No players found." />
       ) : (
