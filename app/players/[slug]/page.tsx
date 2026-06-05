@@ -18,15 +18,9 @@ function CardRow({ c }: { c: PlayerCard }) {
         {c.cardNumber}
       </span>
       <div className="min-w-0 flex-1">
-        <Link
-          href={`/sets/${c.set.slug}`}
-          className="block truncate font-medium hover:underline"
-        >
-          {setLabel(c.set)}
-        </Link>
         <div className="mb-1 flex flex-wrap items-center gap-1.5 text-xs text-foreground/60">
-          {c.team && <span className="truncate">{c.team.name}</span>}
           {c.subset && <Badge tone="blue">{c.subset}</Badge>}
+          {!c.subset && <span className="text-foreground/50">Base</span>}
           {c.isRookie && <Badge tone="amber">RC</Badge>}
           {c.isAutograph && <Badge>Auto</Badge>}
           {c.isRelic && <Badge>Relic</Badge>}
@@ -37,6 +31,7 @@ function CardRow({ c }: { c: PlayerCard }) {
   );
 }
 
+/** Group a kit section's cards by set, set header shown once. */
 function Section({
   title,
   tone,
@@ -46,6 +41,19 @@ function Section({
   tone: "blue" | "green" | "gray";
   cards: PlayerCard[];
 }) {
+  // Preserve incoming order (already sorted by year desc, cardNumber asc).
+  const groups: { set: PlayerCard["set"]; cards: PlayerCard[] }[] = [];
+  const bySet = new Map<string, number>();
+  for (const c of cards) {
+    let idx = bySet.get(c.set.id);
+    if (idx === undefined) {
+      idx = groups.length;
+      bySet.set(c.set.id, idx);
+      groups.push({ set: c.set, cards: [] });
+    }
+    groups[idx].cards.push(c);
+  }
+
   return (
     <Card>
       <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold">
@@ -55,10 +63,51 @@ function Section({
       {cards.length === 0 ? (
         <EmptyState message={`No ${title.toLowerCase()} cards.`} />
       ) : (
-        <div className="divide-y divide-black/5 dark:divide-white/10">
-          {cards.map((c) => (
-            <CardRow key={c.id} c={c} />
-          ))}
+        <div className="space-y-4">
+          {groups.map((g) => {
+            // Teams a player appears with in this set (usually one).
+            const teams = [
+              ...new Map(
+                g.cards
+                  .filter((c) => c.team)
+                  .map((c) => [c.team!.slug, c.team!]),
+              ).values(),
+            ];
+            return (
+            <div key={g.set.id}>
+              <div className="mb-1 border-b border-black/10 pb-1 dark:border-white/10">
+                <div className="flex items-baseline justify-between gap-2">
+                  <Link
+                    href={`/sets/${g.set.slug}`}
+                    className="truncate font-medium hover:underline"
+                  >
+                    {setLabel(g.set)}
+                  </Link>
+                  <span className="shrink-0 text-xs text-foreground/50">
+                    {g.cards.length} card{g.cards.length === 1 ? "" : "s"}
+                  </span>
+                </div>
+                {teams.length > 0 && (
+                  <div className="flex flex-wrap gap-x-1.5 text-xs text-foreground/55">
+                    {teams.map((t, i) => (
+                      <span key={t.slug}>
+                        <Link href={`/teams/${t.slug}`} className="hover:underline">
+                          {t.name}
+                        </Link>
+                        {i < teams.length - 1 ? " ·" : ""}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+              <div className="divide-y divide-black/5 dark:divide-white/10">
+                {g.cards.map((c) => (
+                  <CardRow key={c.id} c={c} />
+                ))}
+              </div>
+            </div>
+            );
+          })}
         </div>
       )}
     </Card>
