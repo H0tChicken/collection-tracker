@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { prisma } from "@/lib/db";
-import { Card, PageHeader, Badge, EmptyState } from "@/components/ui";
+import { Card, PageHeader, Badge, EmptyState, SegmentedButtons } from "@/components/ui";
 import { formatMoney, setLabel } from "@/lib/utils";
 import type { Prisma } from "@prisma/client";
 
@@ -38,22 +38,17 @@ export default async function CollectionPage({
   return (
     <div>
       <PageHeader title="Collection" subtitle={`${items.length} items`} />
-      <div className="mb-4 flex gap-2 text-sm">
-        <Link
-          href="/collection"
-          className={!status ? "font-semibold text-primary" : "text-on-surface-variant"}
-        >
-          All
-        </Link>
-        {STATUS_TABS.map((t) => (
-          <Link
-            key={t.value}
-            href={`/collection?status=${t.value}`}
-            className={status === t.value ? "font-semibold text-primary" : "text-on-surface-variant"}
-          >
-            {t.label}
-          </Link>
-        ))}
+      <div className="mb-4">
+        <SegmentedButtons
+          segments={[
+            { label: "All", href: "/collection", selected: !status },
+            ...STATUS_TABS.map((t) => ({
+              label: t.label,
+              href: `/collection?status=${t.value}`,
+              selected: status === t.value,
+            })),
+          ]}
+        />
       </div>
 
       {items.length === 0 ? (

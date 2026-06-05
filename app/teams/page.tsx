@@ -20,7 +20,7 @@ export default async function TeamsPage() {
       ) : (
         <div className="grid gap-6 md:grid-cols-2">
           <div>
-            <h3 className="mb-2 text-sm font-semibold">
+            <h3 className="mb-2 text-title-sm text-on-surface">
               <Badge tone="blue">Clubs</Badge>
             </h3>
             <div className="grid gap-2">
@@ -37,7 +37,7 @@ export default async function TeamsPage() {
             </div>
           </div>
           <div>
-            <h3 className="mb-2 text-sm font-semibold">
+            <h3 className="mb-2 text-title-sm text-on-surface">
               <Badge tone="green">National</Badge>
             </h3>
             <div className="grid gap-2">

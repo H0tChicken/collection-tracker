@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/db";
 import { getSubsetCompletion } from "@/lib/completion";
-import { Card, PageHeader, Badge, EmptyState } from "@/components/ui";
+import { Card, PageHeader, Badge, EmptyState, SegmentedButtons } from "@/components/ui";
 import { CompletionBar } from "@/components/completion-bar";
 import { CardParallels } from "@/components/card-parallels";
 import { setLabel, compareCardNumbers } from "@/lib/utils";
@@ -69,7 +69,7 @@ export default async function SetDetailPage({
 
       <div className="grid gap-4 md:grid-cols-3">
         <Card className="md:col-span-1">
-          <h3 className="mb-3 text-sm font-semibold">
+          <h3 className="mb-3 text-title-sm text-on-surface">
             Subsets ({subsets.length})
           </h3>
           <div className="space-y-3">
@@ -96,23 +96,15 @@ export default async function SetDetailPage({
 
         <Card className="md:col-span-2">
           <div className="mb-3 flex items-center justify-between">
-            <h3 className="text-sm font-semibold">
+            <h3 className="text-title-sm text-on-surface">
               Checklist · {selected === "" ? "Base" : selected}
             </h3>
-            <div className="flex gap-2 text-xs">
-              <Link
-                href={subsetHref(selected, false)}
-                className={!showMissingOnly ? "font-semibold text-primary" : "text-on-surface-variant"}
-              >
-                All
-              </Link>
-              <Link
-                href={subsetHref(selected, true)}
-                className={showMissingOnly ? "font-semibold text-primary" : "text-on-surface-variant"}
-              >
-                Missing only
-              </Link>
-            </div>
+            <SegmentedButtons
+              segments={[
+                { label: "All", href: subsetHref(selected, false), selected: !showMissingOnly },
+                { label: "Missing", href: subsetHref(selected, true), selected: showMissingOnly },
+              ]}
+            />
           </div>
 
           {visible.length === 0 ? (

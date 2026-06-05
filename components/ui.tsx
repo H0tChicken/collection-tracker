@@ -187,3 +187,46 @@ export function EmptyState({ message }: { message: string }) {
     </div>
   );
 }
+
+/**
+ * MD3 segmented button group, link-based (each segment is a URL — fits our
+ * filter toggles). The selected segment gets a secondary-container fill with a
+ * check, matching the Material 3 single-select pattern.
+ */
+export function SegmentedButtons({
+  segments,
+}: {
+  segments: { label: string; href: string; selected: boolean }[];
+}) {
+  return (
+    <div className="inline-flex overflow-hidden rounded-full border border-outline">
+      {segments.map((s, i) => (
+        <Link
+          key={s.href}
+          href={s.href}
+          aria-pressed={s.selected}
+          className={cn(
+            "flex items-center gap-1.5 px-4 py-1.5 text-label-lg transition-colors",
+            i > 0 && "border-l border-outline",
+            s.selected
+              ? "bg-secondary-container text-on-secondary-container"
+              : "text-on-surface hover:bg-on-surface/[0.08]",
+          )}
+        >
+          {s.selected && (
+            <svg
+              className="h-4 w-4"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+            >
+              <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          )}
+          {s.label}
+        </Link>
+      ))}
+    </div>
+  );
+}

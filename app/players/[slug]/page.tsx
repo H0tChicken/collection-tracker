@@ -56,7 +56,7 @@ function Section({
 
   return (
     <Card>
-      <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold">
+      <h3 className="mb-3 flex items-center gap-2 text-title-sm text-on-surface">
         <Badge tone={tone}>{title}</Badge>
         <span className="text-on-surface-variant">{cards.length}</span>
       </h3>
