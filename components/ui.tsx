@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { Ripple } from "@/components/ripple";
 
 /**
  * Material Design 3 surface card. `variant` follows MD3 card types:
@@ -28,11 +29,12 @@ export function Card({
       className={cn(
         "rounded-lg p-4 text-on-surface",
         base,
-        interactive && "transition-shadow hover:md-elev-2",
+        interactive && "relative overflow-hidden transition-shadow hover:md-elev-2",
         className,
       )}
     >
       {children}
+      {interactive && <Ripple />}
     </div>
   );
 }
@@ -109,13 +111,14 @@ export function Button({
   return (
     <button
       className={cn(
-        "inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-label-lg transition-all disabled:opacity-50",
+        "relative inline-flex items-center gap-2 overflow-hidden rounded-full px-6 py-2.5 text-label-lg transition-all disabled:opacity-50",
         variants,
         className,
       )}
       {...props}
     >
       {children}
+      <Ripple />
     </button>
   );
 }
@@ -142,12 +145,13 @@ export function ButtonLink({
     <Link
       href={href}
       className={cn(
-        "inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-label-lg transition-all",
+        "relative inline-flex items-center gap-2 overflow-hidden rounded-full px-6 py-2.5 text-label-lg transition-all",
         variants,
         className,
       )}
     >
       {children}
+      <Ripple />
     </Link>
   );
 }
@@ -206,7 +210,7 @@ export function SegmentedButtons({
           href={s.href}
           aria-pressed={s.selected}
           className={cn(
-            "flex items-center gap-1.5 px-4 py-1.5 text-label-lg transition-colors",
+            "relative flex items-center gap-1.5 overflow-hidden px-4 py-1.5 text-label-lg transition-colors",
             i > 0 && "border-l border-outline",
             s.selected
               ? "bg-secondary-container text-on-secondary-container"
@@ -225,6 +229,7 @@ export function SegmentedButtons({
             </svg>
           )}
           {s.label}
+          <Ripple />
         </Link>
       ))}
     </div>

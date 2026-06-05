@@ -10,6 +10,7 @@ import {
 } from "@/lib/actions";
 import { cn, formatMoney } from "@/lib/utils";
 import { Badge } from "@/components/ui";
+import { Ripple } from "@/components/ripple";
 
 type Ownership = NonNullable<Awaited<ReturnType<typeof loadCardOwnership>>>;
 type ParallelRow = Ownership["parallels"][number];
@@ -210,22 +211,24 @@ function ParallelRowView({
           type="button"
           disabled={pending}
           onClick={() => start(() => addCopy(cardId, row.id).then(onChanged))}
-          className="rounded-full bg-primary px-3 py-1 text-label-md text-on-primary hover:md-elev-1 disabled:opacity-50"
+          className="relative overflow-hidden rounded-full bg-primary px-3 py-1 text-label-md text-on-primary hover:md-elev-1 disabled:opacity-50"
         >
           + Have
+          <Ripple />
         </button>
         <button
           type="button"
           disabled={pending}
           onClick={() => start(() => toggleWant(cardId, row.id).then(onChanged))}
           className={cn(
-            "rounded-full px-3 py-1 text-label-md transition-colors",
+            "relative overflow-hidden rounded-full px-3 py-1 text-label-md transition-colors",
             wanted
               ? "bg-tertiary-container text-on-tertiary-container"
               : "border border-outline text-on-surface-variant hover:bg-on-surface/[0.08]",
           )}
         >
           Want
+          <Ripple />
         </button>
         {owned.length > 0 && (
           <button
