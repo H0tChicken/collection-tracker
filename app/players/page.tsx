@@ -32,9 +32,9 @@ export default async function PlayersPage({
         <div className="grid gap-2 sm:grid-cols-2 md:grid-cols-3">
           {players.map((p) => (
             <Link key={p.id} href={`/players/${p.slug}`}>
-              <Card className="flex items-center justify-between transition hover:shadow-md">
+              <Card variant="filled" interactive className="flex items-center justify-between">
                 <span className="font-medium">{p.fullName}</span>
-                <span className="text-xs text-foreground/50">
+                <span className="text-xs text-on-surface-variant">
                   {p._count.cards} cards
                 </span>
               </Card>

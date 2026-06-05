@@ -14,13 +14,13 @@ type PlayerCard = NonNullable<
 function CardRow({ c }: { c: PlayerCard }) {
   return (
     <div className="flex gap-3 py-2 text-sm">
-      <span className="w-14 shrink-0 pt-0.5 font-mono text-xs text-foreground/60">
+      <span className="w-14 shrink-0 pt-0.5 font-mono text-xs text-on-surface-variant">
         {c.cardNumber}
       </span>
       <div className="min-w-0 flex-1">
-        <div className="mb-1 flex flex-wrap items-center gap-1.5 text-xs text-foreground/60">
+        <div className="mb-1 flex flex-wrap items-center gap-1.5 text-xs text-on-surface-variant">
           {c.subset && <Badge tone="blue">{c.subset}</Badge>}
-          {!c.subset && <span className="text-foreground/50">Base</span>}
+          {!c.subset && <span className="text-on-surface-variant">Base</span>}
           {c.isRookie && <Badge tone="amber">RC</Badge>}
           {c.isAutograph && <Badge>Auto</Badge>}
           {c.isRelic && <Badge>Relic</Badge>}
@@ -58,7 +58,7 @@ function Section({
     <Card>
       <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold">
         <Badge tone={tone}>{title}</Badge>
-        <span className="text-foreground/50">{cards.length}</span>
+        <span className="text-on-surface-variant">{cards.length}</span>
       </h3>
       {cards.length === 0 ? (
         <EmptyState message={`No ${title.toLowerCase()} cards.`} />
@@ -75,7 +75,7 @@ function Section({
             ];
             return (
             <div key={g.set.id}>
-              <div className="mb-1 border-b border-black/10 pb-1 dark:border-white/10">
+              <div className="mb-1 border-b border-outline-variant pb-1">
                 <div className="flex items-baseline justify-between gap-2">
                   <Link
                     href={`/sets/${g.set.slug}`}
@@ -83,12 +83,12 @@ function Section({
                   >
                     {setLabel(g.set)}
                   </Link>
-                  <span className="shrink-0 text-xs text-foreground/50">
+                  <span className="shrink-0 text-xs text-on-surface-variant">
                     {g.cards.length} card{g.cards.length === 1 ? "" : "s"}
                   </span>
                 </div>
                 {teams.length > 0 && (
-                  <div className="flex flex-wrap gap-x-1.5 text-xs text-foreground/55">
+                  <div className="flex flex-wrap gap-x-1.5 text-xs text-on-surface-variant">
                     {teams.map((t, i) => (
                       <span key={t.slug}>
                         <Link href={`/teams/${t.slug}`} className="hover:underline">
@@ -100,7 +100,7 @@ function Section({
                   </div>
                 )}
               </div>
-              <div className="divide-y divide-black/5 dark:divide-white/10">
+              <div className="divide-y divide-outline-variant/50">
                 {g.cards.map((c) => (
                   <CardRow key={c.id} c={c} />
                 ))}

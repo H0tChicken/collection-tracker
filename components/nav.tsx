@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
   Layers,
@@ -8,6 +11,7 @@ import {
   Heart,
   Archive,
 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const links = [
   { href: "/", label: "Dashboard", icon: LayoutDashboard },
@@ -19,24 +23,45 @@ const links = [
   { href: "/storage", label: "Storage", icon: Archive },
 ];
 
+function isActive(pathname: string, href: string): boolean {
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(href + "/");
+}
+
 export function Nav() {
+  const pathname = usePathname();
   return (
-    <header className="border-b border-black/10 bg-white/70 backdrop-blur dark:border-white/10 dark:bg-black/30">
-      <div className="mx-auto flex max-w-6xl items-center gap-1 px-4 py-3">
-        <Link href="/" className="mr-4 font-bold text-brand-600">
-          ⚽ Collection Tracker
+    <header className="sticky top-0 z-20 bg-surface-container md-elev-2">
+      <div className="mx-auto flex max-w-6xl items-center gap-2 px-4 py-2">
+        <Link
+          href="/"
+          className="mr-2 flex items-center gap-2 text-title-lg font-medium text-primary"
+        >
+          <span className="grid h-9 w-9 place-items-center rounded-full bg-primary-container text-on-primary-container">
+            ⚽
+          </span>
+          <span className="hidden sm:inline">Collection</span>
         </Link>
-        <nav className="flex flex-wrap items-center gap-1">
-          {links.map(({ href, label, icon: Icon }) => (
-            <Link
-              key={href}
-              href={href}
-              className="flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium text-foreground/70 hover:bg-brand-50 hover:text-brand-700 dark:hover:bg-white/10"
-            >
-              <Icon className="h-4 w-4" />
-              {label}
-            </Link>
-          ))}
+        <nav className="flex flex-1 flex-wrap items-center gap-1">
+          {links.map(({ href, label, icon: Icon }) => {
+            const active = isActive(pathname, href);
+            return (
+              <Link
+                key={href}
+                href={href}
+                aria-current={active ? "page" : undefined}
+                className={cn(
+                  "flex items-center gap-2 rounded-full px-3.5 py-2 text-label-lg transition-colors",
+                  active
+                    ? "bg-secondary-container text-on-secondary-container"
+                    : "text-on-surface-variant hover:bg-on-surface/[0.08]",
+                )}
+              >
+                <Icon className="h-[18px] w-[18px]" />
+                <span className="hidden md:inline">{label}</span>
+              </Link>
+            );
+          })}
         </nav>
       </div>
     </header>

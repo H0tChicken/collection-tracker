@@ -41,7 +41,7 @@ export default async function CollectionPage({
       <div className="mb-4 flex gap-2 text-sm">
         <Link
           href="/collection"
-          className={!status ? "font-semibold text-brand-600" : "text-foreground/60"}
+          className={!status ? "font-semibold text-primary" : "text-on-surface-variant"}
         >
           All
         </Link>
@@ -49,7 +49,7 @@ export default async function CollectionPage({
           <Link
             key={t.value}
             href={`/collection?status=${t.value}`}
-            className={status === t.value ? "font-semibold text-brand-600" : "text-foreground/60"}
+            className={status === t.value ? "font-semibold text-primary" : "text-on-surface-variant"}
           >
             {t.label}
           </Link>
@@ -60,7 +60,7 @@ export default async function CollectionPage({
         <EmptyState message="No items match this filter." />
       ) : (
         <Card>
-          <div className="divide-y divide-black/5 dark:divide-white/10">
+          <div className="divide-y divide-outline-variant/50">
             {items.map((it) => (
               <div key={it.id} className="flex items-center gap-3 py-2 text-sm">
                 <div className="min-w-0 flex-1">
@@ -72,11 +72,11 @@ export default async function CollectionPage({
                     ) : (
                       it.card.description ?? "—"
                     )}
-                    <span className="ml-2 font-mono text-xs text-foreground/50">
+                    <span className="ml-2 font-mono text-xs text-on-surface-variant">
                       #{it.card.cardNumber}
                     </span>
                   </div>
-                  <div className="flex flex-wrap items-center gap-1.5 text-xs text-foreground/60">
+                  <div className="flex flex-wrap items-center gap-1.5 text-xs text-on-surface-variant">
                     <Link href={`/sets/${it.card.set.slug}`} className="hover:underline">
                       {setLabel(it.card.set)}
                     </Link>
@@ -92,7 +92,7 @@ export default async function CollectionPage({
                     )}
                   </div>
                 </div>
-                <div className="text-right text-xs text-foreground/60">
+                <div className="text-right text-xs text-on-surface-variant">
                   <div>{formatMoney(it.estimatedValueCents)}</div>
                   <Badge
                     tone={

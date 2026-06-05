@@ -47,16 +47,26 @@ export function SearchInput({
 
   return (
     <div className={cn("relative w-full max-w-sm", className)}>
+      <svg
+        className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-on-surface-variant"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+      >
+        <circle cx="11" cy="11" r="7" />
+        <path d="m21 21-4.3-4.3" strokeLinecap="round" />
+      </svg>
       <input
         type="search"
         value={value}
         onChange={(e) => setValue(e.target.value)}
         placeholder={placeholder}
         autoComplete="off"
-        className="w-full rounded-md border border-black/15 bg-white px-3 py-2 pr-9 text-sm dark:border-white/15 dark:bg-white/5"
+        className="w-full rounded-full bg-surface-highest py-3 pl-12 pr-10 text-body-lg text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:ring-2 focus:ring-primary/40"
       />
       {pending && (
-        <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-foreground/40">
+        <span className="absolute right-4 top-1/2 -translate-y-1/2 text-body-sm text-on-surface-variant">
           …
         </span>
       )}

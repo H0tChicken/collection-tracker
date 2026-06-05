@@ -28,9 +28,9 @@ export default async function SetsPage() {
         <div className="grid gap-3 md:grid-cols-2">
           {withCompletion.map(({ set, c }) => (
             <Link key={set.id} href={`/sets/${set.slug}`}>
-              <Card className="transition hover:shadow-md">
+              <Card variant="filled" interactive>
                 <div className="mb-1 font-medium">{setLabel(set)}</div>
-                <div className="mb-3 text-xs text-foreground/60">
+                <div className="mb-3 text-xs text-on-surface-variant">
                   {set.manufacturer?.name} · {set.sport.name}
                 </div>
                 <CompletionBar

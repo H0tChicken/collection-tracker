@@ -26,9 +26,9 @@ export default async function TeamsPage() {
             <div className="grid gap-2">
               {clubs.map((t) => (
                 <Link key={t.id} href={`/teams/${t.slug}`}>
-                  <Card className="flex items-center justify-between transition hover:shadow-md">
+                  <Card variant="filled" interactive className="flex items-center justify-between">
                     <span className="font-medium">{t.name}</span>
-                    <span className="text-xs text-foreground/50">
+                    <span className="text-xs text-on-surface-variant">
                       {t._count.cards}
                     </span>
                   </Card>
@@ -43,9 +43,9 @@ export default async function TeamsPage() {
             <div className="grid gap-2">
               {national.map((t) => (
                 <Link key={t.id} href={`/teams/${t.slug}`}>
-                  <Card className="flex items-center justify-between transition hover:shadow-md">
+                  <Card variant="filled" interactive className="flex items-center justify-between">
                     <span className="font-medium">{t.name}</span>
-                    <span className="text-xs text-foreground/50">
+                    <span className="text-xs text-on-surface-variant">
                       {t._count.cards}
                     </span>
                   </Card>

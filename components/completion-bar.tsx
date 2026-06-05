@@ -12,17 +12,18 @@ export function CompletionBar({
   total: number;
   ratio: number;
 }) {
+  const complete = ratio >= 1 && total > 0;
   return (
     <div>
-      <div className="mb-1 flex items-center justify-between text-xs">
-        <span className="font-medium">{label}</span>
-        <span className="text-foreground/60">
+      <div className="mb-1 flex items-center justify-between text-body-sm">
+        <span className="font-medium text-on-surface">{label}</span>
+        <span className="text-on-surface-variant">
           {owned} / {total} ({pct(ratio)})
         </span>
       </div>
-      <div className="h-2 w-full overflow-hidden rounded-full bg-black/10 dark:bg-white/10">
+      <div className="h-2 w-full overflow-hidden rounded-full bg-surface-highest">
         <div
-          className="h-full rounded-full bg-brand-500"
+          className={complete ? "h-full rounded-full bg-tertiary" : "h-full rounded-full bg-primary"}
           style={{ width: `${Math.min(100, Math.round(ratio * 100))}%` }}
         />
       </div>

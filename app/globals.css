@@ -2,26 +2,137 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ---------------------------------------------------------------------------
+   Material Design 3 color roles — green seed.
+   Tonal palette generated around a sporty green primary. Each role is exposed
+   as an RGB triple so Tailwind's `rgb(var(--x) / <alpha>)` can apply opacity
+   (needed for MD3 state layers).
+--------------------------------------------------------------------------- */
 :root {
-  --background: #f7f8fa;
-  --foreground: #0f172a;
+  --md-primary: 31 111 60;             /* #1F6F3C */
+  --md-on-primary: 255 255 255;
+  --md-primary-container: 168 244 184; /* #A8F4B8 */
+  --md-on-primary-container: 0 33 12;
+
+  --md-secondary: 80 99 84;            /* muted green-grey */
+  --md-on-secondary: 255 255 255;
+  --md-secondary-container: 211 232 214;
+  --md-on-secondary-container: 14 31 19;
+
+  --md-tertiary: 56 101 109;           /* teal accent */
+  --md-on-tertiary: 255 255 255;
+  --md-tertiary-container: 188 235 244;
+  --md-on-tertiary-container: 0 31 36;
+
+  --md-error: 186 26 26;
+  --md-on-error: 255 255 255;
+  --md-error-container: 255 218 214;
+  --md-on-error-container: 65 0 2;
+
+  --md-background: 247 251 245;
+  --md-on-background: 24 29 24;
+  --md-surface: 247 251 245;
+  --md-on-surface: 24 29 24;
+  --md-surface-variant: 222 229 219;   /* #DEE5DB */
+  --md-on-surface-variant: 65 73 64;
+  --md-outline: 113 121 110;
+  --md-outline-variant: 193 201 189;
+
+  /* Surface tonal elevations (MD3 surface containers) */
+  --md-surface-dim: 215 219 211;
+  --md-surface-bright: 247 251 245;
+  --md-surface-container-lowest: 255 255 255;
+  --md-surface-container-low: 241 245 238;
+  --md-surface-container: 235 240 232;
+  --md-surface-container-high: 229 234 226;
+  --md-surface-container-highest: 224 229 221;
+
+  --md-inverse-surface: 45 50 44;
+  --md-inverse-on-surface: 239 241 235;
+  --md-shadow: 0 0 0;
+
+  --md-success: 31 111 60;
+  --md-warning: 140 92 0;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0b0f17;
-    --foreground: #e5e7eb;
+    --md-primary: 141 213 159;          /* lighter green for dark */
+    --md-on-primary: 0 57 22;
+    --md-primary-container: 7 82 39;
+    --md-on-primary-container: 168 244 184;
+
+    --md-secondary: 183 204 187;
+    --md-on-secondary: 34 53 39;
+    --md-secondary-container: 56 75 60;
+    --md-on-secondary-container: 211 232 214;
+
+    --md-tertiary: 160 207 216;
+    --md-on-tertiary: 0 54 61;
+    --md-tertiary-container: 30 77 85;
+    --md-on-tertiary-container: 188 235 244;
+
+    --md-error: 255 180 171;
+    --md-on-error: 105 0 5;
+    --md-error-container: 147 0 10;
+    --md-on-error-container: 255 218 214;
+
+    --md-background: 16 20 16;
+    --md-on-background: 224 229 221;
+    --md-surface: 16 20 16;
+    --md-on-surface: 224 229 221;
+    --md-surface-variant: 65 73 64;
+    --md-on-surface-variant: 193 201 189;
+    --md-outline: 139 147 136;
+    --md-outline-variant: 65 73 64;
+
+    --md-surface-dim: 16 20 16;
+    --md-surface-bright: 54 58 52;
+    --md-surface-container-lowest: 11 15 11;
+    --md-surface-container-low: 24 29 24;
+    --md-surface-container: 28 33 28;
+    --md-surface-container-high: 39 44 38;
+    --md-surface-container-highest: 49 54 48;
+
+    --md-inverse-surface: 224 229 221;
+    --md-inverse-on-surface: 45 50 44;
+    --md-shadow: 0 0 0;
   }
 }
 
 html,
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: rgb(var(--md-background));
+  color: rgb(var(--md-on-background));
 }
 
 body {
   font-family:
-    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica,
+    "Roboto", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica,
     Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* MD3 elevation shadows (levels 1–3) */
+@layer utilities {
+  .md-elev-1 {
+    box-shadow:
+      0 1px 2px 0 rgb(var(--md-shadow) / 0.3),
+      0 1px 3px 1px rgb(var(--md-shadow) / 0.15);
+  }
+  .md-elev-2 {
+    box-shadow:
+      0 1px 2px 0 rgb(var(--md-shadow) / 0.3),
+      0 2px 6px 2px rgb(var(--md-shadow) / 0.15);
+  }
+  .md-elev-3 {
+    box-shadow:
+      0 4px 8px 3px rgb(var(--md-shadow) / 0.15),
+      0 1px 3px 0 rgb(var(--md-shadow) / 0.3);
+  }
+  /* MD3 state-layer helper: a translucent overlay on hover/focus. */
+  .md-state-layer {
+    position: relative;
+    isolation: isolate;
+  }
 }

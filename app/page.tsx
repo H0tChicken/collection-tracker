@@ -37,7 +37,7 @@ export default async function DashboardPage() {
         <Card>
           No sets loaded yet. The bundled catalog syncs automatically on
           startup —{" "}
-          <Link href="/sets" className="text-brand-600 underline">
+          <Link href="/sets" className="text-primary underline">
             browse sets
           </Link>
           .
@@ -46,7 +46,7 @@ export default async function DashboardPage() {
         <div className="grid gap-3 md:grid-cols-2">
           {completions.map(({ set, completion }) => (
             <Link key={set.id} href={`/sets/${set.slug}`}>
-              <Card className="transition hover:shadow-md">
+              <Card variant="filled" interactive>
                 <div className="mb-2 flex items-center justify-between">
                   <span className="font-medium">{setLabel(set)}</span>
                 </div>

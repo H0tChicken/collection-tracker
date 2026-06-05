@@ -79,8 +79,8 @@ export default async function SetDetailPage({
                 href={subsetHref(s.subset, showMissingOnly)}
                 className={
                   s.subset === selected
-                    ? "block rounded-md bg-brand-50 p-2 dark:bg-white/10"
-                    : "block rounded-md p-2 hover:bg-black/5 dark:hover:bg-white/5"
+                    ? "block rounded-md bg-secondary-container p-2"
+                    : "block rounded-md p-2 hover:bg-on-surface/[0.08]"
                 }
               >
                 <CompletionBar
@@ -102,13 +102,13 @@ export default async function SetDetailPage({
             <div className="flex gap-2 text-xs">
               <Link
                 href={subsetHref(selected, false)}
-                className={!showMissingOnly ? "font-semibold text-brand-600" : "text-foreground/60"}
+                className={!showMissingOnly ? "font-semibold text-primary" : "text-on-surface-variant"}
               >
                 All
               </Link>
               <Link
                 href={subsetHref(selected, true)}
-                className={showMissingOnly ? "font-semibold text-brand-600" : "text-foreground/60"}
+                className={showMissingOnly ? "font-semibold text-primary" : "text-on-surface-variant"}
               >
                 Missing only
               </Link>
@@ -118,10 +118,10 @@ export default async function SetDetailPage({
           {visible.length === 0 ? (
             <EmptyState message="No cards to show." />
           ) : (
-            <div className="divide-y divide-black/5 dark:divide-white/10">
+            <div className="divide-y divide-outline-variant/50">
               {visible.map((c) => (
                 <div key={c.id} className="flex gap-3 py-2 text-sm">
-                  <span className="w-12 shrink-0 pt-0.5 font-mono text-xs text-foreground/60">
+                  <span className="w-12 shrink-0 pt-0.5 font-mono text-xs text-on-surface-variant">
                     {c.cardNumber}
                   </span>
                   <div className="min-w-0 flex-1">
@@ -137,7 +137,7 @@ export default async function SetDetailPage({
                         c.description ?? "—"
                       )}
                     </div>
-                    <div className="mb-1 flex flex-wrap items-center gap-1.5 text-xs text-foreground/60">
+                    <div className="mb-1 flex flex-wrap items-center gap-1.5 text-xs text-on-surface-variant">
                       {c.team && (
                         <Link href={`/teams/${c.team.slug}`} className="hover:underline">
                           {c.team.name}

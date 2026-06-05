@@ -21,29 +21,29 @@ export default async function StoragePage() {
       <Card className="mb-5">
         <form action={createStorageLocation} className="flex flex-wrap items-end gap-3">
           <div>
-            <label className="block text-xs font-medium text-foreground/60">
+            <label className="block text-xs font-medium text-on-surface-variant">
               Name
             </label>
             <input
               name="name"
               required
               placeholder="Bin A"
-              className="rounded-md border border-black/15 bg-white px-3 py-2 text-sm dark:border-white/15 dark:bg-white/5"
+              className="rounded-sm border border-outline bg-surface px-3 py-2 text-body-md text-on-surface focus:border-primary focus:outline-none"
             />
           </div>
           <div>
-            <label className="block text-xs font-medium text-foreground/60">
+            <label className="block text-xs font-medium text-on-surface-variant">
               Label
             </label>
             <input
               name="label"
               placeholder="Top shelf — Prizm PL"
-              className="rounded-md border border-black/15 bg-white px-3 py-2 text-sm dark:border-white/15 dark:bg-white/5"
+              className="rounded-sm border border-outline bg-surface px-3 py-2 text-body-md text-on-surface focus:border-primary focus:outline-none"
             />
           </div>
           <button
             type="submit"
-            className="rounded-md bg-brand-600 px-3 py-2 text-sm font-medium text-white hover:bg-brand-700"
+            className="rounded-full bg-primary px-5 py-2.5 text-label-lg text-on-primary hover:md-elev-1"
           >
             Add location
           </button>
@@ -55,13 +55,13 @@ export default async function StoragePage() {
       ) : (
         <div className="grid gap-2 sm:grid-cols-2 md:grid-cols-3">
           {locations.map((l) => (
-            <Link key={l.id} href={`/collection?location=${l.id}`}>
-              <Card className="transition hover:shadow-md">
+            <Link key={l.id} href={`/collection?location=${l.id}`} className="block">
+              <Card variant="filled" interactive className="h-full">
                 <div className="font-medium">{l.name}</div>
                 {l.label && (
-                  <div className="text-xs text-foreground/60">{l.label}</div>
+                  <div className="text-xs text-on-surface-variant">{l.label}</div>
                 )}
-                <div className="mt-1 text-xs text-foreground/50">
+                <div className="mt-1 text-xs text-on-surface-variant">
                   {l._count.items} cards
                 </div>
               </Card>
