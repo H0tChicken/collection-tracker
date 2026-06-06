@@ -8,7 +8,7 @@ import {
   updateCopy,
   removeCopy,
 } from "@/lib/actions";
-import { cn, formatMoney } from "@/lib/utils";
+import { cn, formatMoney, displayOdds } from "@/lib/utils";
 import { Badge } from "@/components/ui";
 import { Ripple } from "@/components/ripple";
 
@@ -203,9 +203,9 @@ function ParallelRowView({
               {printRunLabel(row.printRun)}
             </span>
           )}
-          {row.odds && (
+          {displayOdds(row.odds) && (
             <span className="text-body-sm text-on-surface-variant/70">
-              · {row.odds}
+              · {displayOdds(row.odds)}
             </span>
           )}
           {ownedQty > 0 && <Badge tone="green">{ownedQty} owned</Badge>}

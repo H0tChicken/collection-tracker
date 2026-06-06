@@ -48,26 +48,31 @@ export function oddsRarity(odds: string | null | undefined): number | null {
   return Number.isFinite(best) ? best : null;
 }
 
-/** A single rarity score for a parallel (higher = harder to pull). */
-function parallelRarity(p: {
-  printRun: number | null;
-  odds?: string | null;
-}): number {
-  // Prefer real pack odds when present.
-  const o = oddsRarity(p.odds);
-  if (o != null) return o;
-  // Fall back to print run: fewer copies = rarer. Scaled so serial-numbered
-  // cards rank above unnumbered ones, and descending print run = increasing
-  // rarity (/250 easier than /5 than /1).
-  if (p.printRun != null) return 100000 / p.printRun;
-  // Unlimited, no odds: easiest.
-  return 0;
+/**
+ * Pick the odds figure to display for a parallel. Pack odds aren't comparable
+ * across products, so prefer one channel: hobby → value → mania → whatever's
+ * there. Returns the single "channel" segment, e.g. "1:67 hobby".
+ */
+export function displayOdds(odds: string | null | undefined): string | null {
+  if (!odds) return null;
+  // Each channel is "<ratio> <label>"; ratios contain commas (1:4,098), so
+  // split on the comma that precedes the next ratio rather than every comma.
+  const segments = odds
+    .split(/,\s*(?=\d[\d,]*\s*:)/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+  if (segments.length === 0) return null;
+  const pick = (kw: string) =>
+    segments.find((s) => new RegExp(`\\b${kw}\\b`, "i").test(s));
+  return pick("hobby") ?? pick("value") ?? pick("mania") ?? segments[0];
 }
 
 /**
- * Order parallels easiest → hardest to pull. Base is always first, then sorted
- * by rarity (pack odds when available, else print run). Use as an Array#sort
- * comparator.
+ * Order parallels by rarity within a subset. Print run is the primary,
+ * format-independent key (a /5 is objectively rarer than a /50, and a 1/1 is
+ * always the chase). Unnumbered parallels come first (ordered by their pack
+ * odds among themselves), then serial-numbered ones from highest run to lowest
+ * (/250 … /10, /5, 1/1 last). Base is always first. Array#sort comparator.
  */
 export function compareParallels(
   a: { isBase?: boolean; name: string; printRun: number | null; odds?: string | null },
@@ -76,9 +81,24 @@ export function compareParallels(
   // Base always first.
   if (a.isBase && !b.isBase) return -1;
   if (b.isBase && !a.isBase) return 1;
-  const ra = parallelRarity(a);
-  const rb = parallelRarity(b);
-  if (ra !== rb) return ra - rb; // easiest (lowest) first
+
+  const an = a.printRun == null;
+  const bn = b.printRun == null;
+  // Unnumbered group before the numbered group.
+  if (an !== bn) return an ? -1 : 1;
+
+  if (an && bn) {
+    // Both unnumbered: order by pack odds (easiest first), then name.
+    const ra = oddsRarity(a.odds);
+    const rb = oddsRarity(b.odds);
+    if (ra != null && rb != null && ra !== rb) return ra - rb;
+    if (ra != null && rb == null) return -1;
+    if (rb != null && ra == null) return 1;
+    return a.name.localeCompare(b.name);
+  }
+
+  // Both numbered: larger print run = easier = first; 1/1 ends up last.
+  if (a.printRun !== b.printRun) return b.printRun! - a.printRun!;
   return a.name.localeCompare(b.name);
 }
 

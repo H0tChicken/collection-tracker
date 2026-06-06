@@ -4,6 +4,7 @@ import {
   compareCardNumbers,
   compareParallels,
   oddsRarity,
+  displayOdds,
 } from "@/lib/utils";
 
 describe("setLabel", () => {
@@ -85,12 +86,27 @@ describe("oddsRarity", () => {
   });
 });
 
+describe("displayOdds", () => {
+  it("prefers the hobby channel", () => {
+    expect(displayOdds("1:4,098 hobby, 1:179 Mania, 1:14,700 value")).toBe(
+      "1:4,098 hobby",
+    );
+  });
+  it("falls back value → mania → first", () => {
+    expect(displayOdds("1:35 Mania, 1:20 value")).toBe("1:20 value");
+    expect(displayOdds("2:1 Mania")).toBe("2:1 Mania");
+  });
+  it("returns null when empty", () => {
+    expect(displayOdds(null)).toBeNull();
+  });
+});
+
 describe("compareParallels", () => {
   const names = (
     arr: { isBase?: boolean; name: string; printRun: number | null; odds?: string | null }[],
   ) => [...arr].sort(compareParallels).map((p) => p.name);
 
-  it("orders by print run (easiest→hardest) when no odds", () => {
+  it("orders by print run: unnumbered first, then high→low, 1/1 last", () => {
     const input = [
       { name: "Gold", printRun: 10 },
       { name: "Base", printRun: null, isBase: true },
@@ -101,37 +117,31 @@ describe("compareParallels", () => {
     ];
     expect(names(input)).toEqual([
       "Base",
-      "Flash",       // unlimited (easiest)
+      "Flash",       // unnumbered
       "Blue",        // /40
       "Gold",        // /10
       "Red",         // /5
-      "Superfractor" // /1 (hardest)
+      "Superfractor" // /1 — chase, always last
     ]);
   });
 
-  it("sorts by pack odds easiest→hardest, mixing numbered + unnumbered", () => {
+  it("ranks by print run regardless of cross-format odds (the Superfractor fix)", () => {
+    // Superfractor's '1:179 Mania' must NOT make it rank above the /5.
     const input = [
-      { name: "Base", printRun: null, isBase: true },
-      { name: "Rose Gold", printRun: 250, odds: "1:14 hobby" },
+      { name: "Red", printRun: 5, odds: "1:661 hobby" },
+      { name: "Superfractor", printRun: 1, odds: "1:4,098 hobby, 1:179 Mania" },
+      { name: "Black", printRun: 10, odds: "1:331 hobby" },
+    ];
+    expect(names(input)).toEqual(["Black", "Red", "Superfractor"]);
+  });
+
+  it("orders unnumbered parallels by their odds among themselves", () => {
+    const input = [
       { name: "Aqua Lava", printRun: null, odds: "1:20 hobby" },
       { name: "Prism", printRun: null, odds: "1:2 value" },
-      { name: "Superfractor", printRun: 1, odds: "1:4,098 hobby" },
+      { name: "Refractors", printRun: null, odds: "1:6 hobby" },
     ];
-    expect(names(input)).toEqual([
-      "Base",
-      "Prism",       // 1:2
-      "Rose Gold",   // 1:14
-      "Aqua Lava",   // 1:20
-      "Superfractor" // 1:4098
-    ]);
-  });
-
-  it("ranks odds-bearing parallels by their odds, not print run", () => {
-    const input = [
-      { name: "Easy10", printRun: 10, odds: "1:5 hobby" },
-      { name: "Hard250", printRun: 250, odds: "1:500 hobby" },
-    ];
-    expect(names(input)).toEqual(["Easy10", "Hard250"]);
+    expect(names(input)).toEqual(["Prism", "Refractors", "Aqua Lava"]);
   });
 
   it("keeps Base first", () => {
