@@ -1,5 +1,10 @@
 import { describe, it, expect } from "vitest";
-import { setLabel, compareCardNumbers, compareParallels } from "@/lib/utils";
+import {
+  setLabel,
+  compareCardNumbers,
+  compareParallels,
+  oddsRarity,
+} from "@/lib/utils";
 
 describe("setLabel", () => {
   it("does not duplicate brand/year already in the name", () => {
@@ -63,11 +68,29 @@ describe("compareCardNumbers", () => {
   });
 });
 
-describe("compareParallels", () => {
-  const names = (arr: { isBase?: boolean; name: string; printRun: number | null }[]) =>
-    [...arr].sort(compareParallels).map((p) => p.name);
+describe("oddsRarity", () => {
+  it("parses 1:N as N packs per card", () => {
+    expect(oddsRarity("1:250 hobby")).toBe(250);
+    expect(oddsRarity("1:14 hobby")).toBe(14);
+  });
+  it("handles thousands separators", () => {
+    expect(oddsRarity("1:4,098 hobby")).toBe(4098);
+  });
+  it("takes the easiest route across multiple figures", () => {
+    expect(oddsRarity("1:6 hobby, 3:1 Mania")).toBeCloseTo(1 / 3);
+  });
+  it("returns null when no ratio present", () => {
+    expect(oddsRarity("")).toBeNull();
+    expect(oddsRarity(null)).toBeNull();
+  });
+});
 
-  it("orders Base → non-numbered → numbered high to low", () => {
+describe("compareParallels", () => {
+  const names = (
+    arr: { isBase?: boolean; name: string; printRun: number | null; odds?: string | null }[],
+  ) => [...arr].sort(compareParallels).map((p) => p.name);
+
+  it("orders by print run (easiest→hardest) when no odds", () => {
     const input = [
       { name: "Gold", printRun: 10 },
       { name: "Base", printRun: null, isBase: true },
@@ -75,29 +98,43 @@ describe("compareParallels", () => {
       { name: "Flash", printRun: null },
       { name: "Blue", printRun: 40 },
       { name: "Superfractor", printRun: 1 },
-      { name: "Honeycomb", printRun: null },
     ];
     expect(names(input)).toEqual([
       "Base",
-      "Flash",
-      "Honeycomb",
+      "Flash",       // unlimited (easiest)
       "Blue",        // /40
       "Gold",        // /10
       "Red",         // /5
-      "Superfractor" // /1 (1/1)
+      "Superfractor" // /1 (hardest)
     ]);
   });
 
-  it("sorts non-numbered group alphabetically", () => {
+  it("sorts by pack odds easiest→hardest, mixing numbered + unnumbered", () => {
     const input = [
-      { name: "Pandora", printRun: null },
-      { name: "Flash", printRun: null },
-      { name: "Multi-Color", printRun: null },
+      { name: "Base", printRun: null, isBase: true },
+      { name: "Rose Gold", printRun: 250, odds: "1:14 hobby" },
+      { name: "Aqua Lava", printRun: null, odds: "1:20 hobby" },
+      { name: "Prism", printRun: null, odds: "1:2 value" },
+      { name: "Superfractor", printRun: 1, odds: "1:4,098 hobby" },
     ];
-    expect(names(input)).toEqual(["Flash", "Multi-Color", "Pandora"]);
+    expect(names(input)).toEqual([
+      "Base",
+      "Prism",       // 1:2
+      "Rose Gold",   // 1:14
+      "Aqua Lava",   // 1:20
+      "Superfractor" // 1:4098
+    ]);
   });
 
-  it("keeps Base first even with no print run siblings", () => {
+  it("ranks odds-bearing parallels by their odds, not print run", () => {
+    const input = [
+      { name: "Easy10", printRun: 10, odds: "1:5 hobby" },
+      { name: "Hard250", printRun: 250, odds: "1:500 hobby" },
+    ];
+    expect(names(input)).toEqual(["Easy10", "Hard250"]);
+  });
+
+  it("keeps Base first", () => {
     const input = [
       { name: "Silver", printRun: null },
       { name: "Base", printRun: null, isBase: true },

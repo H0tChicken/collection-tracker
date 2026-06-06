@@ -30,26 +30,55 @@ export function setLabel(set: {
 }
 
 /**
- * Order parallels for display: Base first, then non-numbered (SP/SSP, unlimited)
- * by name, then numbered from highest print run down to lowest (/250 … /5, /1).
- * Rarer = lower number, shown last. Use as an Array#sort comparator.
+ * Parse a pack-odds string into a rarity number = packs needed per card
+ * (higher = rarer). Handles multiple figures like "1:6 hobby, 3:1 Mania" and
+ * returns the EASIEST route (min packs-per-card). "1:250" → 250; "3:1" → 0.33.
+ * Returns null when no ratio is found.
+ */
+export function oddsRarity(odds: string | null | undefined): number | null {
+  if (!odds) return null;
+  const matches = [...odds.matchAll(/(\d[\d,]*)\s*:\s*(\d[\d,]*)/g)];
+  if (matches.length === 0) return null;
+  let best = Infinity;
+  for (const m of matches) {
+    const a = Number(m[1].replace(/,/g, ""));
+    const b = Number(m[2].replace(/,/g, ""));
+    if (a > 0) best = Math.min(best, b / a); // packs per card
+  }
+  return Number.isFinite(best) ? best : null;
+}
+
+/** A single rarity score for a parallel (higher = harder to pull). */
+function parallelRarity(p: {
+  printRun: number | null;
+  odds?: string | null;
+}): number {
+  // Prefer real pack odds when present.
+  const o = oddsRarity(p.odds);
+  if (o != null) return o;
+  // Fall back to print run: fewer copies = rarer. Scaled so serial-numbered
+  // cards rank above unnumbered ones, and descending print run = increasing
+  // rarity (/250 easier than /5 than /1).
+  if (p.printRun != null) return 100000 / p.printRun;
+  // Unlimited, no odds: easiest.
+  return 0;
+}
+
+/**
+ * Order parallels easiest → hardest to pull. Base is always first, then sorted
+ * by rarity (pack odds when available, else print run). Use as an Array#sort
+ * comparator.
  */
 export function compareParallels(
-  a: { isBase?: boolean; name: string; printRun: number | null },
-  b: { isBase?: boolean; name: string; printRun: number | null },
+  a: { isBase?: boolean; name: string; printRun: number | null; odds?: string | null },
+  b: { isBase?: boolean; name: string; printRun: number | null; odds?: string | null },
 ): number {
   // Base always first.
   if (a.isBase && !b.isBase) return -1;
   if (b.isBase && !a.isBase) return 1;
-  const an = a.printRun == null;
-  const bn = b.printRun == null;
-  // Non-numbered group before numbered group.
-  if (an && !bn) return -1;
-  if (bn && !an) return 1;
-  // Both non-numbered: alphabetical.
-  if (an && bn) return a.name.localeCompare(b.name);
-  // Both numbered: higher print run first, ties broken by name.
-  if (a.printRun !== b.printRun) return b.printRun! - a.printRun!;
+  const ra = parallelRarity(a);
+  const rb = parallelRarity(b);
+  if (ra !== rb) return ra - rb; // easiest (lowest) first
   return a.name.localeCompare(b.name);
 }
 
