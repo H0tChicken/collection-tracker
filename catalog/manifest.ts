@@ -34,6 +34,8 @@ export interface CatalogSourceEntry {
   year?: number;
   season?: string;
   description?: string;
+  /** TOPPS_XLSX only: worksheet/tab to read (default: first sheet). */
+  sheet?: string;
   /** TOPPS_XLSX_V2 only: also emit a companion Mania set. */
   maniaSplit?: ManiaSplit;
 }
@@ -72,6 +74,18 @@ export const CATALOG_SOURCES: CatalogSourceEntry[] = [
     year: 2025,
     description:
       "2025 Topps Chrome MLS — club product. Compiled from the official checklist.",
+  },
+  {
+    externalId: "2025-topps-chrome-sapphire-mls",
+    format: "TOPPS_XLSX",
+    file: "2025-topps-chrome-sapphire-mls.xlsx",
+    sheet: "Full Checklist",
+    kitType: "CLUB",
+    name: "Topps Chrome Sapphire MLS (2025)",
+    brand: "Topps",
+    year: 2025,
+    description:
+      "2025 Topps Chrome Sapphire MLS — club product. Compiled from the official checklist (Full Checklist tab).",
   },
   {
     externalId: "2024-topps-chrome-mls",

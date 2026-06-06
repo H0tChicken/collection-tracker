@@ -198,7 +198,7 @@ function ParallelRowView({
           <span className={cn("text-on-surface", row.isBase && "font-medium")}>
             {row.name}
           </span>
-          {row.printRun != null && !/\d\/\d|\/\d/.test(row.name) && (
+          {row.printRun != null && (
             <span className="text-on-surface-variant">
               {printRunLabel(row.printRun)}
             </span>

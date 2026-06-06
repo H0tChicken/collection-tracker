@@ -19,11 +19,21 @@ import { parsePaniniCsv } from "../lib/import/panini";
 import { parseToppsRows } from "../lib/import/topps";
 import { parseToppsV2 } from "../lib/import/toppsV2";
 
-/** Read the first worksheet of an .xlsx as an array of cell-string rows. */
-function readXlsxRows(srcPath: string): unknown[][] {
+/**
+ * Read one worksheet of an .xlsx as an array of cell-string rows. Defaults to
+ * the first sheet; pass a name to target a specific tab (case-insensitive).
+ */
+function readXlsxRows(srcPath: string, sheetName?: string): unknown[][] {
   const wb = XLSX.readFile(srcPath, { cellDates: false });
-  const sheet = wb.Sheets[wb.SheetNames[0]];
-  return XLSX.utils.sheet_to_json(sheet, { header: 1, blankrows: false, raw: false });
+  const resolved = sheetName
+    ? (wb.SheetNames.find((n) => n.toLowerCase() === sheetName.toLowerCase()) ??
+      wb.SheetNames[0])
+    : wb.SheetNames[0];
+  return XLSX.utils.sheet_to_json(wb.Sheets[resolved], {
+    header: 1,
+    blankrows: false,
+    raw: false,
+  });
 }
 
 /** Read every worksheet of an .xlsx as { sheetName: rows }. */
@@ -79,7 +89,7 @@ function build() {
       parsed = parsePaniniCsv(readFileSync(srcPath, "utf8"), entry.kitType);
     } else if (entry.format === "TOPPS_XLSX") {
       const teamType = entry.kitType === "COUNTRY" ? "NATIONAL" : "CLUB";
-      parsed = parseToppsRows(readXlsxRows(srcPath), {
+      parsed = parseToppsRows(readXlsxRows(srcPath, entry.sheet), {
         kitType: entry.kitType,
         teamType,
         meta: { brand: entry.brand, year: entry.year, program: entry.name },

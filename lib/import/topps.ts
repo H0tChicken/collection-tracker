@@ -203,7 +203,10 @@ export function parseToppsRows(
       const subset = currentSubset;
       // Print run is read before stripping parens (it lives outside them).
       const printRun = parsePrintRunFromName(c0);
-      const { name, odds } = splitParallelOdds(c0);
+      const { name: namedOdds, odds } = splitParallelOdds(c0);
+      // Strip the print-run token from the name too (e.g. "Gold Sapphire /50" →
+      // "Gold Sapphire") so it isn't shown twice; printRun carries it.
+      const name = namedOdds.replace(/\s*(?:\b1\/1\b|\/-?\d+)\s*$/, "").trim() || namedOdds;
       const pkey = `${subset}|${name}`;
       if (!parallelMap.has(pkey)) {
         parallelMap.set(pkey, {

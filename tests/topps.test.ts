@@ -74,8 +74,9 @@ describe("parseToppsRows", () => {
   it("captures per-subset parallels with print runs + synthetic Base", () => {
     const baseParallels = parsed.parallels.filter((p) => p.subset === "");
     expect(baseParallels.find((p) => p.isBase)).toBeTruthy();
-    expect(baseParallels.find((p) => p.name === "Gold Refractor /50")?.printRun).toBe(50);
-    expect(baseParallels.find((p) => p.name === "Superfractor 1/1")?.printRun).toBe(1);
+    // Print-run token is stripped from the name; printRun carries it.
+    expect(baseParallels.find((p) => p.name === "Gold Refractor")?.printRun).toBe(50);
+    expect(baseParallels.find((p) => p.name === "Superfractor")?.printRun).toBe(1);
   });
 
   it("handles lettered card codes and infers autograph from subset name", () => {
