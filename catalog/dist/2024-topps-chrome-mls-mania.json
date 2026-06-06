@@ -1,0 +1,1007 @@
+{
+  "formatVersion": 1,
+  "externalId": "2024-topps-chrome-mls-mania",
+  "sport": "Soccer",
+  "name": "Topps Chrome MLS Mania (2024)",
+  "brand": "Topps",
+  "year": 2024,
+  "season": null,
+  "description": "2024 Topps Chrome MLS Mania — companion product. Mania-exclusive and shared subsets, Mania-channel parallels.",
+  "contentHash": "93382518f5c789a7112cd8bbf42ac3ef6f2bd597fd4dc91c1eeddcd6085c9739",
+  "parallels": [
+    {
+      "subset": "Mania Autographs",
+      "name": "Base",
+      "printRun": null,
+      "isBase": true
+    },
+    {
+      "subset": "Mania Autographs",
+      "name": "Pink Prism Refractors",
+      "printRun": 15,
+      "odds": "1:84 Mania",
+      "hasMania": true,
+      "isBase": false
+    },
+    {
+      "subset": "Mania Autographs",
+      "name": "Black Prism Refractors",
+      "printRun": 10,
+      "odds": "1:127 Mania",
+      "hasMania": true,
+      "isBase": false
+    },
+    {
+      "subset": "Mania Autographs",
+      "name": "Red Prism Refractors",
+      "printRun": 7,
+      "odds": "1:179 Mania",
+      "hasMania": true,
+      "isBase": false
+    },
+    {
+      "subset": "Mania Autographs",
+      "name": "Red Lava Refractors",
+      "printRun": 5,
+      "odds": "1:250 Mania",
+      "hasMania": true,
+      "isBase": false
+    },
+    {
+      "subset": "Mania Autographs",
+      "name": "Black Lava Refractors",
+      "printRun": 3,
+      "odds": "1:417 Mania",
+      "hasMania": true,
+      "isBase": false
+    },
+    {
+      "subset": "Mania Autographs",
+      "name": "Pink Lava Refractors",
+      "printRun": 2,
+      "odds": "1:625 Mania",
+      "hasMania": true,
+      "isBase": false
+    },
+    {
+      "subset": "Mania Autographs",
+      "name": "Superfractors",
+      "printRun": 1,
+      "odds": "1:1,250 Mania",
+      "hasMania": true,
+      "isBase": false
+    },
+    {
+      "subset": "Memory Makers",
+      "name": "Base",
+      "printRun": null,
+      "isBase": true
+    },
+    {
+      "subset": "Memory Makers",
+      "name": "Gold Refractors",
+      "printRun": 50,
+      "odds": "1:1,948 hobby, 1:35 Mania, 1:2,071 value",
+      "hasMania": true,
+      "isBase": false
+    },
+    {
+      "subset": "Memory Makers",
+      "name": "Red Refractors",
+      "printRun": 5,
+      "odds": "1:19,718 hobby, 1:1,313 Mania, 1:21,000 value",
+      "hasMania": true,
+      "isBase": false
+    },
+    {
+      "subset": "Memory Makers",
+      "name": "Superfractors",
+      "printRun": 1,
+      "odds": "1:78,870 hobby, 1:1,250 Mania, 1:147,000 value",
+      "hasMania": true,
+      "isBase": false
+    },
+    {
+      "subset": "Memory Makers Autographs",
+      "name": "Base",
+      "printRun": null,
+      "isBase": true
+    },
+    {
+      "subset": "Memory Makers Autographs",
+      "name": "Gold Refractors",
+      "printRun": 50,
+      "odds": "1:4 Mania",
+      "hasMania": true,
+      "isBase": false
+    },
+    {
+      "subset": "Memory Makers Autographs",
+      "name": "Orange Refractors",
+      "printRun": 25,
+      "odds": "1:6 Mania",
+      "hasMania": true,
+      "isBase": false
+    },
+    {
+      "subset": "Memory Makers Autographs",
+      "name": "Red Wave Refractors",
+      "printRun": 5,
+      "odds": "1:29 Mania",
+      "hasMania": true,
+      "isBase": false
+    },
+    {
+      "subset": "Memory Makers Autographs",
+      "name": "Superfractors",
+      "printRun": 1,
+      "odds": "1:139 Mania",
+      "hasMania": true,
+      "isBase": false
+    },
+    {
+      "subset": "MLS Trailblazers Autographs",
+      "name": "Base",
+      "printRun": null,
+      "isBase": true
+    },
+    {
+      "subset": "MLS Trailblazers Autographs",
+      "name": "Gold Refractors",
+      "printRun": 50,
+      "odds": "1:3 Mania",
+      "hasMania": true,
+      "isBase": false
+    },
+    {
+      "subset": "MLS Trailblazers Autographs",
+      "name": "Orange Refractors",
+      "printRun": 25,
+      "odds": "1:4 Mania",
+      "hasMania": true,
+      "isBase": false
+    },
+    {
+      "subset": "MLS Trailblazers Autographs",
+      "name": "Red Refractors",
+      "printRun": 5,
+      "odds": "1:17 Mania",
+      "hasMania": true,
+      "isBase": false
+    },
+    {
+      "subset": "MLS Trailblazers Autographs",
+      "name": "Superfractors",
+      "printRun": 1,
+      "odds": "1:74 Mania",
+      "hasMania": true,
+      "isBase": false
+    },
+    {
+      "subset": "South Beach Superstar",
+      "name": "Base",
+      "printRun": null,
+      "isBase": true
+    },
+    {
+      "subset": "South Beach Superstar",
+      "name": "Pink Refractors",
+      "printRun": 75,
+      "odds": "1:2 Mania",
+      "hasMania": true,
+      "isBase": false
+    },
+    {
+      "subset": "South Beach Superstar",
+      "name": "Gold Refractors",
+      "printRun": 50,
+      "odds": "1:3 Mania",
+      "hasMania": true,
+      "isBase": false
+    },
+    {
+      "subset": "South Beach Superstar",
+      "name": "Orange Refractors",
+      "printRun": 25,
+      "odds": "1:6 Mania",
+      "hasMania": true,
+      "isBase": false
+    },
+    {
+      "subset": "South Beach Superstar",
+      "name": "Red Refractors",
+      "printRun": 5,
+      "odds": "1:27 Mania",
+      "hasMania": true,
+      "isBase": false
+    },
+    {
+      "subset": "South Beach Superstar",
+      "name": "Superfractors",
+      "printRun": 1,
+      "odds": "1:125 Mania",
+      "hasMania": true,
+      "isBase": false
+    },
+    {
+      "subset": "Chrome Autographs Mania Pink X-Fractors",
+      "name": "Base",
+      "printRun": null,
+      "isBase": true
+    },
+    {
+      "subset": "Chrome Autographs Mania Pink X-Fractors",
+      "name": "Shimmer Pink Refractors",
+      "printRun": 40,
+      "odds": "1:2 Mania",
+      "hasMania": true,
+      "isBase": false
+    },
+    {
+      "subset": "Chrome Autographs Mania Pink X-Fractors",
+      "name": "Pink Pulsar Refractors",
+      "printRun": 25,
+      "odds": "1:4 Mania",
+      "hasMania": true,
+      "isBase": false
+    },
+    {
+      "subset": "Chrome Autographs Mania Pink X-Fractors",
+      "name": "Pink Refractors",
+      "printRun": 10,
+      "odds": "1:8 Mania",
+      "hasMania": true,
+      "isBase": false
+    }
+  ],
+  "cards": [
+    {
+      "subset": "Mania Autographs",
+      "cardNumber": "MN-LM",
+      "playerName": "Lionel Messi",
+      "teamName": "Inter Miami CF",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "Memory Makers",
+      "cardNumber": "MM-1",
+      "playerName": "Sergio Busquets",
+      "teamName": "Inter Miami CF",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "Memory Makers",
+      "cardNumber": "MM-2",
+      "playerName": "Jordi Alba",
+      "teamName": "Inter Miami CF",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "Memory Makers",
+      "cardNumber": "MM-3",
+      "playerName": "Thiago Almada",
+      "teamName": "Atlanta United",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "Memory Makers",
+      "cardNumber": "MM-4",
+      "playerName": "Lucho Acosta",
+      "teamName": "FC Cincinnati",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "Memory Makers",
+      "cardNumber": "MM-5",
+      "playerName": "Julián Fernández",
+      "teamName": "NYCFC",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "Memory Makers",
+      "cardNumber": "MM-6",
+      "playerName": "Thierry Henry",
+      "teamName": "New York Red Bulls",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "Memory Makers",
+      "cardNumber": "MM-7",
+      "playerName": "David Villa",
+      "teamName": "NYCFC",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "Memory Makers",
+      "cardNumber": "MM-8",
+      "playerName": "Hristo Stoichkov",
+      "teamName": "Chicago Fire",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "Memory Makers",
+      "cardNumber": "MM-9",
+      "playerName": "Julián Carranza",
+      "teamName": "Philadelphia Union",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "Memory Makers",
+      "cardNumber": "MM-10",
+      "playerName": "Tomás Avilés",
+      "teamName": "Inter Miami CF",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "Memory Makers",
+      "cardNumber": "MM-11",
+      "playerName": "Kaká",
+      "teamName": "Orlando City SC",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "Memory Makers",
+      "cardNumber": "MM-12",
+      "playerName": "Luis Suárez",
+      "teamName": "Inter Miami CF",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "Memory Makers Autographs",
+      "cardNumber": "MMA-AV",
+      "playerName": "Alan Velasco",
+      "teamName": "FC Dallas",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": true
+    },
+    {
+      "subset": "Memory Makers Autographs",
+      "cardNumber": "MMA-DV",
+      "playerName": "David Villa",
+      "teamName": "NYCFC",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": true
+    },
+    {
+      "subset": "Memory Makers Autographs",
+      "cardNumber": "MMA-HS",
+      "playerName": "Hristo Stoichkov",
+      "teamName": "Chicago Fire",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": true
+    },
+    {
+      "subset": "Memory Makers Autographs",
+      "cardNumber": "MMA-JA",
+      "playerName": "Jordi Alba",
+      "teamName": "Inter Miami CF",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": true
+    },
+    {
+      "subset": "Memory Makers Autographs",
+      "cardNumber": "MMA-LA",
+      "playerName": "Lucho Acosta",
+      "teamName": "FC Cincinnati",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": true
+    },
+    {
+      "subset": "Memory Makers Autographs",
+      "cardNumber": "MMA-LS",
+      "playerName": "Luis Suárez",
+      "teamName": "Inter Miami CF",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": true
+    },
+    {
+      "subset": "Memory Makers Autographs",
+      "cardNumber": "MMA-MM",
+      "playerName": "Maxi Moralez",
+      "teamName": "NYCFC",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": true
+    },
+    {
+      "subset": "Memory Makers Autographs",
+      "cardNumber": "MMA-SB",
+      "playerName": "Sergio Busquets",
+      "teamName": "Inter Miami CF",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": true
+    },
+    {
+      "subset": "Memory Makers Autographs",
+      "cardNumber": "MMA-TA",
+      "playerName": "Thiago Almada",
+      "teamName": "Atlanta United",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Trailblazers Autographs",
+      "cardNumber": "TA-AC",
+      "playerName": "Ashley Cole",
+      "teamName": "LA Galaxy",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "MLS Trailblazers Autographs",
+      "cardNumber": "TA-AP",
+      "playerName": "Andrea Pirlo",
+      "teamName": "NYCFC",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "MLS Trailblazers Autographs",
+      "cardNumber": "TA-BS",
+      "playerName": "Bastian Schweinsteiger",
+      "teamName": "Chicago Fire",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "MLS Trailblazers Autographs",
+      "cardNumber": "TA-CD",
+      "playerName": "Clint Dempsey",
+      "teamName": "Seattle Sounders FC",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "MLS Trailblazers Autographs",
+      "cardNumber": "TA-CV",
+      "playerName": "Carlos Valderrama",
+      "teamName": "Colorado Rapids",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "MLS Trailblazers Autographs",
+      "cardNumber": "TA-DV",
+      "playerName": "David Villa",
+      "teamName": "NYCFC",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "MLS Trailblazers Autographs",
+      "cardNumber": "TA-FL",
+      "playerName": "Frank Lampard",
+      "teamName": "NYCFC",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "MLS Trailblazers Autographs",
+      "cardNumber": "TA-GB",
+      "playerName": "Gareth Bale",
+      "teamName": "LAFC",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "MLS Trailblazers Autographs",
+      "cardNumber": "TA-HS",
+      "playerName": "Hristo Stoichkov",
+      "teamName": "Chicago Fire",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "MLS Trailblazers Autographs",
+      "cardNumber": "TA-JD",
+      "playerName": "Jermain Defoe",
+      "teamName": "Toronto FC",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "MLS Trailblazers Autographs",
+      "cardNumber": "TA-KA",
+      "playerName": "Kaká",
+      "teamName": "Orlando City SC",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "MLS Trailblazers Autographs",
+      "cardNumber": "TA-LM",
+      "playerName": "Lothar Matthäus",
+      "teamName": "New York Metrostars",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "MLS Trailblazers Autographs",
+      "cardNumber": "TA-RK",
+      "playerName": "Robbie Keane",
+      "teamName": "LA Galaxy",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "MLS Trailblazers Autographs",
+      "cardNumber": "TA-SG",
+      "playerName": "Steven Gerrard",
+      "teamName": "LA Galaxy",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "MLS Trailblazers Autographs",
+      "cardNumber": "TA-TH",
+      "playerName": "Thierry Henry",
+      "teamName": "New York Red Bulls",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "MLS Trailblazers Autographs",
+      "cardNumber": "TA-WR",
+      "playerName": "Wayne Rooney",
+      "teamName": "D.C. United",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "MLS Trailblazers Autographs",
+      "cardNumber": "TA-ZI",
+      "playerName": "Zlatan Ibrahimović",
+      "teamName": "LA Galaxy",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "South Beach Superstar",
+      "cardNumber": "SB-1",
+      "playerName": "Lionel Messi",
+      "teamName": "Inter Miami CF",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": false,
+      "isRelic": false
+    },
+    {
+      "subset": "South Beach Superstar",
+      "cardNumber": "SB-2",
+      "playerName": "Lionel Messi",
+      "teamName": "Inter Miami CF",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": false,
+      "isRelic": false
+    },
+    {
+      "subset": "South Beach Superstar",
+      "cardNumber": "SB-3",
+      "playerName": "Lionel Messi",
+      "teamName": "Inter Miami CF",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": false,
+      "isRelic": false
+    },
+    {
+      "subset": "South Beach Superstar",
+      "cardNumber": "SB-4",
+      "playerName": "Lionel Messi",
+      "teamName": "Inter Miami CF",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": false,
+      "isRelic": false
+    },
+    {
+      "subset": "South Beach Superstar",
+      "cardNumber": "SB-5",
+      "playerName": "Lionel Messi",
+      "teamName": "Inter Miami CF",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": false,
+      "isRelic": false
+    },
+    {
+      "subset": "South Beach Superstar",
+      "cardNumber": "SB-6",
+      "playerName": "Lionel Messi",
+      "teamName": "Inter Miami CF",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": false,
+      "isRelic": false
+    },
+    {
+      "subset": "South Beach Superstar",
+      "cardNumber": "SB-7",
+      "playerName": "Lionel Messi",
+      "teamName": "Inter Miami CF",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": false,
+      "isRelic": false
+    },
+    {
+      "subset": "South Beach Superstar",
+      "cardNumber": "SB-8",
+      "playerName": "Lionel Messi",
+      "teamName": "Inter Miami CF",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": false,
+      "isRelic": false
+    },
+    {
+      "subset": "South Beach Superstar",
+      "cardNumber": "SB-9",
+      "playerName": "Lionel Messi",
+      "teamName": "Inter Miami CF",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": false,
+      "isRelic": false
+    },
+    {
+      "subset": "South Beach Superstar",
+      "cardNumber": "SB-10",
+      "playerName": "Lionel Messi",
+      "teamName": "Inter Miami CF",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": false,
+      "isRelic": false
+    },
+    {
+      "subset": "Chrome Autographs Mania Pink X-Fractors",
+      "cardNumber": "CA-DK",
+      "playerName": "Deandre Kerr",
+      "teamName": "Toronto FC",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": true,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "Chrome Autographs Mania Pink X-Fractors",
+      "cardNumber": "CA-NA",
+      "playerName": "Noah Allen",
+      "teamName": "Inter Miami CF",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": true,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "Chrome Autographs Mania Pink X-Fractors",
+      "cardNumber": "CA-DR",
+      "playerName": "David Ruíz",
+      "teamName": "Inter Miami CF",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": true,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "Chrome Autographs Mania Pink X-Fractors",
+      "cardNumber": "CA-LA",
+      "playerName": "Lucho Acosta",
+      "teamName": "FC Cincinnati",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "Chrome Autographs Mania Pink X-Fractors",
+      "cardNumber": "CA-TA",
+      "playerName": "Thiago Almada",
+      "teamName": "Atlanta United",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "Chrome Autographs Mania Pink X-Fractors",
+      "cardNumber": "CA-BE",
+      "playerName": "Christian Benteke",
+      "teamName": "D.C. United",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "Chrome Autographs Mania Pink X-Fractors",
+      "cardNumber": "CA-DB",
+      "playerName": "Denis Bouanga",
+      "teamName": "LAFC",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "Chrome Autographs Mania Pink X-Fractors",
+      "cardNumber": "CA-RP",
+      "playerName": "Riqui Puig",
+      "teamName": "LA Galaxy",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "Chrome Autographs Mania Pink X-Fractors",
+      "cardNumber": "CA-SB",
+      "playerName": "Sergio Busquets",
+      "teamName": "Inter Miami CF",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "Chrome Autographs Mania Pink X-Fractors",
+      "cardNumber": "CA-FE",
+      "playerName": "Jesús Ferreira",
+      "teamName": "FC Dallas",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "Chrome Autographs Mania Pink X-Fractors",
+      "cardNumber": "CA-GG",
+      "playerName": "Giorgos Giakoumakis",
+      "teamName": "Atlanta United",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "Chrome Autographs Mania Pink X-Fractors",
+      "cardNumber": "CA-AV",
+      "playerName": "Alan Velasco",
+      "teamName": "FC Dallas",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "Chrome Autographs Mania Pink X-Fractors",
+      "cardNumber": "CA-JA",
+      "playerName": "Jordi Alba",
+      "teamName": "Inter Miami CF",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "Chrome Autographs Mania Pink X-Fractors",
+      "cardNumber": "CA-BC",
+      "playerName": "Benja Cremaschi",
+      "teamName": "Inter Miami CF",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "Chrome Autographs Mania Pink X-Fractors",
+      "cardNumber": "CA-LM",
+      "playerName": "Lionel Messi",
+      "teamName": "Inter Miami CF",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "Chrome Autographs Mania Pink X-Fractors",
+      "cardNumber": "CA-SU",
+      "playerName": "Luis Suárez",
+      "teamName": "Inter Miami CF",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "Chrome Autographs Mania Pink X-Fractors",
+      "cardNumber": "CA-FT",
+      "playerName": "Facundo Torres",
+      "teamName": "Orlando City SC",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "Chrome Autographs Mania Pink X-Fractors",
+      "cardNumber": "CA-HL",
+      "playerName": "Hugo Lloris",
+      "teamName": "LAFC",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": true,
+      "isRelic": false
+    },
+    {
+      "subset": "Chrome Autographs Mania Pink X-Fractors",
+      "cardNumber": "CA-PV",
+      "playerName": "Pedro de la Vega",
+      "teamName": "Seattle Sounders FC",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": true,
+      "isAutograph": true,
+      "isRelic": false
+    }
+  ]
+}

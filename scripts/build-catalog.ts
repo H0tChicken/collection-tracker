@@ -98,17 +98,7 @@ function build() {
       console.warn(`  ! ${entry.externalId}: ${w}`);
     }
 
-    const meta = {
-      externalId: entry.externalId,
-      sport: parsed.meta.sport || "Soccer",
-      name: entry.name ?? parsed.meta.program ?? entry.externalId,
-      brand: entry.brand ?? parsed.meta.brand ?? null,
-      year: entry.year ?? parsed.meta.year ?? null,
-      season: entry.season ?? null,
-      description: entry.description ?? null,
-    };
-
-    const cards: CatalogCard[] = parsed.cards.map((c) => ({
+    const allCards: CatalogCard[] = parsed.cards.map((c) => ({
       subset: c.subset ?? "",
       cardNumber: c.cardNumber,
       playerName: c.playerName,
@@ -120,21 +110,94 @@ function build() {
       isRelic: c.isRelic ?? false,
     }));
 
-    const out: CatalogSet = {
-      formatVersion: 1,
-      ...meta,
-      contentHash: hashContent(meta, parsed.parallels, cards),
-      parallels: parsed.parallels,
-      cards,
+    // Emit a catalog set from a (possibly filtered) card + parallel subset.
+    const emit = (
+      out: {
+        externalId: string;
+        name: string;
+        description: string | null;
+      },
+      cards: CatalogCard[],
+      parallels: typeof parsed.parallels,
+    ) => {
+      const meta = {
+        externalId: out.externalId,
+        sport: parsed.meta.sport || "Soccer",
+        name: out.name,
+        brand: entry.brand ?? parsed.meta.brand ?? null,
+        year: entry.year ?? parsed.meta.year ?? null,
+        season: entry.season ?? null,
+        description: out.description,
+      };
+      const doc: CatalogSet = {
+        formatVersion: 1,
+        ...meta,
+        contentHash: hashContent(meta, parallels, cards),
+        parallels,
+        cards,
+      };
+      writeFileSync(
+        path.join(DIST_DIR, `${out.externalId}.json`),
+        JSON.stringify(doc, null, 2) + "\n",
+      );
+      const subsets = new Set(cards.map((c) => c.subset)).size;
+      console.log(
+        `✓ ${out.externalId}: ${cards.length} cards, ${subsets} subsets, ${parallels.length} parallels`,
+      );
+      built.push(out.externalId);
     };
 
-    const outPath = path.join(DIST_DIR, `${entry.externalId}.json`);
-    writeFileSync(outPath, JSON.stringify(out, null, 2) + "\n");
-    const subsets = new Set(cards.map((c) => c.subset)).size;
-    console.log(
-      `✓ ${entry.externalId}: ${cards.length} cards, ${subsets} subsets, ${parsed.parallels.length} parallels (${parsed.rawRows} source rows)`,
-    );
-    built.push(entry.externalId);
+    const baseName = entry.name ?? parsed.meta.program ?? entry.externalId;
+
+    if (entry.maniaSplit) {
+      // Classify subsets by availability.
+      const avail = parsed.subsetAvailability ?? {};
+      const maniaOnly = (s: string) =>
+        s !== "" && avail[s]?.mania === true && avail[s]?.chrome === false;
+      const inBoth = (s: string) =>
+        s !== "" && avail[s]?.mania === true && avail[s]?.chrome === true;
+
+      // Chrome set: everything except Mania-only subsets.
+      const chromeCards = allCards.filter((c) => !maniaOnly(c.subset));
+      const chromeParallels = parsed.parallels.filter(
+        (p) => !maniaOnly(p.subset),
+      );
+      emit(
+        {
+          externalId: entry.externalId,
+          name: baseName,
+          description: entry.description ?? null,
+        },
+        chromeCards,
+        chromeParallels,
+      );
+
+      // Mania set: Mania-only + shared subsets; parallels = base + Mania-channel.
+      const inMania = (s: string) => maniaOnly(s) || inBoth(s);
+      const maniaCards = allCards.filter((c) => inMania(c.subset));
+      const maniaParallels = parsed.parallels.filter(
+        (p) => inMania(p.subset) && (p.isBase || p.hasMania),
+      );
+      emit(
+        {
+          externalId: entry.maniaSplit.externalId,
+          name: entry.maniaSplit.name,
+          description: entry.maniaSplit.description ?? null,
+        },
+        maniaCards,
+        maniaParallels,
+      );
+    } else {
+      emit(
+        {
+          externalId: entry.externalId,
+          name: baseName,
+          description: entry.description ?? null,
+        },
+        allCards,
+        parsed.parallels,
+      );
+    }
   }
   console.log(`\nBuilt ${built.length} catalog set(s) → catalog/dist/`);
 }

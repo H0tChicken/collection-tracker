@@ -79,9 +79,13 @@ const SUBSET_LABEL = (raw: string): string => {
   return /^base set$/i.test(n) || /^base$/i.test(n) ? "" : n;
 };
 
-/** Extract per-subset parallels from a section sheet. */
-function parallelsFromSection(rows: string[][]): ParallelDef[] {
+/** Extract per-subset parallels + availability from a section sheet. */
+function parallelsFromSection(rows: string[][]): {
+  parallels: ParallelDef[];
+  availability: Record<string, { chrome: boolean; mania: boolean }>;
+} {
   const out: ParallelDef[] = [];
+  const availability: Record<string, { chrome: boolean; mania: boolean }> = {};
   let currentSubset: string | null = null;
   let inParallels = false;
 
@@ -97,6 +101,17 @@ function parallelsFromSection(rows: string[][]): ParallelDef[] {
     }
     if (/^parallels:?$/i.test(c0)) {
       inParallels = true;
+      continue;
+    }
+    // The availability line (".. packs.") names the pack products.
+    if (currentSubset !== null && /packs?\.$/i.test(c0)) {
+      const mania = /\bmania\b/i.test(c0);
+      const chrome = /\b(hobby|value|jumbo|retail)\b/i.test(c0);
+      availability[currentSubset] = {
+        // If neither keyword appears, assume Chrome.
+        chrome: chrome || !mania,
+        mania,
+      };
       continue;
     }
     // A card row (number-ish in col0 with a player in col1) ends the parallels.
@@ -116,12 +131,13 @@ function parallelsFromSection(rows: string[][]): ParallelDef[] {
           name: p.name,
           printRun: p.printRun,
           odds: p.odds,
+          hasMania: p.odds ? /\bmania\b/i.test(p.odds) : false,
           isBase: false,
         });
       }
     }
   }
-  return out;
+  return { parallels: out, availability };
 }
 
 /** Parse the Master sheet into checklist cards. */
@@ -174,6 +190,49 @@ function cardsFromMaster(
 }
 
 /**
+ * Parse card rows directly from a section sheet (fallback for subsets that Topps
+ * omitted from the Master tab). Returns cards only for the named subset.
+ */
+function cardsFromSection(
+  rows: string[][],
+  wantSubset: string,
+  opts: ToppsV2Options,
+): ChecklistRow[] {
+  const kitType = opts.kitType ?? "CLUB";
+  const teamType = opts.teamType ?? (kitType === "COUNTRY" ? "NATIONAL" : "CLUB");
+  const out: ChecklistRow[] = [];
+  let currentSubset: string | null = null;
+
+  for (const cells of rows) {
+    const c0 = (cells[0] ?? "").trim();
+    if (!c0) continue;
+    if (/\bChecklist$/i.test(c0) || /^base set$/i.test(c0)) {
+      currentSubset = SUBSET_LABEL(c0);
+      continue;
+    }
+    if (currentSubset !== wantSubset) continue;
+    // Card row: code in col0, player in col1, team in col2. A "/N" may sit in a
+    // later column; flags ("Rookie"/"RC") anywhere after.
+    const player = (cells[1] ?? "").trim();
+    if (!/^[A-Za-z0-9][A-Za-z0-9-]*$/.test(c0) || !player) continue;
+    const team = (cells[2] ?? "").trim();
+    const tail = cells.slice(3).join(" ");
+    out.push({
+      cardNumber: c0,
+      subset: wantSubset,
+      playerName: player,
+      teamName: team || undefined,
+      teamType,
+      kitType,
+      isRookie: /\b(rc|rookie)\b/i.test(tail),
+      isAutograph: AUTO_RE.test(wantSubset),
+      isRelic: RELIC_RE.test(wantSubset),
+    });
+  }
+  return out;
+}
+
+/**
  * Parse a multi-tab Topps workbook.
  * @param sheets  map of sheet name → rows (array of cell arrays)
  */
@@ -199,15 +258,37 @@ export function parseToppsV2(
 
   const cards = cardsFromMaster(master, opts);
 
-  // Gather parallels from the section sheets (everything except Master/Teams).
+  // Gather parallels + availability from the section sheets (not Master/Teams).
   const parallelMap = new Map<string, ParallelDef>(); // `${subset}|${name}`
+  const subsetAvailability: Record<string, { chrome: boolean; mania: boolean }> =
+    {};
   let rawRows = master.length;
   for (const [name, rows] of Object.entries(byName)) {
     if (name === "master" || name === "teams") continue;
     rawRows += rows.length;
-    for (const p of parallelsFromSection(rows)) {
+    const { parallels: sectionPars, availability } = parallelsFromSection(rows);
+    for (const p of sectionPars) {
       const key = `${p.subset}|${p.name}`;
       if (!parallelMap.has(key)) parallelMap.set(key, p);
+    }
+    Object.assign(subsetAvailability, availability);
+  }
+
+  // Recover subsets that exist as sections but were omitted from the Master tab
+  // (e.g. "Chrome Autographs Mania Pink X-Fractors" in 2024 Chrome MLS).
+  const masterSubsets = new Set(cards.map((c) => c.subset ?? ""));
+  for (const sub of Object.keys(subsetAvailability)) {
+    if (masterSubsets.has(sub)) continue;
+    let recovered: ChecklistRow[] = [];
+    for (const [name, rows] of Object.entries(byName)) {
+      if (name === "master" || name === "teams") continue;
+      recovered = recovered.concat(cardsFromSection(rows, sub, opts));
+    }
+    if (recovered.length > 0) {
+      cards.push(...recovered);
+      warnings.push(
+        `Subset "${sub}": ${recovered.length} cards recovered from section sheet (missing from Master).`,
+      );
     }
   }
 
@@ -238,6 +319,7 @@ export function parseToppsV2(
     },
     cards,
     parallels,
+    subsetAvailability,
     warnings,
     rawRows,
   };

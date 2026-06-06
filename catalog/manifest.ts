@@ -8,6 +8,19 @@ export type CatalogKit = "CLUB" | "COUNTRY" | "NONE";
 
 export type CatalogFormat = "PANINI_CSV" | "TOPPS_XLSX" | "TOPPS_XLSX_V2";
 
+/**
+ * Spin a companion "Mania" set out of a TOPPS_XLSX_V2 source. Topps released
+ * Chrome MLS Mania as a separate product alongside regular Chrome; this emits a
+ * second catalog set containing the Mania-only + shared subsets, with parallels
+ * filtered to Mania-channel only. Subsets in both products are duplicated so each
+ * set tracks completely.
+ */
+export interface ManiaSplit {
+  externalId: string;
+  name: string;
+  description?: string;
+}
+
 export interface CatalogSourceEntry {
   externalId: string;
   format: CatalogFormat;
@@ -21,6 +34,8 @@ export interface CatalogSourceEntry {
   year?: number;
   season?: string;
   description?: string;
+  /** TOPPS_XLSX_V2 only: also emit a companion Mania set. */
+  maniaSplit?: ManiaSplit;
 }
 
 export const CATALOG_SOURCES: CatalogSourceEntry[] = [
@@ -68,6 +83,12 @@ export const CATALOG_SOURCES: CatalogSourceEntry[] = [
     year: 2024,
     description:
       "2024 Topps Chrome MLS — club product. Compiled from the official checklist (multi-tab workbook).",
+    maniaSplit: {
+      externalId: "2024-topps-chrome-mls-mania",
+      name: "Topps Chrome MLS Mania (2024)",
+      description:
+        "2024 Topps Chrome MLS Mania — companion product. Mania-exclusive and shared subsets, Mania-channel parallels.",
+    },
   },
   {
     externalId: "2025-panini-select-ligue-1",

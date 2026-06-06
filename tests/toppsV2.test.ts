@@ -94,3 +94,61 @@ describe("parseToppsV2", () => {
     expect(auto.map((p) => p.name)).toEqual(["Gold Refractors"]);
   });
 });
+
+describe("parseToppsV2 — Mania availability + parallel flags", () => {
+  const sheets: Record<string, unknown[][]> = {
+    Autographs: [
+      ["Chrome Autographs Checklist"],
+      ["91 cards."],
+      ["1:13 hobby, 1:134 value packs."],
+      ["Parallels:"],
+      ["Gold Refractors - /50 (1:149 hobby)"],
+      ["CA-AB", "Liel Abada", "Charlotte FC"],
+      ["Mania Autographs Checklist"],
+      ["1 card."],
+      ["1:63 Mania packs."],
+      ["Parallels:"],
+      ["Gold Refractors - /50 (1:3 Mania)"],
+      ["Superfractors - 1/1 (1:125 Mania)"],
+      ["MN-LM", "Lionel Messi", "Inter Miami CF"],
+    ],
+    Inserts: [
+      ["Memory Makers Checklist"],
+      ["12 cards."],
+      ["1:20 hobby, 4:1 Mania, 1:20 value packs."],
+      ["Parallels:"],
+      ["Gold Refractors - /50 (1:35 Mania)"],
+      ["Orange Refractors - /25 (1:2,206 hobby)"],
+      ["MM-1", "Sergio Busquets", "Inter Miami CF"],
+    ],
+    Master: [
+      ["Chrome Autographs", "CA-AB", "Liel Abada", "Charlotte FC"],
+      ["Mania Autographs", "MN-LM", "Lionel Messi", "Inter Miami CF"],
+      ["Memory Makers", "MM-1", "Sergio Busquets", "Inter Miami CF"],
+    ],
+  };
+  const p = parseToppsV2(sheets, { kitType: "CLUB" });
+
+  it("classifies subset availability from the packs line", () => {
+    const a = p.subsetAvailability!;
+    expect(a["Chrome Autographs"]).toEqual({ chrome: true, mania: false });
+    expect(a["Mania Autographs"]).toEqual({ chrome: false, mania: true });
+    expect(a["Memory Makers"]).toEqual({ chrome: true, mania: true });
+  });
+
+  it("flags parallels that have Mania odds", () => {
+    const mn = p.parallels.find(
+      (x) => x.subset === "Mania Autographs" && x.name === "Gold Refractors",
+    );
+    expect(mn?.hasMania).toBe(true);
+    const ca = p.parallels.find(
+      (x) => x.subset === "Chrome Autographs" && x.name === "Gold Refractors",
+    );
+    expect(ca?.hasMania).toBe(false);
+    // Memory Makers Orange is hobby-only.
+    const orange = p.parallels.find(
+      (x) => x.subset === "Memory Makers" && x.name === "Orange Refractors",
+    );
+    expect(orange?.hasMania).toBe(false);
+  });
+});

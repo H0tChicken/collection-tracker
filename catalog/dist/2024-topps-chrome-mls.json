@@ -7,7 +7,7 @@
   "year": 2024,
   "season": null,
   "description": "2024 Topps Chrome MLS — club product. Compiled from the official checklist (multi-tab workbook).",
-  "contentHash": "3d77db538bad45ff36cf976e3d3d64102cd5a9e70f345a83ac68611b1b6e4c5d",
+  "contentHash": "ba5b8c3d7497dfb1a8fe93f17548c2bb2ce4af10436c03da33d145d40e790b5c",
   "parallels": [
     {
       "subset": "",
@@ -20,6 +20,7 @@
       "name": "Refractors",
       "printRun": null,
       "odds": "1:6 hobby, 3:1 Mania",
+      "hasMania": true,
       "isBase": false
     },
     {
@@ -27,6 +28,7 @@
       "name": "Prism Refractors",
       "printRun": null,
       "odds": "1:2 value",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -34,6 +36,7 @@
       "name": "Rose Gold Refractors",
       "printRun": 250,
       "odds": "1:14 hobby",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -41,6 +44,7 @@
       "name": "Purple Refractors",
       "printRun": 199,
       "odds": "1:17 hobby",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -48,6 +52,7 @@
       "name": "Purple Wave Refractors",
       "printRun": null,
       "odds": "1:12 value",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -55,6 +60,7 @@
       "name": "Aqua Lava Refractors",
       "printRun": null,
       "odds": "1:20 hobby",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -62,6 +68,7 @@
       "name": "Neon Green Lava",
       "printRun": null,
       "odds": "1:25 hobby",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -69,6 +76,7 @@
       "name": "Gold Lava",
       "printRun": null,
       "odds": "1:40 hobby",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -76,6 +84,7 @@
       "name": "Blue Refractors",
       "printRun": 150,
       "odds": "1:23 hobby",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -83,6 +92,7 @@
       "name": "Blue Wave Refractors",
       "printRun": null,
       "odds": "1:16 value",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -90,6 +100,7 @@
       "name": "Neon Green Refractors",
       "printRun": 99,
       "odds": "1:34 hobby",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -97,6 +108,7 @@
       "name": "Neon Green Wave Refractors",
       "printRun": null,
       "odds": "1:24 value",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -104,6 +116,7 @@
       "name": "Gold Refractors",
       "printRun": 50,
       "odds": "1:67 hobby",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -111,6 +124,7 @@
       "name": "Gold Wave Refractors",
       "printRun": null,
       "odds": "1:47 value",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -118,6 +132,7 @@
       "name": "Orange Refractors",
       "printRun": 25,
       "odds": "1:133 hobby",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -125,6 +140,7 @@
       "name": "Orange Wave Refractors",
       "printRun": null,
       "odds": "1:93 value",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -132,6 +148,7 @@
       "name": "Black Refractors",
       "printRun": 10,
       "odds": "1:331 hobby",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -139,6 +156,7 @@
       "name": "Black Wave Refractors",
       "printRun": null,
       "odds": "1:232 value",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -146,6 +164,7 @@
       "name": "Shimmer Black Refractors",
       "printRun": 10,
       "odds": "1:1 Mania",
+      "hasMania": true,
       "isBase": false
     },
     {
@@ -153,6 +172,7 @@
       "name": "Shimmer Refractors",
       "printRun": 7,
       "odds": "1:1 Mania",
+      "hasMania": true,
       "isBase": false
     },
     {
@@ -160,6 +180,7 @@
       "name": "Red Refractors",
       "printRun": 5,
       "odds": "1:661 hobby",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -167,6 +188,7 @@
       "name": "Red Wave Refractors",
       "printRun": null,
       "odds": "1:462 value",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -174,6 +196,7 @@
       "name": "Shimmer Red Refractors",
       "printRun": 5,
       "odds": "1:2 Mania",
+      "hasMania": true,
       "isBase": false
     },
     {
@@ -181,6 +204,7 @@
       "name": "Superfractors",
       "printRun": 1,
       "odds": "1:4,098 hobby, 1:179 Mania, 1:14,700 value",
+      "hasMania": true,
       "isBase": false
     },
     {
@@ -194,6 +218,7 @@
       "name": "Gold Refractors",
       "printRun": 50,
       "odds": "1:1,972 hobby, 1:2,809 value",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -201,6 +226,7 @@
       "name": "Superfractors",
       "printRun": 1,
       "odds": "1:78,870 hobby, 1:220,500 value",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -214,6 +240,7 @@
       "name": "Green Refractors",
       "printRun": 99,
       "odds": "1:451 hobby, 1:925 value",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -221,6 +248,7 @@
       "name": "Gold Refractors",
       "printRun": 50,
       "odds": "1:899 hobby, 1:1,743 value",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -228,6 +256,7 @@
       "name": "Orange Refractors -25",
       "printRun": null,
       "odds": "1:1,323 hobby",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -235,6 +264,7 @@
       "name": "Red Refractors",
       "printRun": 5,
       "odds": "1:9,015 hobby, 1:17,640 value",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -242,6 +272,7 @@
       "name": "Superfractors",
       "printRun": 1,
       "odds": "1:45,069 hobby, 1:88,200 value",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -255,6 +286,7 @@
       "name": "Superfractors",
       "printRun": 1,
       "odds": "1:45,069 hobby, 1:88,200 value",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -268,6 +300,7 @@
       "name": "Neon Green Refractors",
       "printRun": 99,
       "odds": "1:79 hobby",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -275,6 +308,7 @@
       "name": "Gold Refractors",
       "printRun": 50,
       "odds": "1:149 hobby",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -282,6 +316,7 @@
       "name": "Orange Refractors",
       "printRun": 25,
       "odds": "1:295 hobby",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -289,6 +324,7 @@
       "name": "Black Refractors",
       "printRun": 10,
       "odds": "1:727 hobby",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -296,6 +332,7 @@
       "name": "Red Wave Refractors",
       "printRun": 5,
       "odds": "1:1,438 hobby",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -303,6 +340,7 @@
       "name": "Superfractors",
       "printRun": 1,
       "odds": "1:7,170 hobby",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -316,6 +354,7 @@
       "name": "Orange Refractors",
       "printRun": 25,
       "odds": "1:5,172 hobby",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -323,6 +362,7 @@
       "name": "Red Refractors",
       "printRun": 5,
       "odds": "1:21,758 hobby",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -330,6 +370,7 @@
       "name": "Superfractors",
       "printRun": 1,
       "odds": "1:78,870 hobby",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -343,6 +384,7 @@
       "name": "Gold Refractors",
       "printRun": 50,
       "odds": "1:1,856 hobby, 1:3,219 value",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -350,6 +392,7 @@
       "name": "Orange Refractors",
       "printRun": 25,
       "odds": "1:2,640 hobby",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -357,6 +400,7 @@
       "name": "Red Refractors",
       "printRun": 5,
       "odds": "1:17,527 hobby, 1:36,750 value",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -364,6 +408,7 @@
       "name": "Superfractors",
       "printRun": 1,
       "odds": "1:78,870 hobby, 1:220,500 value",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -377,6 +422,7 @@
       "name": "Orange Refractors",
       "printRun": 25,
       "odds": "1:1,763 hobby",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -384,6 +430,7 @@
       "name": "Red Refractors",
       "printRun": 5,
       "odds": "1:11,685 hobby, 1:24,500 value",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -391,61 +438,7 @@
       "name": "Superfractors",
       "printRun": 1,
       "odds": "1:57,360 hobby, 1:110,250 value",
-      "isBase": false
-    },
-    {
-      "subset": "Mania Autographs",
-      "name": "Base",
-      "printRun": null,
-      "isBase": true
-    },
-    {
-      "subset": "Mania Autographs",
-      "name": "Pink Prism Refractors",
-      "printRun": 15,
-      "odds": "1:84 Mania",
-      "isBase": false
-    },
-    {
-      "subset": "Mania Autographs",
-      "name": "Black Prism Refractors",
-      "printRun": 10,
-      "odds": "1:127 Mania",
-      "isBase": false
-    },
-    {
-      "subset": "Mania Autographs",
-      "name": "Red Prism Refractors",
-      "printRun": 7,
-      "odds": "1:179 Mania",
-      "isBase": false
-    },
-    {
-      "subset": "Mania Autographs",
-      "name": "Red Lava Refractors",
-      "printRun": 5,
-      "odds": "1:250 Mania",
-      "isBase": false
-    },
-    {
-      "subset": "Mania Autographs",
-      "name": "Black Lava Refractors",
-      "printRun": 3,
-      "odds": "1:417 Mania",
-      "isBase": false
-    },
-    {
-      "subset": "Mania Autographs",
-      "name": "Pink Lava Refractors",
-      "printRun": 2,
-      "odds": "1:625 Mania",
-      "isBase": false
-    },
-    {
-      "subset": "Mania Autographs",
-      "name": "Superfractors",
-      "printRun": 1,
-      "odds": "1:1,250 Mania",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -459,6 +452,7 @@
       "name": "Gold Refractors",
       "printRun": 50,
       "odds": "1:1,948 hobby, 1:35 Mania, 1:2,071 value",
+      "hasMania": true,
       "isBase": false
     },
     {
@@ -466,6 +460,7 @@
       "name": "Orange Refractors",
       "printRun": 25,
       "odds": "1:2,206 hobby",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -473,6 +468,7 @@
       "name": "Red Refractors",
       "printRun": 5,
       "odds": "1:19,718 hobby, 1:1,313 Mania, 1:21,000 value",
+      "hasMania": true,
       "isBase": false
     },
     {
@@ -480,40 +476,7 @@
       "name": "Superfractors",
       "printRun": 1,
       "odds": "1:78,870 hobby, 1:1,250 Mania, 1:147,000 value",
-      "isBase": false
-    },
-    {
-      "subset": "Memory Makers Autographs",
-      "name": "Base",
-      "printRun": null,
-      "isBase": true
-    },
-    {
-      "subset": "Memory Makers Autographs",
-      "name": "Gold Refractors",
-      "printRun": 50,
-      "odds": "1:4 Mania",
-      "isBase": false
-    },
-    {
-      "subset": "Memory Makers Autographs",
-      "name": "Orange Refractors",
-      "printRun": 25,
-      "odds": "1:6 Mania",
-      "isBase": false
-    },
-    {
-      "subset": "Memory Makers Autographs",
-      "name": "Red Wave Refractors",
-      "printRun": 5,
-      "odds": "1:29 Mania",
-      "isBase": false
-    },
-    {
-      "subset": "Memory Makers Autographs",
-      "name": "Superfractors",
-      "printRun": 1,
-      "odds": "1:139 Mania",
+      "hasMania": true,
       "isBase": false
     },
     {
@@ -527,6 +490,7 @@
       "name": "Gold Refractors",
       "printRun": 50,
       "odds": "1:2,161 hobby",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -534,6 +498,7 @@
       "name": "Orange Refractors",
       "printRun": 25,
       "odds": "1:3,690 hobby",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -541,6 +506,7 @@
       "name": "Black Refractors",
       "printRun": 10,
       "odds": "1:6,439 hobby",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -548,6 +514,7 @@
       "name": "Red Refractors",
       "printRun": 5,
       "odds": "1:12,877 hobby",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -555,81 +522,7 @@
       "name": "Superfractors",
       "printRun": 1,
       "odds": "1:63,096 hobby",
-      "isBase": false
-    },
-    {
-      "subset": "MLS Trailblazers Autographs",
-      "name": "Base",
-      "printRun": null,
-      "isBase": true
-    },
-    {
-      "subset": "MLS Trailblazers Autographs",
-      "name": "Gold Refractors",
-      "printRun": 50,
-      "odds": "1:3 Mania",
-      "isBase": false
-    },
-    {
-      "subset": "MLS Trailblazers Autographs",
-      "name": "Orange Refractors",
-      "printRun": 25,
-      "odds": "1:4 Mania",
-      "isBase": false
-    },
-    {
-      "subset": "MLS Trailblazers Autographs",
-      "name": "Red Refractors",
-      "printRun": 5,
-      "odds": "1:17 Mania",
-      "isBase": false
-    },
-    {
-      "subset": "MLS Trailblazers Autographs",
-      "name": "Superfractors",
-      "printRun": 1,
-      "odds": "1:74 Mania",
-      "isBase": false
-    },
-    {
-      "subset": "South Beach Superstar",
-      "name": "Base",
-      "printRun": null,
-      "isBase": true
-    },
-    {
-      "subset": "South Beach Superstar",
-      "name": "Pink Refractors",
-      "printRun": 75,
-      "odds": "1:2 Mania",
-      "isBase": false
-    },
-    {
-      "subset": "South Beach Superstar",
-      "name": "Gold Refractors",
-      "printRun": 50,
-      "odds": "1:3 Mania",
-      "isBase": false
-    },
-    {
-      "subset": "South Beach Superstar",
-      "name": "Orange Refractors",
-      "printRun": 25,
-      "odds": "1:6 Mania",
-      "isBase": false
-    },
-    {
-      "subset": "South Beach Superstar",
-      "name": "Red Refractors",
-      "printRun": 5,
-      "odds": "1:27 Mania",
-      "isBase": false
-    },
-    {
-      "subset": "South Beach Superstar",
-      "name": "Superfractors",
-      "printRun": 1,
-      "odds": "1:125 Mania",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -643,6 +536,7 @@
       "name": "Gold Refractors",
       "printRun": 50,
       "odds": "1:1,972 hobby, 1:2,809 value",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -650,6 +544,7 @@
       "name": "Orange Refractors",
       "printRun": 25,
       "odds": "1:2,640 hobby",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -657,6 +552,7 @@
       "name": "Red Refractors",
       "printRun": 5,
       "odds": "1:19,719 hobby, 1:27,562 value",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -664,6 +560,7 @@
       "name": "Superfractors",
       "printRun": 1,
       "odds": "1:78,870 hobby, 1:220,500 value",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -677,6 +574,7 @@
       "name": "Green Refractors",
       "printRun": 99,
       "odds": "1:597 hobby, 1:1,219 value",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -684,6 +582,7 @@
       "name": "Gold Refractors",
       "printRun": 50,
       "odds": "1:1,273 hobby, 1:2,005 value",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -691,6 +590,7 @@
       "name": "Orange Refractors",
       "printRun": 25,
       "odds": "1:1,763 hobby",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -698,6 +598,7 @@
       "name": "Red Refractors",
       "printRun": 5,
       "odds": "1:12,372 hobby, 1:21,000 value",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -705,6 +606,7 @@
       "name": "Superfractors",
       "printRun": 1,
       "odds": "1:52,580 hobby, 1:147,000 value",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -718,6 +620,7 @@
       "name": "Green Refractors",
       "printRun": 99,
       "odds": "1:451 hobby, 1:900 value",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -725,6 +628,7 @@
       "name": "Gold Refractors",
       "printRun": 50,
       "odds": "1:932 hobby, 1:1,587 value",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -732,6 +636,7 @@
       "name": "Orange Refractors",
       "printRun": 25,
       "odds": "1:1,323 hobby",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -739,6 +644,7 @@
       "name": "Red Refractors",
       "printRun": 5,
       "odds": "1:8,644 hobby, 1:20,045 value",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -746,6 +652,7 @@
       "name": "Superfractors",
       "printRun": 1,
       "odds": "1:42,064 hobby, 1:110,250 value",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -759,6 +666,7 @@
       "name": "Red Refractors",
       "printRun": 5,
       "odds": "1:33,209 hobby, 1:88,200 value",
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -766,7 +674,14 @@
       "name": "Superfractors",
       "printRun": 1,
       "odds": "1:126,192 hobby",
+      "hasMania": false,
       "isBase": false
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "name": "Base",
+      "printRun": null,
+      "isBase": true
     }
   ],
   "cards": [
@@ -4885,17 +4800,6 @@
       "isRelic": false
     },
     {
-      "subset": "Mania Autographs",
-      "cardNumber": "MN-LM",
-      "playerName": "Lionel Messi",
-      "teamName": "Inter Miami CF",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": true,
-      "isRelic": false
-    },
-    {
       "subset": "Memory Makers",
       "cardNumber": "MM-1",
       "playerName": "Sergio Busquets",
@@ -5028,105 +4932,6 @@
       "isRelic": true
     },
     {
-      "subset": "Memory Makers Autographs",
-      "cardNumber": "MMA-AV",
-      "playerName": "Alan Velasco",
-      "teamName": "FC Dallas",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": true,
-      "isRelic": true
-    },
-    {
-      "subset": "Memory Makers Autographs",
-      "cardNumber": "MMA-DV",
-      "playerName": "David Villa",
-      "teamName": "NYCFC",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": true,
-      "isRelic": true
-    },
-    {
-      "subset": "Memory Makers Autographs",
-      "cardNumber": "MMA-HS",
-      "playerName": "Hristo Stoichkov",
-      "teamName": "Chicago Fire",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": true,
-      "isRelic": true
-    },
-    {
-      "subset": "Memory Makers Autographs",
-      "cardNumber": "MMA-JA",
-      "playerName": "Jordi Alba",
-      "teamName": "Inter Miami CF",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": true,
-      "isRelic": true
-    },
-    {
-      "subset": "Memory Makers Autographs",
-      "cardNumber": "MMA-LA",
-      "playerName": "Lucho Acosta",
-      "teamName": "FC Cincinnati",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": true,
-      "isRelic": true
-    },
-    {
-      "subset": "Memory Makers Autographs",
-      "cardNumber": "MMA-LS",
-      "playerName": "Luis Suárez",
-      "teamName": "Inter Miami CF",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": true,
-      "isRelic": true
-    },
-    {
-      "subset": "Memory Makers Autographs",
-      "cardNumber": "MMA-MM",
-      "playerName": "Maxi Moralez",
-      "teamName": "NYCFC",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": true,
-      "isRelic": true
-    },
-    {
-      "subset": "Memory Makers Autographs",
-      "cardNumber": "MMA-SB",
-      "playerName": "Sergio Busquets",
-      "teamName": "Inter Miami CF",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": true,
-      "isRelic": true
-    },
-    {
-      "subset": "Memory Makers Autographs",
-      "cardNumber": "MMA-TA",
-      "playerName": "Thiago Almada",
-      "teamName": "Atlanta United",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": true,
-      "isRelic": true
-    },
-    {
       "subset": "MLS Flashbacks Autographs",
       "cardNumber": "FA-AP",
       "playerName": "Andrea Pirlo",
@@ -5234,303 +5039,6 @@
       "kitType": "CLUB",
       "isRookie": false,
       "isAutograph": true,
-      "isRelic": false
-    },
-    {
-      "subset": "MLS Trailblazers Autographs",
-      "cardNumber": "TA-AC",
-      "playerName": "Ashley Cole",
-      "teamName": "LA Galaxy",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": true,
-      "isRelic": false
-    },
-    {
-      "subset": "MLS Trailblazers Autographs",
-      "cardNumber": "TA-AP",
-      "playerName": "Andrea Pirlo",
-      "teamName": "NYCFC",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": true,
-      "isRelic": false
-    },
-    {
-      "subset": "MLS Trailblazers Autographs",
-      "cardNumber": "TA-BS",
-      "playerName": "Bastian Schweinsteiger",
-      "teamName": "Chicago Fire",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": true,
-      "isRelic": false
-    },
-    {
-      "subset": "MLS Trailblazers Autographs",
-      "cardNumber": "TA-CD",
-      "playerName": "Clint Dempsey",
-      "teamName": "Seattle Sounders FC",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": true,
-      "isRelic": false
-    },
-    {
-      "subset": "MLS Trailblazers Autographs",
-      "cardNumber": "TA-CV",
-      "playerName": "Carlos Valderrama",
-      "teamName": "Colorado Rapids",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": true,
-      "isRelic": false
-    },
-    {
-      "subset": "MLS Trailblazers Autographs",
-      "cardNumber": "TA-DV",
-      "playerName": "David Villa",
-      "teamName": "NYCFC",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": true,
-      "isRelic": false
-    },
-    {
-      "subset": "MLS Trailblazers Autographs",
-      "cardNumber": "TA-FL",
-      "playerName": "Frank Lampard",
-      "teamName": "NYCFC",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": true,
-      "isRelic": false
-    },
-    {
-      "subset": "MLS Trailblazers Autographs",
-      "cardNumber": "TA-GB",
-      "playerName": "Gareth Bale",
-      "teamName": "LAFC",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": true,
-      "isRelic": false
-    },
-    {
-      "subset": "MLS Trailblazers Autographs",
-      "cardNumber": "TA-HS",
-      "playerName": "Hristo Stoichkov",
-      "teamName": "Chicago Fire",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": true,
-      "isRelic": false
-    },
-    {
-      "subset": "MLS Trailblazers Autographs",
-      "cardNumber": "TA-JD",
-      "playerName": "Jermain Defoe",
-      "teamName": "Toronto FC",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": true,
-      "isRelic": false
-    },
-    {
-      "subset": "MLS Trailblazers Autographs",
-      "cardNumber": "TA-KA",
-      "playerName": "Kaká",
-      "teamName": "Orlando City SC",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": true,
-      "isRelic": false
-    },
-    {
-      "subset": "MLS Trailblazers Autographs",
-      "cardNumber": "TA-LM",
-      "playerName": "Lothar Matthäus",
-      "teamName": "New York Metrostars",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": true,
-      "isRelic": false
-    },
-    {
-      "subset": "MLS Trailblazers Autographs",
-      "cardNumber": "TA-RK",
-      "playerName": "Robbie Keane",
-      "teamName": "LA Galaxy",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": true,
-      "isRelic": false
-    },
-    {
-      "subset": "MLS Trailblazers Autographs",
-      "cardNumber": "TA-SG",
-      "playerName": "Steven Gerrard",
-      "teamName": "LA Galaxy",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": true,
-      "isRelic": false
-    },
-    {
-      "subset": "MLS Trailblazers Autographs",
-      "cardNumber": "TA-TH",
-      "playerName": "Thierry Henry",
-      "teamName": "New York Red Bulls",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": true,
-      "isRelic": false
-    },
-    {
-      "subset": "MLS Trailblazers Autographs",
-      "cardNumber": "TA-WR",
-      "playerName": "Wayne Rooney",
-      "teamName": "D.C. United",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": true,
-      "isRelic": false
-    },
-    {
-      "subset": "MLS Trailblazers Autographs",
-      "cardNumber": "TA-ZI",
-      "playerName": "Zlatan Ibrahimović",
-      "teamName": "LA Galaxy",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": true,
-      "isRelic": false
-    },
-    {
-      "subset": "South Beach Superstar",
-      "cardNumber": "SB-1",
-      "playerName": "Lionel Messi",
-      "teamName": "Inter Miami CF",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": false,
-      "isRelic": false
-    },
-    {
-      "subset": "South Beach Superstar",
-      "cardNumber": "SB-2",
-      "playerName": "Lionel Messi",
-      "teamName": "Inter Miami CF",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": false,
-      "isRelic": false
-    },
-    {
-      "subset": "South Beach Superstar",
-      "cardNumber": "SB-3",
-      "playerName": "Lionel Messi",
-      "teamName": "Inter Miami CF",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": false,
-      "isRelic": false
-    },
-    {
-      "subset": "South Beach Superstar",
-      "cardNumber": "SB-4",
-      "playerName": "Lionel Messi",
-      "teamName": "Inter Miami CF",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": false,
-      "isRelic": false
-    },
-    {
-      "subset": "South Beach Superstar",
-      "cardNumber": "SB-5",
-      "playerName": "Lionel Messi",
-      "teamName": "Inter Miami CF",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": false,
-      "isRelic": false
-    },
-    {
-      "subset": "South Beach Superstar",
-      "cardNumber": "SB-6",
-      "playerName": "Lionel Messi",
-      "teamName": "Inter Miami CF",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": false,
-      "isRelic": false
-    },
-    {
-      "subset": "South Beach Superstar",
-      "cardNumber": "SB-7",
-      "playerName": "Lionel Messi",
-      "teamName": "Inter Miami CF",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": false,
-      "isRelic": false
-    },
-    {
-      "subset": "South Beach Superstar",
-      "cardNumber": "SB-8",
-      "playerName": "Lionel Messi",
-      "teamName": "Inter Miami CF",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": false,
-      "isRelic": false
-    },
-    {
-      "subset": "South Beach Superstar",
-      "cardNumber": "SB-9",
-      "playerName": "Lionel Messi",
-      "teamName": "Inter Miami CF",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": false,
-      "isRelic": false
-    },
-    {
-      "subset": "South Beach Superstar",
-      "cardNumber": "SB-10",
-      "playerName": "Lionel Messi",
-      "teamName": "Inter Miami CF",
-      "teamType": "CLUB",
-      "kitType": "CLUB",
-      "isRookie": false,
-      "isAutograph": false,
       "isRelic": false
     },
     {
@@ -6082,6 +5590,391 @@
       "isRookie": false,
       "isAutograph": false,
       "isRelic": false
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-AA",
+      "playerName": "Allan Arigoni",
+      "teamName": "Chicago Fire",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": true,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-AM",
+      "playerName": "Shakur Mohammed",
+      "teamName": "Orlando City SC",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": true,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-AO",
+      "playerName": "Agustín Ojeda",
+      "teamName": "NYCFC",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": true,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-AP",
+      "playerName": "Amahl Pellegrino",
+      "teamName": "San Jose Earthquakes",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-AV",
+      "playerName": "Alenis Vargas",
+      "teamName": "Sporting Kansas City",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": true,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-BS",
+      "playerName": "Bartosz Slisz",
+      "teamName": "Atlanta United",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": true,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-BU",
+      "playerName": "Bjørn Inge Utvik",
+      "teamName": "Vancouver Whitecaps FC",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-BW",
+      "playerName": "Bruno Wilson",
+      "teamName": "San Jose Earthquakes",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": true,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-DD",
+      "playerName": "Djibril Diani",
+      "teamName": "Charlotte FC",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": true,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-DG",
+      "playerName": "Dennis Gjengaar",
+      "teamName": "New York Red Bulls",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": true,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-DM",
+      "playerName": "David Martínez",
+      "teamName": "LAFC",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": true,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-GP",
+      "playerName": "Gabriel Pec",
+      "teamName": "LA Galaxy",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": true,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-HK",
+      "playerName": "Hosei Kijima",
+      "teamName": "St. Louis City SC",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": true,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-HL",
+      "playerName": "Hugo Lloris",
+      "teamName": "LAFC",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-IT",
+      "playerName": "Iuri Tavares",
+      "teamName": "Charlotte FC",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": true,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-JR",
+      "playerName": "Jamar Ricketts",
+      "teamName": "San Jose Earthquakes",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": true,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-JT",
+      "playerName": "Jackson Travis",
+      "teamName": "Colorado Rapids",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": true,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-LI",
+      "playerName": "Liel Abada",
+      "teamName": "Charlotte FC",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-LM",
+      "playerName": "Loïc Mesanvi",
+      "teamName": "Minnesota United",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": true,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-LS",
+      "playerName": "Luis Suárez",
+      "teamName": "Inter Miami CF",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-MA",
+      "playerName": "Markus Anderson",
+      "teamName": "Philadelphia Union",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": true,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-ML",
+      "playerName": "Matty Longstaff",
+      "teamName": "Toronto FC",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-MP",
+      "playerName": "Matti Peltola",
+      "teamName": "D.C. United",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": true,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-MU",
+      "playerName": "Jacob Murrell",
+      "teamName": "D.C. United",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": true,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-NB",
+      "playerName": "Nimfasha Berchimas",
+      "teamName": "Charlotte FC",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": true,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-NP",
+      "playerName": "Nikola Petković",
+      "teamName": "Charlotte FC",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": true,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-OS",
+      "playerName": "Oliver Semmle",
+      "teamName": "Philadelphia Union",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": true,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-PB",
+      "playerName": "Pavel Bucha",
+      "teamName": "FC Cincinnati",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-PD",
+      "playerName": "Patrickson Delgado",
+      "teamName": "FC Dallas",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": true,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-PV",
+      "playerName": "Pedro de la Vega",
+      "teamName": "Seattle Sounders FC",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": true,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-RM",
+      "playerName": "Roald Mitchell",
+      "teamName": "New York Red Bulls",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": true,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-SB",
+      "playerName": "Kimani Stewart-Baynes",
+      "teamName": "Colorado Rapids",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": true,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-SG",
+      "playerName": "Stian Gregersen",
+      "teamName": "Atlanta United",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": false,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-TT",
+      "playerName": "Tomas Totland",
+      "teamName": "St. Louis City SC",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": true,
+      "isAutograph": false,
+      "isRelic": true
+    },
+    {
+      "subset": "MLS Debut Patch Cards",
+      "cardNumber": "DPA-VC",
+      "playerName": "Vítor Costa",
+      "teamName": "San Jose Earthquakes",
+      "teamType": "CLUB",
+      "kitType": "CLUB",
+      "isRookie": true,
+      "isAutograph": false,
+      "isRelic": true
     }
   ]
 }

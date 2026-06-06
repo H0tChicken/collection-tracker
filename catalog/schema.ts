@@ -7,6 +7,7 @@ export interface CatalogParallel {
   name: string; // "Base" for the base parallel
   printRun: number | null;
   odds?: string | null; // pack odds, e.g. "1:14 hobby"
+  hasMania?: boolean; // build-time only: odds include a Mania channel
   isBase: boolean;
 }
 

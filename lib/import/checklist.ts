@@ -22,7 +22,15 @@ export interface ParallelDef {
   name: string; // "Base" for the base parallel
   printRun: number | null; // /N (1 for 1/1); null = unlimited
   odds?: string | null; // pack odds, e.g. "1:14 hobby" (informational)
+  /** True when this parallel's odds include a Mania pack channel. */
+  hasMania?: boolean;
   isBase: boolean;
+}
+
+/** Which pack products a subset is available in (from its "packs." line). */
+export interface SubsetAvailability {
+  chrome: boolean; // hobby/value (regular Chrome)
+  mania: boolean;
 }
 
 export interface ParsedChecklist {
@@ -36,6 +44,8 @@ export interface ParsedChecklist {
   cards: ChecklistRow[];
   /** Parallel definitions per subset, deduped. */
   parallels: ParallelDef[];
+  /** subset name → which products it appears in (Topps multi-product sets). */
+  subsetAvailability?: Record<string, SubsetAvailability>;
   warnings: string[];
   /** Raw rows seen in the source (for reporting). */
   rawRows: number;
