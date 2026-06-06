@@ -30,6 +30,30 @@ export function setLabel(set: {
 }
 
 /**
+ * Order parallels for display: Base first, then non-numbered (SP/SSP, unlimited)
+ * by name, then numbered from highest print run down to lowest (/250 … /5, /1).
+ * Rarer = lower number, shown last. Use as an Array#sort comparator.
+ */
+export function compareParallels(
+  a: { isBase?: boolean; name: string; printRun: number | null },
+  b: { isBase?: boolean; name: string; printRun: number | null },
+): number {
+  // Base always first.
+  if (a.isBase && !b.isBase) return -1;
+  if (b.isBase && !a.isBase) return 1;
+  const an = a.printRun == null;
+  const bn = b.printRun == null;
+  // Non-numbered group before numbered group.
+  if (an && !bn) return -1;
+  if (bn && !an) return 1;
+  // Both non-numbered: alphabetical.
+  if (an && bn) return a.name.localeCompare(b.name);
+  // Both numbered: higher print run first, ties broken by name.
+  if (a.printRun !== b.printRun) return b.printRun! - a.printRun!;
+  return a.name.localeCompare(b.name);
+}
+
+/**
  * Natural comparison for card numbers. Card numbers are strings that may be
  * plain ("1", "10"), prefixed ("RC-12", "MG-23"), or fully alphabetic
  * ("EKA-AG"). A plain DB string sort gives 1, 10, 11, 2…; this compares numeric

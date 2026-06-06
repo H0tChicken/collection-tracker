@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { setLabel, compareCardNumbers } from "@/lib/utils";
+import { setLabel, compareCardNumbers, compareParallels } from "@/lib/utils";
 
 describe("setLabel", () => {
   it("does not duplicate brand/year already in the name", () => {
@@ -60,5 +60,48 @@ describe("compareCardNumbers", () => {
     expect(sort(["100b", "100", "100a", "99"])).toEqual([
       "99", "100", "100a", "100b",
     ]);
+  });
+});
+
+describe("compareParallels", () => {
+  const names = (arr: { isBase?: boolean; name: string; printRun: number | null }[]) =>
+    [...arr].sort(compareParallels).map((p) => p.name);
+
+  it("orders Base → non-numbered → numbered high to low", () => {
+    const input = [
+      { name: "Gold", printRun: 10 },
+      { name: "Base", printRun: null, isBase: true },
+      { name: "Red", printRun: 5 },
+      { name: "Flash", printRun: null },
+      { name: "Blue", printRun: 40 },
+      { name: "Superfractor", printRun: 1 },
+      { name: "Honeycomb", printRun: null },
+    ];
+    expect(names(input)).toEqual([
+      "Base",
+      "Flash",
+      "Honeycomb",
+      "Blue",        // /40
+      "Gold",        // /10
+      "Red",         // /5
+      "Superfractor" // /1 (1/1)
+    ]);
+  });
+
+  it("sorts non-numbered group alphabetically", () => {
+    const input = [
+      { name: "Pandora", printRun: null },
+      { name: "Flash", printRun: null },
+      { name: "Multi-Color", printRun: null },
+    ];
+    expect(names(input)).toEqual(["Flash", "Multi-Color", "Pandora"]);
+  });
+
+  it("keeps Base first even with no print run siblings", () => {
+    const input = [
+      { name: "Silver", printRun: null },
+      { name: "Base", printRun: null, isBase: true },
+    ];
+    expect(names(input)).toEqual(["Base", "Silver"]);
   });
 });

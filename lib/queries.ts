@@ -1,5 +1,5 @@
 import { prisma } from "./db";
-import { compareCardNumbers } from "./utils";
+import { compareCardNumbers, compareParallels } from "./utils";
 
 /**
  * Full ownership detail for a single card: every parallel it can exist in
@@ -17,7 +17,6 @@ export async function getCardOwnership(cardId: string) {
   const [parallels, items, storageLocations] = await Promise.all([
     prisma.parallel.findMany({
       where: { setId: card.setId, subset: card.subset },
-      orderBy: [{ isBase: "desc" }, { sortOrder: "asc" }],
       select: { id: true, name: true, printRun: true, isBase: true },
     }),
     prisma.collectionItem.findMany({
@@ -32,10 +31,12 @@ export async function getCardOwnership(cardId: string) {
   ]);
 
   // The base card itself is parallelId = null; represent it as a synthetic row.
+  // Order: Base → non-numbered (SP/SSP) → numbered high → low.
   const rows = [
     { id: null as string | null, name: "Base", printRun: null as number | null, isBase: true },
     ...parallels
       .filter((p) => !p.isBase)
+      .sort(compareParallels)
       .map((p) => ({ id: p.id, name: p.name, printRun: p.printRun, isBase: false })),
   ];
 
