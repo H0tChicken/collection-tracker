@@ -99,7 +99,9 @@ async function syncSet(doc) {
 
   // Parallels: upsert by (setId, subset, name).
   let order = 0;
+  const seenParallels = new Set();
   for (const p of doc.parallels) {
+    seenParallels.add(`${p.subset}|${p.name}`);
     await prisma.parallel.upsert({
       where: {
         setId_subset_name: { setId: set.id, subset: p.subset, name: p.name },
@@ -121,6 +123,22 @@ async function syncSet(doc) {
         sortOrder: order++,
       },
     });
+  }
+
+  // Prune parallels no longer in the catalog (e.g. renamed/removed). Only delete
+  // ones with no owned copies; otherwise leave them so user data is never lost.
+  const existingParallels = await prisma.parallel.findMany({
+    where: { setId: set.id },
+    select: { id: true, subset: true, name: true, _count: { select: { items: true } } },
+  });
+  const orphanIds = existingParallels
+    .filter(
+      (p) =>
+        !seenParallels.has(`${p.subset}|${p.name}`) && p._count.items === 0,
+    )
+    .map((p) => p.id);
+  if (orphanIds.length > 0) {
+    await prisma.parallel.deleteMany({ where: { id: { in: orphanIds } } });
   }
 
   // Resolve players/teams with in-run caches.

@@ -7,7 +7,7 @@
   "year": 2025,
   "season": null,
   "description": "2025 Topps Chrome MLS — club product. Compiled from the official checklist.",
-  "contentHash": "7e92f293dc9ed46da740476fabfdf3877a92386dd4cd79f046e1505d17b38445",
+  "contentHash": "12d3ee2d6b28de74f1b0a7a8ebcf4381c0fc93ec9fb03d628a0f4e7caf15f543",
   "parallels": [
     {
       "subset": "",
@@ -17,194 +17,258 @@
     },
     {
       "subset": "",
-      "name": "Blue Lava (Hobby Exclusive - 1 per box)",
+      "name": "Blue Lava",
       "printRun": null,
+      "odds": "Hobby Exclusive - 1 per box",
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
-      "name": "Mania (Mania Box Exclusive - 6 per box)",
+      "name": "Mania",
       "printRun": null,
+      "odds": "Mania Box Exclusive - 6 per box",
+      "hasMania": true,
       "isBase": false
     },
     {
       "subset": "",
-      "name": "Prism (Hobby Exclusive - 4 per box)",
+      "name": "Prism",
       "printRun": null,
+      "odds": "Hobby Exclusive - 4 per box",
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
-      "name": "Ray Wave (Value Box Exclusive - 4 per box)",
+      "name": "Ray Wave",
       "printRun": null,
+      "odds": "Value Box Exclusive - 4 per box",
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
-      "name": "Red Lava (Hobby Exclusive - 1:3 boxes)",
+      "name": "Red Lava",
       "printRun": null,
+      "odds": "Hobby Exclusive - 1:3 boxes",
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
-      "name": "Refractor (3 per Hobby box)",
+      "name": "Refractor",
       "printRun": null,
+      "odds": "3 per Hobby box",
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
-      "name": "White Lava (Hobby Exclusive - 1:2 boxes)",
+      "name": "White Lava",
       "printRun": null,
+      "odds": "Hobby Exclusive - 1:2 boxes",
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Pink Mini Diamonds /250",
       "printRun": 250,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Aqua Mini Diamonds /199",
       "printRun": 199,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Aqua Refractor /199",
       "printRun": 199,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Blue Mini Diamonds /150",
       "printRun": 150,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Blue Refractor /150",
       "printRun": 150,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Gold Mini Diamonds /50",
       "printRun": 50,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Gold Refractor /50",
       "printRun": 50,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Gold Wave /50",
       "printRun": 50,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Green Mini Diamonds /99",
       "printRun": 99,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Green Refractor /99",
       "printRun": 99,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Purple Mini Diamonds /75",
       "printRun": 75,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Purple Refractor /75",
       "printRun": 75,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Purple Wave /75",
       "printRun": 75,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Black Mini Diamonds /10",
       "printRun": 10,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Black Refractor /10",
       "printRun": 10,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Black Wave /10",
       "printRun": 10,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Orange Mini Diamonds /25",
       "printRun": 25,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Orange Refractor /25",
       "printRun": 25,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Orange Wave /25",
       "printRun": 25,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Pearl /30",
       "printRun": 30,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Red Mini Diamonds /5",
       "printRun": 5,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Red Refractor /5",
       "printRun": 5,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Red Wave /5",
       "printRun": 5,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Frozenfractor /-5",
       "printRun": null,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Superfractor /1",
       "printRun": 1,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -217,30 +281,40 @@
       "subset": "Base - Super Short Prints",
       "name": "Gold Refractor /50",
       "printRun": 50,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Base - Super Short Prints",
       "name": "Orange Refractor /25",
       "printRun": 25,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Base - Super Short Prints",
       "name": "Black Refractor /10",
       "printRun": 10,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Base - Super Short Prints",
       "name": "Red Refractor /5",
       "printRun": 5,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Base - Super Short Prints",
       "name": "Superfractor /1",
       "printRun": 1,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -253,126 +327,168 @@
       "subset": "Chrome Autographs",
       "name": "Aqua Refractor /199",
       "printRun": 199,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Chrome Autographs",
-      "name": "Aqua Wave /199 (Hobby Exclusive)",
+      "name": "Aqua Wave /199",
       "printRun": 199,
+      "odds": "Hobby Exclusive",
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Chrome Autographs",
       "name": "Blue Refractor /150",
       "printRun": 150,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Chrome Autographs",
-      "name": "Blue Wave /150 (Hobby Exclusive)",
+      "name": "Blue Wave /150",
       "printRun": 150,
+      "odds": "Hobby Exclusive",
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Chrome Autographs",
       "name": "Green Refractor /99",
       "printRun": 99,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Chrome Autographs",
-      "name": "Green Wave /99 (Hobby Exclusive)",
+      "name": "Green Wave /99",
       "printRun": 99,
+      "odds": "Hobby Exclusive",
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Chrome Autographs",
-      "name": "Pink X-Fractor /99 (Mania Exclusive)",
+      "name": "Pink X-Fractor /99",
       "printRun": 99,
+      "odds": "Mania Exclusive",
+      "hasMania": true,
       "isBase": false
     },
     {
       "subset": "Chrome Autographs",
       "name": "Purple Refractor /75",
       "printRun": 75,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Chrome Autographs",
-      "name": "Purple Wave /75 (Hobby Exclusive)",
+      "name": "Purple Wave /75",
       "printRun": 75,
+      "odds": "Hobby Exclusive",
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Chrome Autographs",
       "name": "Gold Refractor /50",
       "printRun": 50,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Chrome Autographs",
-      "name": "Gold Wave /50 (Hobby Exclusive)",
+      "name": "Gold Wave /50",
       "printRun": 50,
+      "odds": "Hobby Exclusive",
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Chrome Autographs",
-      "name": "Pink Shimmer /50 (Mania Exclusive)",
+      "name": "Pink Shimmer /50",
       "printRun": 50,
+      "odds": "Mania Exclusive",
+      "hasMania": true,
       "isBase": false
     },
     {
       "subset": "Chrome Autographs",
       "name": "Orange Refractor /25",
       "printRun": 25,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Chrome Autographs",
-      "name": "Orange Wave /25 (Hobby Exclusive)",
+      "name": "Orange Wave /25",
       "printRun": 25,
+      "odds": "Hobby Exclusive",
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Chrome Autographs",
-      "name": "Pink Pulsar /25 (Mania Exclusive)",
+      "name": "Pink Pulsar /25",
       "printRun": 25,
+      "odds": "Mania Exclusive",
+      "hasMania": true,
       "isBase": false
     },
     {
       "subset": "Chrome Autographs",
       "name": "Black Refractor /10",
       "printRun": 10,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Chrome Autographs",
-      "name": "Black Wave /10 (Hobby Exclusive)",
+      "name": "Black Wave /10",
       "printRun": 10,
+      "odds": "Hobby Exclusive",
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Chrome Autographs",
-      "name": "Pink Refractor /10 (Mania Exclusive)",
+      "name": "Pink Refractor /10",
       "printRun": 10,
+      "odds": "Mania Exclusive",
+      "hasMania": true,
       "isBase": false
     },
     {
       "subset": "Chrome Autographs",
       "name": "Red Refractor /5",
       "printRun": 5,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Chrome Autographs",
-      "name": "Red Wave /5 (Hobby Exclusive)",
+      "name": "Red Wave /5",
       "printRun": 5,
+      "odds": "Hobby Exclusive",
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Chrome Autographs",
       "name": "Superfractor /1",
       "printRun": 1,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -385,24 +501,32 @@
       "subset": "Chrome Dual Autographs",
       "name": "Orange Refractor /25",
       "printRun": 25,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Chrome Dual Autographs",
       "name": "Black Refractor /10",
       "printRun": 10,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Chrome Dual Autographs",
       "name": "Red Refractor /5",
       "printRun": 5,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Chrome Dual Autographs",
       "name": "Superfractor /1",
       "printRun": 1,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -421,48 +545,64 @@
       "subset": "Topps 1995 Autographs",
       "name": "Green Donut Holes /99",
       "printRun": 99,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Topps 1995 Autographs",
       "name": "Purple Donut Holes /75",
       "printRun": 75,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Topps 1995 Autographs",
       "name": "Gold Donut Holes /50",
       "printRun": 50,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Topps 1995 Autographs",
       "name": "Pearl Donut Holes /30",
       "printRun": 30,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Topps 1995 Autographs",
       "name": "Orange Donut Holes /25",
       "printRun": 25,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Topps 1995 Autographs",
       "name": "Black Donut Holes /10",
       "printRun": 10,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Topps 1995 Autographs",
       "name": "Red Donut Holes /5",
       "printRun": 5,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Topps 1995 Autographs",
       "name": "Superfractor /1",
       "printRun": 1,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -475,18 +615,24 @@
       "subset": "MLS Renaissance Autographs",
       "name": "Gold /10",
       "printRun": 10,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "MLS Renaissance Autographs",
       "name": "Ruby /5",
       "printRun": 5,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "MLS Renaissance Autographs",
       "name": "Platinum /1",
       "printRun": 1,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -505,18 +651,24 @@
       "subset": "Rookie Arrival Autographed Patches",
       "name": "Black /14",
       "printRun": 14,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Rookie Arrival Autographed Patches",
       "name": "Blue /5",
       "printRun": 5,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Rookie Arrival Autographed Patches",
       "name": "Gold /1",
       "printRun": 1,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -541,42 +693,56 @@
       "subset": "Fast Lane",
       "name": "Green Refractor /99",
       "printRun": 99,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Fast Lane",
       "name": "Purple Refractor /75",
       "printRun": 75,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Fast Lane",
       "name": "Gold Refractor /50",
       "printRun": 50,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Fast Lane",
       "name": "Orange Refractor /25",
       "printRun": 25,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Fast Lane",
       "name": "Black Refractor /10",
       "printRun": 10,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Fast Lane",
       "name": "Red Refractor /5",
       "printRun": 5,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Fast Lane",
       "name": "Superfractor /1",
       "printRun": 1,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -589,42 +755,56 @@
       "subset": "Elimination",
       "name": "Green Refractor /99",
       "printRun": 99,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Elimination",
       "name": "Purple Refractor /75",
       "printRun": 75,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Elimination",
       "name": "Gold Refractor /50",
       "printRun": 50,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Elimination",
       "name": "Orange Refractor /25",
       "printRun": 25,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Elimination",
       "name": "Black Refractor /10",
       "printRun": 10,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Elimination",
       "name": "Red Refractor /5",
       "printRun": 5,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Elimination",
       "name": "Superfractor /1",
       "printRun": 1,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -637,42 +817,56 @@
       "subset": "Class Of Their Own",
       "name": "Green Refractor /99",
       "printRun": 99,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Class Of Their Own",
       "name": "Purple Refractor /75",
       "printRun": 75,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Class Of Their Own",
       "name": "Gold Refractor /50",
       "printRun": 50,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Class Of Their Own",
       "name": "Orange Refractor /25",
       "printRun": 25,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Class Of Their Own",
       "name": "Black Refractor /10",
       "printRun": 10,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Class Of Their Own",
       "name": "Red Refractor /5",
       "printRun": 5,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Class Of Their Own",
       "name": "Superfractor /1",
       "printRun": 1,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -685,42 +879,56 @@
       "subset": "Big City Stickers",
       "name": "Green Refractor /99",
       "printRun": 99,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Big City Stickers",
       "name": "Purple Refractor /75",
       "printRun": 75,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Big City Stickers",
       "name": "Gold Refractor /50",
       "printRun": 50,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Big City Stickers",
       "name": "Orange Refractor /25",
       "printRun": 25,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Big City Stickers",
       "name": "Black Refractor /10",
       "printRun": 10,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Big City Stickers",
       "name": "Red Refractor /5",
       "printRun": 5,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Big City Stickers",
       "name": "Superfractor /1",
       "printRun": 1,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -739,48 +947,64 @@
       "subset": "Topps 1995",
       "name": "Green Donut Holes /99",
       "printRun": 99,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Topps 1995",
       "name": "Purple Donut Holes /75",
       "printRun": 75,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Topps 1995",
       "name": "Gold Donut Holes /50",
       "printRun": 50,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Topps 1995",
       "name": "Pearl Donut Holes /30",
       "printRun": 30,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Topps 1995",
       "name": "Orange Donut Holes /25",
       "printRun": 25,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Topps 1995",
       "name": "Black Donut Holes /10",
       "printRun": 10,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Topps 1995",
       "name": "Red Donut Holes /5",
       "printRun": 5,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Topps 1995",
       "name": "Superfractor /1",
       "printRun": 1,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -793,18 +1017,24 @@
       "subset": "Pearlers",
       "name": "Cherry Pearl /10",
       "printRun": 10,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Pearlers",
       "name": "White Pearl /5",
       "printRun": 5,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Pearlers",
       "name": "Golden Pearl /1",
       "printRun": 1,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {

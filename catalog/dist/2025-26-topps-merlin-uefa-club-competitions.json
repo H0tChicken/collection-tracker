@@ -7,7 +7,7 @@
   "year": 2025,
   "season": "2025-26",
   "description": "2025-26 Topps Merlin UEFA Club Competitions — club product. Compiled from the official checklist.",
-  "contentHash": "a857e2287ffab45df4b465a3ed03ab105b0402903f9e75c4acede161bdf2a31f",
+  "contentHash": "2677c19dda806aa00f1daff81ddafd8840cc302a747cbcce7d66ef56b307aadd",
   "parallels": [
     {
       "subset": "",
@@ -19,168 +19,224 @@
       "subset": "",
       "name": "Refractor",
       "printRun": null,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Mini Diamond Refractor",
       "printRun": null,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Rose Gold Speckle Refractor /250",
       "printRun": 250,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Rose Gold Refractor /250",
       "printRun": 250,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Pink Atomic /199",
       "printRun": 199,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Pink Refractor /199",
       "printRun": 199,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Blue Speckle Refractor /150",
       "printRun": 150,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Blue Refractor /150",
       "printRun": 150,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Magenta Refractor /125",
       "printRun": 125,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Magenta Atomic Refractor /125",
       "printRun": 125,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Green Refractor /99",
       "printRun": 99,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Green Speckle Refractor /99",
       "printRun": 99,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Aqua Refractor /75",
       "printRun": 75,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Aqua Atomic Refractor /75",
       "printRun": 75,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Gold Refractor /50",
       "printRun": 50,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Gold Speckle Refractor /50",
       "printRun": 50,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Black and White Vintage Merlin Refractor /35",
       "printRun": 35,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Pearl Refractor /30",
       "printRun": 30,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Orange Refractor /25",
       "printRun": 25,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Orange Atomic /25",
       "printRun": 25,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Purple Speckle Refractor /15",
       "printRun": 15,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Purple Refractor /15",
       "printRun": 15,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Black Atomic /10",
       "printRun": 10,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Black Refractor /10",
       "printRun": 10,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Red Speckle /5",
       "printRun": 5,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Red Refractor /5",
       "printRun": 5,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Gold Vintage Merlin Refractor /3",
       "printRun": 3,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "",
       "name": "Superfractor 1/1",
       "printRun": 1,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -193,42 +249,56 @@
       "subset": "Base - Rookie Variations",
       "name": "Green Refractor /99",
       "printRun": 99,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Base - Rookie Variations",
       "name": "Aqua Refractor /75",
       "printRun": 75,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Base - Rookie Variations",
       "name": "Gold Refractor /50",
       "printRun": 50,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Base - Rookie Variations",
       "name": "Orange Refractor /25",
       "printRun": 25,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Base - Rookie Variations",
       "name": "Black Refractor /10",
       "printRun": 10,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Base - Rookie Variations",
       "name": "Red Refractor /5",
       "printRun": 5,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Base - Rookie Variations",
       "name": "Superfractor 1/1",
       "printRun": 1,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -241,72 +311,96 @@
       "subset": "Base Autographs",
       "name": "Pink Refractor /199",
       "printRun": 199,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Base Autographs",
       "name": "Blue Refractor /150",
       "printRun": 150,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Base Autographs",
       "name": "Magenta Refractor /125",
       "printRun": 125,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Base Autographs",
       "name": "Green Refractor /99",
       "printRun": 99,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Base Autographs",
       "name": "Aqua Refractor /75",
       "printRun": 75,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Base Autographs",
       "name": "Gold Refractor /50",
       "printRun": 50,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Base Autographs",
       "name": "Orange Refractor /25",
       "printRun": 25,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Base Autographs",
       "name": "Black Refractor /10",
       "printRun": 10,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Base Autographs",
       "name": "Purple Vintage Merlin Refractor /8",
       "printRun": 8,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Base Autographs",
       "name": "Red Refractor /5",
       "printRun": 5,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Base Autographs",
       "name": "Gold Vintage Merlin Refractor /3",
       "printRun": 3,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Base Autographs",
       "name": "Superfractor 1/1",
       "printRun": 1,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -319,36 +413,48 @@
       "subset": "Sorcerers Autographs",
       "name": "Green Refractor /99",
       "printRun": 99,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Sorcerers Autographs",
       "name": "Gold Refractor /50",
       "printRun": 50,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Sorcerers Autographs",
       "name": "Orange Refractor /25",
       "printRun": 25,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Sorcerers Autographs",
       "name": "Black Refractor /10",
       "printRun": 10,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Sorcerers Autographs",
       "name": "Red Refractor /5",
       "printRun": 5,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Sorcerers Autographs",
       "name": "Superfractor 1/1",
       "printRun": 1,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -367,36 +473,48 @@
       "subset": "Mystics Nights Autographs",
       "name": "Green Refractor /99",
       "printRun": 99,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Mystics Nights Autographs",
       "name": "Gold Refractor /50",
       "printRun": 50,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Mystics Nights Autographs",
       "name": "Orange Refractor /25",
       "printRun": 25,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Mystics Nights Autographs",
       "name": "Black Refractor /10",
       "printRun": 10,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Mystics Nights Autographs",
       "name": "Red Refractor /5",
       "printRun": 5,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Mystics Nights Autographs",
       "name": "Superfractor 1/1",
       "printRun": 1,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -409,36 +527,48 @@
       "subset": "Ageless Alchemy Autographs",
       "name": "Green Refractor /99",
       "printRun": 99,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Ageless Alchemy Autographs",
       "name": "Gold Refractor /50",
       "printRun": 50,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Ageless Alchemy Autographs",
       "name": "Orange Refractor /25",
       "printRun": 25,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Ageless Alchemy Autographs",
       "name": "Black Refractor /10",
       "printRun": 10,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Ageless Alchemy Autographs",
       "name": "Red Refractor /5",
       "printRun": 5,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Ageless Alchemy Autographs",
       "name": "Superfractor 1/1",
       "printRun": 1,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -451,30 +581,40 @@
       "subset": "Autograph Wizard Variations",
       "name": "Black Refractor /10",
       "printRun": 10,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Autograph Wizard Variations",
       "name": "Purple Vintage Merün Refractor /8",
       "printRun": 8,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Autograph Wizard Variations",
       "name": "Red Refractor /5",
       "printRun": 5,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Autograph Wizard Variations",
       "name": "Gold Vintage Merlin Refractor /3",
       "printRun": 3,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Autograph Wizard Variations",
       "name": "Superfractor 1/1",
       "printRun": 1,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -487,36 +627,48 @@
       "subset": "Marks of Excellence",
       "name": "Green Foil /99",
       "printRun": 99,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Marks of Excellence",
       "name": "Gold Foil /50",
       "printRun": 50,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Marks of Excellence",
       "name": "Orange Foil /25",
       "printRun": 25,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Marks of Excellence",
       "name": "Purple Foil /10",
       "printRun": 10,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Marks of Excellence",
       "name": "Red Foil /5",
       "printRun": 5,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Marks of Excellence",
       "name": "Black Foil 1/1",
       "printRun": 1,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -529,30 +681,40 @@
       "subset": "Merlin's Match Ball Signatures",
       "name": "Gold Refractor /50",
       "printRun": 50,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Merlin's Match Ball Signatures",
       "name": "Orange Refractor /25",
       "printRun": 25,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Merlin's Match Ball Signatures",
       "name": "Black Refractor /10",
       "printRun": 10,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Merlin's Match Ball Signatures",
       "name": "Red Refractor /5",
       "printRun": 5,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Merlin's Match Ball Signatures",
       "name": "Superfractor 1/1",
       "printRun": 1,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -565,24 +727,32 @@
       "subset": "Merlin's Dual Match Ball Signatures",
       "name": "Orange Refractor /25",
       "printRun": 25,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Merlin's Dual Match Ball Signatures",
       "name": "Black Refractor /10",
       "printRun": 10,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Merlin's Dual Match Ball Signatures",
       "name": "Red Refractor /5",
       "printRun": 5,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Merlin's Dual Match Ball Signatures",
       "name": "Superfractor 1/1",
       "printRun": 1,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -595,54 +765,72 @@
       "subset": "Merlin's Chosen One",
       "name": "Blue Refractor /150",
       "printRun": 150,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Merlin's Chosen One",
       "name": "Green Refractor /99",
       "printRun": 99,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Merlin's Chosen One",
       "name": "Aqua Refractor /75",
       "printRun": 75,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Merlin's Chosen One",
       "name": "Gold Refractor /50",
       "printRun": 50,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Merlin's Chosen One",
       "name": "Orange Refractor /25",
       "printRun": 25,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Merlin's Chosen One",
       "name": "Purple Refractor /15",
       "printRun": 15,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Merlin's Chosen One",
       "name": "Black Refractor /10",
       "printRun": 10,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Merlin's Chosen One",
       "name": "Red Refractor /5",
       "printRun": 5,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Merlin's Chosen One",
       "name": "Superfractor 1/1",
       "printRun": 1,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -655,54 +843,72 @@
       "subset": "Ageless Alchemy",
       "name": "Blue Refractor /150",
       "printRun": 150,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Ageless Alchemy",
       "name": "Green Refractor /99",
       "printRun": 99,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Ageless Alchemy",
       "name": "Aqua Refractor /75",
       "printRun": 75,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Ageless Alchemy",
       "name": "Gold Refractor /50",
       "printRun": 50,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Ageless Alchemy",
       "name": "Orange Refractor /25",
       "printRun": 25,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Ageless Alchemy",
       "name": "Purple Refractor /15",
       "printRun": 15,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Ageless Alchemy",
       "name": "Black Refractor /10",
       "printRun": 10,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Ageless Alchemy",
       "name": "Red Refractor /5",
       "printRun": 5,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Ageless Alchemy",
       "name": "Superfractor 1/1",
       "printRun": 1,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -715,54 +921,72 @@
       "subset": "Mystic Nights",
       "name": "Blue Refractor /150",
       "printRun": 150,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Mystic Nights",
       "name": "Green Refractor /99",
       "printRun": 99,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Mystic Nights",
       "name": "Aqua Refractor /75",
       "printRun": 75,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Mystic Nights",
       "name": "Gold Refractor /50",
       "printRun": 50,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Mystic Nights",
       "name": "Orange Refractor /25",
       "printRun": 25,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Mystic Nights",
       "name": "Purple Refractor /15",
       "printRun": 15,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Mystic Nights",
       "name": "Black Refractor /10",
       "printRun": 10,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Mystic Nights",
       "name": "Red Refractor /5",
       "printRun": 5,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Mystic Nights",
       "name": "Superfractor 1/1",
       "printRun": 1,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -775,54 +999,72 @@
       "subset": "Elite Society",
       "name": "Blue Refractor /150",
       "printRun": 150,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Elite Society",
       "name": "Green Refractor /99",
       "printRun": 99,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Elite Society",
       "name": "Aqua Refractor /75",
       "printRun": 75,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Elite Society",
       "name": "Gold Refractor /50",
       "printRun": 50,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Elite Society",
       "name": "Orange Refractor /25",
       "printRun": 25,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Elite Society",
       "name": "Purple Refractor /15",
       "printRun": 15,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Elite Society",
       "name": "Black Refractor /10",
       "printRun": 10,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Elite Society",
       "name": "Red Refractor /5",
       "printRun": 5,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Elite Society",
       "name": "Superfractor 1/1",
       "printRun": 1,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -841,30 +1083,40 @@
       "subset": "Merlin's Gamers",
       "name": "Lightning Variation Blue /75",
       "printRun": 75,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Merlin's Gamers",
       "name": "Firework Variation Gold /50",
       "printRun": 50,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Merlin's Gamers",
       "name": "Firework Variation Orange /25",
       "printRun": 25,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Merlin's Gamers",
       "name": "Bubbles Variation Red /10",
       "printRun": 10,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Merlin's Gamers",
       "name": "Superfractor 1/1",
       "printRun": 1,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
@@ -877,12 +1129,16 @@
       "subset": "Renaissance",
       "name": "Red Refractor /5",
       "printRun": 5,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {
       "subset": "Renaissance",
       "name": "Superfractor 1/1",
       "printRun": 1,
+      "odds": null,
+      "hasMania": false,
       "isBase": false
     },
     {

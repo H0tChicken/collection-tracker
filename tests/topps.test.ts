@@ -1,5 +1,28 @@
 import { describe, it, expect } from "vitest";
-import { parseToppsRows, parsePrintRunFromName } from "@/lib/import/topps";
+import {
+  parseToppsRows,
+  parsePrintRunFromName,
+  splitParallelOdds,
+} from "@/lib/import/topps";
+
+describe("splitParallelOdds", () => {
+  it("extracts trailing parenthetical odds and cleans the name", () => {
+    expect(splitParallelOdds("Blue Lava (Hobby Exclusive - 1 per box)")).toEqual({
+      name: "Blue Lava",
+      odds: "Hobby Exclusive - 1 per box",
+    });
+    expect(splitParallelOdds("Refractor (3 per Hobby box)")).toEqual({
+      name: "Refractor",
+      odds: "3 per Hobby box",
+    });
+  });
+  it("leaves names without parentheses unchanged", () => {
+    expect(splitParallelOdds("Pink Mini Diamonds /250")).toEqual({
+      name: "Pink Mini Diamonds /250",
+      odds: null,
+    });
+  });
+});
 
 describe("parsePrintRunFromName", () => {
   it("reads /N and 1/1", () => {

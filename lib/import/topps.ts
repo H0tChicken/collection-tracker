@@ -42,6 +42,25 @@ export function parsePrintRunFromName(name: string): number | null {
   return null;
 }
 
+/**
+ * Split a parallel cell into clean name + odds. Some Topps single-sheet sets
+ * embed odds in trailing parentheses, e.g.
+ *   "Blue Lava (Hobby Exclusive - 1 per box)" → name "Blue Lava",
+ *      odds "Hobby Exclusive - 1 per box"
+ *   "Refractor (3 per Hobby box)" → name "Refractor", odds "3 per Hobby box"
+ * Names without parentheses are returned unchanged with null odds.
+ */
+export function splitParallelOdds(cell: string): {
+  name: string;
+  odds: string | null;
+} {
+  const m = cell.match(/^(.*?)\s*\(([^)]*)\)\s*$/);
+  if (!m) return { name: cell.trim(), odds: null };
+  const name = m[1].trim();
+  const odds = m[2].trim() || null;
+  return { name: name || cell.trim(), odds };
+}
+
 /** True when a cell value looks like a card row's number/code token.
  * Card codes are compact and space-free: plain "12", or lettered codes like
  * "S-5", "EKA-AG", "SA-PS", "MBS-LM". Section names and parallels contain
@@ -182,12 +201,17 @@ export function parseToppsRows(
     // Otherwise, while in the parallel list and before any card, it's a parallel.
     if (inParallels && !sawAnyCard && cells.length === 1 && c0 !== "") {
       const subset = currentSubset;
-      const pkey = `${subset}|${c0}`;
+      // Print run is read before stripping parens (it lives outside them).
+      const printRun = parsePrintRunFromName(c0);
+      const { name, odds } = splitParallelOdds(c0);
+      const pkey = `${subset}|${name}`;
       if (!parallelMap.has(pkey)) {
         parallelMap.set(pkey, {
           subset,
-          name: c0,
-          printRun: parsePrintRunFromName(c0),
+          name,
+          printRun,
+          odds,
+          hasMania: odds ? /\bmania\b/i.test(odds) : false,
           isBase: false,
         });
       }
