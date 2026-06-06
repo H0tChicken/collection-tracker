@@ -50,6 +50,28 @@ function readXlsxSheets(srcPath: string): Record<string, unknown[][]> {
   return out;
 }
 
+/**
+ * Auto-detect the parser format from the source file structure:
+ *   - .csv                         → PANINI_CSV
+ *   - .xlsx with a "Master" tab    → TOPPS_XLSX_V2 (multi-product flat list)
+ *   - .xlsx with a "Full Checklist" tab → TOPPS_XLSX on that tab
+ *   - single-sheet .xlsx           → TOPPS_XLSX (first sheet)
+ */
+function detectFormat(srcPath: string): {
+  format: "PANINI_CSV" | "TOPPS_XLSX" | "TOPPS_XLSX_V2";
+  sheet?: string;
+} {
+  if (srcPath.toLowerCase().endsWith(".csv")) return { format: "PANINI_CSV" };
+  const wb = XLSX.readFile(srcPath, { bookSheets: true });
+  const names = wb.SheetNames;
+  const find = (n: string) =>
+    names.find((s) => s.toLowerCase() === n.toLowerCase());
+  if (find("master")) return { format: "TOPPS_XLSX_V2" };
+  const full = find("full checklist");
+  if (full) return { format: "TOPPS_XLSX", sheet: full };
+  return { format: "TOPPS_XLSX" };
+}
+
 const ROOT = path.resolve(import.meta.dirname, "..");
 const SOURCES_DIR = path.join(ROOT, "catalog", "sources");
 const DIST_DIR = path.join(ROOT, "catalog", "dist");
@@ -84,25 +106,34 @@ function build() {
   for (const entry of CATALOG_SOURCES) {
     const srcPath = path.join(SOURCES_DIR, entry.file);
 
+    // Use the explicit format/sheet when given, else auto-detect from the file.
+    const detected = detectFormat(srcPath);
+    const format = entry.format ?? detected.format;
+    const sheet = entry.sheet ?? detected.sheet;
+    if (!entry.format) {
+      console.log(
+        `  · ${entry.externalId}: auto-detected ${format}${sheet ? ` (sheet "${sheet}")` : ""}`,
+      );
+    }
+    const teamType = entry.kitType === "COUNTRY" ? "NATIONAL" : "CLUB";
+
     let parsed: ParsedChecklist;
-    if (entry.format === "PANINI_CSV") {
+    if (format === "PANINI_CSV") {
       parsed = parsePaniniCsv(readFileSync(srcPath, "utf8"), entry.kitType);
-    } else if (entry.format === "TOPPS_XLSX") {
-      const teamType = entry.kitType === "COUNTRY" ? "NATIONAL" : "CLUB";
-      parsed = parseToppsRows(readXlsxRows(srcPath, entry.sheet), {
+    } else if (format === "TOPPS_XLSX") {
+      parsed = parseToppsRows(readXlsxRows(srcPath, sheet), {
         kitType: entry.kitType,
         teamType,
         meta: { brand: entry.brand, year: entry.year, program: entry.name },
       });
-    } else if (entry.format === "TOPPS_XLSX_V2") {
-      const teamType = entry.kitType === "COUNTRY" ? "NATIONAL" : "CLUB";
+    } else if (format === "TOPPS_XLSX_V2") {
       parsed = parseToppsV2(readXlsxSheets(srcPath), {
         kitType: entry.kitType,
         teamType,
         meta: { brand: entry.brand, year: entry.year, program: entry.name },
       });
     } else {
-      throw new Error(`Unknown format ${entry.format} for ${entry.externalId}`);
+      throw new Error(`Unknown format ${format} for ${entry.externalId}`);
     }
     for (const w of parsed.warnings) {
       console.warn(`  ! ${entry.externalId}: ${w}`);

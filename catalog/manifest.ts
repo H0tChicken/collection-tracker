@@ -23,7 +23,13 @@ export interface ManiaSplit {
 
 export interface CatalogSourceEntry {
   externalId: string;
-  format: CatalogFormat;
+  /**
+   * Parser format. Optional — when omitted, the compiler auto-detects it from
+   * the file: .csv → PANINI_CSV; .xlsx with a "Master" tab → TOPPS_XLSX_V2;
+   * .xlsx with a "Full Checklist" tab → TOPPS_XLSX on that tab; single-sheet
+   * .xlsx → TOPPS_XLSX. Set explicitly to override detection.
+   */
+  format?: CatalogFormat;
   /** Path under catalog/sources/. */
   file: string;
   /** Kit applied to every card (COUNTRY for national-team, CLUB for club). */
@@ -115,5 +121,16 @@ export const CATALOG_SOURCES: CatalogSourceEntry[] = [
     season: "2025-26",
     description:
       "2025 Panini Select Ligue 1 — club product. Compiled from the official checklist.",
+  },
+  {
+    // Format auto-detected (multi-tab workbook with a Master tab → V2).
+    externalId: "2024-topps-superstars-mls",
+    file: "2024-topps-superstars-mls.xlsx",
+    kitType: "CLUB",
+    name: "Topps Superstars MLS (2024)",
+    brand: "Topps",
+    year: 2024,
+    description:
+      "2024 Topps Superstars MLS — club product. Compiled from the official checklist.",
   },
 ];
