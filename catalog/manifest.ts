@@ -133,4 +133,15 @@ export const CATALOG_SOURCES: CatalogSourceEntry[] = [
     description:
       "2024 Topps Superstars MLS — club product. Compiled from the official checklist.",
   },
+  {
+    // Format auto-detected (multi-tab workbook with a Master tab → V2).
+    externalId: "2024-topps-chrome-sapphire-mls",
+    file: "2024-topps-chrome-sapphire-mls.xlsx",
+    kitType: "CLUB",
+    name: "Topps Chrome Sapphire MLS (2024)",
+    brand: "Topps",
+    year: 2024,
+    description:
+      "2024 Topps Chrome Sapphire MLS — club product. Compiled from the official checklist.",
+  },
 ];
