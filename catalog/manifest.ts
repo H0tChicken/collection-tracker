@@ -6,7 +6,7 @@
 
 export type CatalogKit = "CLUB" | "COUNTRY" | "NONE";
 
-export type CatalogFormat = "PANINI_CSV" | "TOPPS_XLSX";
+export type CatalogFormat = "PANINI_CSV" | "TOPPS_XLSX" | "TOPPS_XLSX_V2";
 
 export interface CatalogSourceEntry {
   externalId: string;
@@ -57,6 +57,17 @@ export const CATALOG_SOURCES: CatalogSourceEntry[] = [
     year: 2025,
     description:
       "2025 Topps Chrome MLS — club product. Compiled from the official checklist.",
+  },
+  {
+    externalId: "2024-topps-chrome-mls",
+    format: "TOPPS_XLSX_V2",
+    file: "2024-topps-chrome-mls.xlsx",
+    kitType: "CLUB",
+    name: "Topps Chrome MLS (2024)",
+    brand: "Topps",
+    year: 2024,
+    description:
+      "2024 Topps Chrome MLS — club product. Compiled from the official checklist (multi-tab workbook).",
   },
   {
     externalId: "2025-panini-select-ligue-1",

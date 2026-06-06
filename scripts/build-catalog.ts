@@ -17,12 +17,27 @@ import type { CatalogCard, CatalogParallel, CatalogSet } from "../catalog/schema
 import type { ParsedChecklist } from "../lib/import/checklist";
 import { parsePaniniCsv } from "../lib/import/panini";
 import { parseToppsRows } from "../lib/import/topps";
+import { parseToppsV2 } from "../lib/import/toppsV2";
 
 /** Read the first worksheet of an .xlsx as an array of cell-string rows. */
 function readXlsxRows(srcPath: string): unknown[][] {
   const wb = XLSX.readFile(srcPath, { cellDates: false });
   const sheet = wb.Sheets[wb.SheetNames[0]];
   return XLSX.utils.sheet_to_json(sheet, { header: 1, blankrows: false, raw: false });
+}
+
+/** Read every worksheet of an .xlsx as { sheetName: rows }. */
+function readXlsxSheets(srcPath: string): Record<string, unknown[][]> {
+  const wb = XLSX.readFile(srcPath, { cellDates: false });
+  const out: Record<string, unknown[][]> = {};
+  for (const name of wb.SheetNames) {
+    out[name] = XLSX.utils.sheet_to_json(wb.Sheets[name], {
+      header: 1,
+      blankrows: false,
+      raw: false,
+    });
+  }
+  return out;
 }
 
 const ROOT = path.resolve(import.meta.dirname, "..");
@@ -65,6 +80,13 @@ function build() {
     } else if (entry.format === "TOPPS_XLSX") {
       const teamType = entry.kitType === "COUNTRY" ? "NATIONAL" : "CLUB";
       parsed = parseToppsRows(readXlsxRows(srcPath), {
+        kitType: entry.kitType,
+        teamType,
+        meta: { brand: entry.brand, year: entry.year, program: entry.name },
+      });
+    } else if (entry.format === "TOPPS_XLSX_V2") {
+      const teamType = entry.kitType === "COUNTRY" ? "NATIONAL" : "CLUB";
+      parsed = parseToppsV2(readXlsxSheets(srcPath), {
         kitType: entry.kitType,
         teamType,
         meta: { brand: entry.brand, year: entry.year, program: entry.name },

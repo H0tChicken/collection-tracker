@@ -17,7 +17,7 @@ export async function getCardOwnership(cardId: string) {
   const [parallels, items, storageLocations] = await Promise.all([
     prisma.parallel.findMany({
       where: { setId: card.setId, subset: card.subset },
-      select: { id: true, name: true, printRun: true, isBase: true },
+      select: { id: true, name: true, printRun: true, odds: true, isBase: true },
     }),
     prisma.collectionItem.findMany({
       where: { cardId },
@@ -33,11 +33,23 @@ export async function getCardOwnership(cardId: string) {
   // The base card itself is parallelId = null; represent it as a synthetic row.
   // Order: Base → non-numbered (SP/SSP) → numbered high → low.
   const rows = [
-    { id: null as string | null, name: "Base", printRun: null as number | null, isBase: true },
+    {
+      id: null as string | null,
+      name: "Base",
+      printRun: null as number | null,
+      odds: null as string | null,
+      isBase: true,
+    },
     ...parallels
       .filter((p) => !p.isBase)
       .sort(compareParallels)
-      .map((p) => ({ id: p.id, name: p.name, printRun: p.printRun, isBase: false })),
+      .map((p) => ({
+        id: p.id,
+        name: p.name,
+        printRun: p.printRun,
+        odds: p.odds,
+        isBase: false,
+      })),
   ];
 
   return {

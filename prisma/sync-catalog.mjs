@@ -106,6 +106,7 @@ async function syncSet(doc) {
       },
       update: {
         printRun: p.printRun,
+        odds: p.odds ?? null,
         isNumbered: p.printRun != null,
         isBase: p.isBase,
       },
@@ -114,6 +115,7 @@ async function syncSet(doc) {
         subset: p.subset,
         name: p.name,
         printRun: p.printRun,
+        odds: p.odds ?? null,
         isNumbered: p.printRun != null,
         isBase: p.isBase,
         sortOrder: order++,

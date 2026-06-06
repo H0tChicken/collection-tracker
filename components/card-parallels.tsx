@@ -203,6 +203,11 @@ function ParallelRowView({
               {printRunLabel(row.printRun)}
             </span>
           )}
+          {row.odds && (
+            <span className="text-body-sm text-on-surface-variant/70">
+              · {row.odds}
+            </span>
+          )}
           {ownedQty > 0 && <Badge tone="green">{ownedQty} owned</Badge>}
           {wanted && <Badge tone="amber">Want</Badge>}
         </span>

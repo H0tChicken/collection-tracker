@@ -21,6 +21,7 @@ export interface ParallelDef {
   subset: string; // "" for the base subset
   name: string; // "Base" for the base parallel
   printRun: number | null; // /N (1 for 1/1); null = unlimited
+  odds?: string | null; // pack odds, e.g. "1:14 hobby" (informational)
   isBase: boolean;
 }
 

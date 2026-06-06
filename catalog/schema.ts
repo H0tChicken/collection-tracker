@@ -6,6 +6,7 @@ export interface CatalogParallel {
   subset: string; // "" = base subset
   name: string; // "Base" for the base parallel
   printRun: number | null;
+  odds?: string | null; // pack odds, e.g. "1:14 hobby"
   isBase: boolean;
 }
 

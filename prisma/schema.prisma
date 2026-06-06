@@ -120,6 +120,7 @@ model Parallel {
   subset    String           @default("") // "" = the set's base subset
   name      String
   printRun  Int? // serial-numbered run size, e.g. 10 for /10
+  odds      String? // pack odds text, e.g. "1:14 hobby" (informational)
   isNumbered Boolean         @default(false)
   isBase    Boolean         @default(false)
   sortOrder Int             @default(0)

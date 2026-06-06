@@ -68,6 +68,7 @@ CREATE TABLE "Parallel" (
     "subset" TEXT NOT NULL DEFAULT '',
     "name" TEXT NOT NULL,
     "printRun" INTEGER,
+    "odds" TEXT,
     "isNumbered" BOOLEAN NOT NULL DEFAULT false,
     "isBase" BOOLEAN NOT NULL DEFAULT false,
     "sortOrder" INTEGER NOT NULL DEFAULT 0,
