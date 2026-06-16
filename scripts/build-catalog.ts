@@ -9,7 +9,7 @@
  * Run: `npm run catalog:build`
  */
 import { createHash } from "node:crypto";
-import { readFileSync, writeFileSync, mkdirSync, readdirSync, rmSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, readdirSync, rmSync, existsSync } from "node:fs";
 import path from "node:path";
 import * as XLSX from "xlsx";
 import { CATALOG_SOURCES } from "../catalog/manifest";
@@ -145,6 +145,31 @@ function build() {
     }
     for (const w of parsed.warnings) {
       console.warn(`  ! ${entry.externalId}: ${w}`);
+    }
+
+    // Merge a sidecar parallels file if one exists alongside the source.
+    // Naming convention: <source-basename-without-ext>.parallels.json
+    const sidecarPath = path.join(
+      SOURCES_DIR,
+      path.basename(entry.file, path.extname(entry.file)) + ".parallels.json",
+    );
+    if (existsSync(sidecarPath)) {
+      const sidecar = JSON.parse(readFileSync(sidecarPath, "utf8")) as Array<{
+        subset: string;
+        name: string;
+        printRun?: number | null;
+        odds?: string | null;
+      }>;
+      for (const p of sidecar) {
+        parsed.parallels.push({
+          subset: p.subset,
+          name: p.name,
+          printRun: p.printRun ?? null,
+          odds: p.odds ?? null,
+          isBase: false,
+        });
+      }
+      console.log(`  + ${entry.externalId}: loaded ${sidecar.length} parallels from sidecar`);
     }
 
     const allCards: CatalogCard[] = parsed.cards.map((c) => ({

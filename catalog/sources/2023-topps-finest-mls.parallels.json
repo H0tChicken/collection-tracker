@@ -1,0 +1,64 @@
+[
+  { "subset": "",                                       "name": "Refractor",            "printRun": null, "odds": "1:3 hobby" },
+  { "subset": "",                                       "name": "Purple Refractor",     "printRun": 250,  "odds": "1:10 hobby" },
+  { "subset": "",                                       "name": "Speckle",              "printRun": 175,  "odds": "1:15 hobby" },
+  { "subset": "",                                       "name": "Blue Refractor",       "printRun": 150,  "odds": "1:17 hobby" },
+  { "subset": "",                                       "name": "Pink Prism",           "printRun": 125,  "odds": "1:20 hobby" },
+  { "subset": "",                                       "name": "Neon Green Refractor", "printRun": 99,   "odds": "1:26 hobby" },
+  { "subset": "",                                       "name": "Aqua Refractor",       "printRun": 75,   "odds": "1:34 hobby" },
+  { "subset": "",                                       "name": "Gold Refractor",       "printRun": 50,   "odds": "1:50 hobby" },
+  { "subset": "",                                       "name": "Orange Refractor",     "printRun": 25,   "odds": "1:100 hobby" },
+  { "subset": "",                                       "name": "Black Refractor",      "printRun": 10,   "odds": "1:249 hobby" },
+  { "subset": "",                                       "name": "Red Refractor",        "printRun": 5,    "odds": "1:496 hobby" },
+  { "subset": "",                                       "name": "Superfractor",         "printRun": 1,    "odds": "1:2,446 hobby" },
+
+  { "subset": "BASE CARDS AUTOGRAPH VARIATION",         "name": "Aqua Refractor",       "printRun": 75,   "odds": "1:41 hobby" },
+  { "subset": "BASE CARDS AUTOGRAPH VARIATION",         "name": "Neon Green Refractor", "printRun": 99,   "odds": "1:33 hobby" },
+  { "subset": "BASE CARDS AUTOGRAPH VARIATION",         "name": "Orange Refractor",     "printRun": 25,   "odds": "1:114 hobby" },
+  { "subset": "BASE CARDS AUTOGRAPH VARIATION",         "name": "Black Refractor",      "printRun": 10,   "odds": "1:283 hobby" },
+  { "subset": "BASE CARDS AUTOGRAPH VARIATION",         "name": "Gold Refractor",       "printRun": 50,   "odds": "1:57 hobby" },
+  { "subset": "BASE CARDS AUTOGRAPH VARIATION",         "name": "Red Refractor",        "printRun": 5,    "odds": "1:565 hobby" },
+  { "subset": "BASE CARDS AUTOGRAPH VARIATION",         "name": "Superfractor",         "printRun": 1,    "odds": "1:2,792 hobby" },
+
+  { "subset": "EXTENDED SET BASE CARDS",                "name": "Aqua Refractor",       "printRun": 75,   "odds": "1:331 hobby" },
+  { "subset": "EXTENDED SET BASE CARDS",                "name": "Gold Refractor",       "printRun": 50,   "odds": "1:496 hobby" },
+  { "subset": "EXTENDED SET BASE CARDS",                "name": "Red Refractor",        "printRun": 5,    "odds": "1:4,842 hobby" },
+  { "subset": "EXTENDED SET BASE CARDS",                "name": "Superfractor",         "printRun": 1,    "odds": "1:23,724 hobby" },
+
+  { "subset": "EXTENDED SET BASE CARDS AUTOGRAPH VARIATION", "name": "Superfractor",   "printRun": 1,    "odds": "1:47,448 hobby" },
+
+  { "subset": "PRIZED FOOTBALLERS",                     "name": "Gold Refractor",       "printRun": 50,   "odds": "1:249 hobby" },
+  { "subset": "PRIZED FOOTBALLERS",                     "name": "Red Refractor",        "printRun": 5,    "odds": "1:2,446 hobby" },
+  { "subset": "PRIZED FOOTBALLERS",                     "name": "Superfractor",         "printRun": 1,    "odds": "1:11,862 hobby" },
+
+  { "subset": "PRIZED FOOTBALLERS AUTOGRAPH VARIATION", "name": "Superfractor",         "printRun": 1,    "odds": "1:21,568 hobby" },
+
+  { "subset": "PRIZED FOOTBALLERS FUSION VARIATIONS",   "name": "Yellow Red",           "printRun": null, "odds": "1:226 hobby" },
+  { "subset": "PRIZED FOOTBALLERS FUSION VARIATIONS",   "name": "Blue Red",             "printRun": 45,   "odds": "1:276 hobby" },
+  { "subset": "PRIZED FOOTBALLERS FUSION VARIATIONS",   "name": "Orange Red",           "printRun": null, "odds": "1:355 hobby" },
+  { "subset": "PRIZED FOOTBALLERS FUSION VARIATIONS",   "name": "Green Red",            "printRun": 25,   "odds": "1:496 hobby" },
+  { "subset": "PRIZED FOOTBALLERS FUSION VARIATIONS",   "name": "Pink Red",             "printRun": null, "odds": "1:1,236 hobby" },
+  { "subset": "PRIZED FOOTBALLERS FUSION VARIATIONS",   "name": "Red Red",              "printRun": 5,    "odds": "1:2,446 hobby" },
+  { "subset": "PRIZED FOOTBALLERS FUSION VARIATIONS",   "name": "Black Gold",           "printRun": null, "odds": "1:11,862 hobby" },
+  { "subset": "PRIZED FOOTBALLERS FUSION VARIATIONS",   "name": "Rose Gold Gold",       "printRun": 1,    "odds": "1:11,862 hobby" },
+
+  { "subset": "BASE SET HOLOGLOW VARIATIONS",           "name": "Gold Refractor",       "printRun": 50,   "odds": "1:166 hobby" },
+  { "subset": "BASE SET HOLOGLOW VARIATIONS",           "name": "Orange Refractor",     "printRun": 25,   "odds": "1:331 hobby" },
+  { "subset": "BASE SET HOLOGLOW VARIATIONS",           "name": "Red Refractor",        "printRun": 5,    "odds": "1:1,637 hobby" },
+  { "subset": "BASE SET HOLOGLOW VARIATIONS",           "name": "Superfractor",         "printRun": 1,    "odds": "1:7,908 hobby" },
+
+  { "subset": "WORLDS FINEST",                          "name": "Gold Refractor",       "printRun": 50,   "odds": "1:496 hobby" },
+  { "subset": "WORLDS FINEST",                          "name": "Red Refractor",        "printRun": 5,    "odds": "1:4,842 hobby" },
+  { "subset": "WORLDS FINEST",                          "name": "Superfractor",         "printRun": 1,    "odds": "1:23,724 hobby" },
+
+  { "subset": "WORLDS FINEST AUTOGRAPH VARIATION",      "name": "Superfractor",         "printRun": 1,    "odds": "1:47,448 hobby" },
+
+  { "subset": "1997 TOPPS FINEST CREATORS",             "name": "Gold Refractor",       "printRun": 50,   "odds": "1:496 hobby" },
+  { "subset": "1997 TOPPS FINEST CREATORS",             "name": "Red Refractor",        "printRun": 5,    "odds": "1:4,842 hobby" },
+  { "subset": "1997 TOPPS FINEST CREATORS",             "name": "Superfractor",         "printRun": 1,    "odds": "1:23,724 hobby" },
+
+  { "subset": "1997 TOPPS FINEST CREATORS AUTOGRAPH VARIATION", "name": "Superfractor", "printRun": 1,   "odds": "1:47,448 hobby" },
+
+  { "subset": "FINEST IDOLS",                           "name": "Silver",               "printRun": null, "odds": "1:5,048 hobby" },
+  { "subset": "FINEST IDOLS",                           "name": "Gold",                 "printRun": null, "odds": "1:9,885 hobby" }
+]
