@@ -13,11 +13,14 @@ export function SearchInput({
   param = "q",
   placeholder = "Search…",
   debounceMs = 250,
+  clearParams,
   className,
 }: {
   param?: string;
   placeholder?: string;
   debounceMs?: number;
+  /** Params to remove from the URL whenever the search value changes (e.g. ["page"]). */
+  clearParams?: string[];
   className?: string;
 }) {
   const router = useRouter();
@@ -34,6 +37,7 @@ export function SearchInput({
       const params = new URLSearchParams(searchParams.toString());
       if (value) params.set(param, value);
       else params.delete(param);
+      clearParams?.forEach((p) => params.delete(p));
       startTransition(() => {
         router.replace(`${pathname}?${params.toString()}`, { scroll: false });
       });

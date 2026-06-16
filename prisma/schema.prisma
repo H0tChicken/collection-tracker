@@ -39,6 +39,7 @@ enum GradingCompany {
   BGS
   SGC
   CSG
+  TAG
   OTHER
 }
 

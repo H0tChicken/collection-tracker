@@ -16,7 +16,7 @@ type Ownership = NonNullable<Awaited<ReturnType<typeof loadCardOwnership>>>;
 type ParallelRow = Ownership["parallels"][number];
 type Copy = ParallelRow["copies"][number];
 
-const GRADERS = ["RAW", "PSA", "BGS", "SGC", "CSG", "OTHER"] as const;
+const GRADERS = ["RAW", "PSA", "BGS", "SGC", "CSG", "TAG", "OTHER"] as const;
 
 function printRunLabel(printRun: number | null): string {
   if (printRun == null) return "";
@@ -35,6 +35,7 @@ function CopyEditor({
 }) {
   const [pending, start] = useTransition();
   const [open, setOpen] = useState(false);
+  const [version, setVersion] = useState(0);
 
   const summary = [
     copy.gradingCompany !== "RAW"
@@ -73,7 +74,8 @@ function CopyEditor({
 
       {open && (
         <form
-          action={(fd) => start(() => updateCopy(fd).then(onChanged))}
+          key={version}
+          action={(fd) => start(() => updateCopy(fd).then(() => { setVersion((v) => v + 1); onChanged(); }))}
           className="grid grid-cols-2 gap-2 border-t border-outline-variant p-3 text-body-sm"
         >
           <input type="hidden" name="id" value={copy.id} />

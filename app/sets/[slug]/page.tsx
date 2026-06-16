@@ -1,10 +1,14 @@
 import Link from "next/link";
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
+import type { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { getSubsetCompletion } from "@/lib/completion";
 import { Card, PageHeader, Badge, EmptyState, SegmentedButtons } from "@/components/ui";
 import { CompletionBar } from "@/components/completion-bar";
 import { CardParallels } from "@/components/card-parallels";
+import { SearchInput } from "@/components/search-input";
+import { QuickMark } from "@/components/quick-mark";
 import { setLabel, compareCardNumbers } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
@@ -14,7 +18,7 @@ export default async function SetDetailPage({
   searchParams,
 }: {
   params: Promise<{ slug: string }>;
-  searchParams: Promise<{ missing?: string; subset?: string }>;
+  searchParams: Promise<{ missing?: string; subset?: string; q?: string }>;
 }) {
   const { slug } = await params;
   const sp = await searchParams;
@@ -31,14 +35,27 @@ export default async function SetDetailPage({
       ? sp.subset
       : (subsets.find((s) => s.subset === "")?.subset ?? subsets[0]?.subset ?? "");
   const showMissingOnly = sp.missing === "1";
+  const q = sp.q?.trim() ?? "";
+
+  const cardWhere: Prisma.CardWhereInput = {
+    setId: set.id,
+    subset: selected,
+    retired: false,
+  };
+  if (q) {
+    cardWhere.OR = [
+      { cardNumber: { contains: q, mode: "insensitive" } },
+      { player: { fullName: { contains: q, mode: "insensitive" } } },
+    ];
+  }
 
   const [cardsRaw, parallelHint] = await Promise.all([
     prisma.card.findMany({
-      where: { setId: set.id, subset: selected, retired: false },
+      where: cardWhere,
       include: {
         player: true,
         team: true,
-        items: { select: { status: true, parallelId: true } },
+        items: { select: { status: true, parallelId: true, quantity: true } },
       },
     }),
     // Non-base parallels available for this subset (same for every card here).
@@ -57,8 +74,13 @@ export default async function SetDetailPage({
     return !c.items.some((i) => i.status !== "WANTED");
   });
 
-  const subsetHref = (subset: string, missing: boolean) =>
-    `/sets/${slug}?subset=${encodeURIComponent(subset)}${missing ? "&missing=1" : ""}`;
+  const subsetHref = (subset: string, missing: boolean) => {
+    const p = new URLSearchParams();
+    p.set("subset", subset);
+    if (missing) p.set("missing", "1");
+    if (q) p.set("q", q);
+    return `/sets/${slug}?${p.toString()}`;
+  };
 
   return (
     <div>
@@ -107,46 +129,66 @@ export default async function SetDetailPage({
             />
           </div>
 
+          <Suspense fallback={null}>
+            <SearchInput
+              param="q"
+              placeholder="Player or card #…"
+              className="mb-3"
+            />
+          </Suspense>
+
           {visible.length === 0 ? (
-            <EmptyState message="No cards to show." />
+            <EmptyState message={q ? `No cards match "${q}".` : "No cards to show."} />
           ) : (
             <div className="divide-y divide-outline-variant/50">
-              {visible.map((c) => (
-                <div key={c.id} className="flex gap-3 py-2 text-sm">
-                  <span className="w-12 shrink-0 pt-0.5 font-mono text-xs text-on-surface-variant">
-                    {c.cardNumber}
-                  </span>
-                  <div className="min-w-0 flex-1">
-                    <div className="truncate font-medium">
-                      {c.player ? (
-                        <Link
-                          href={`/players/${c.player.slug}`}
-                          className="hover:underline"
-                        >
-                          {c.player.fullName}
-                        </Link>
-                      ) : (
-                        c.description ?? "—"
-                      )}
+              {visible.map((c) => {
+                const baseItems = c.items.filter((i) => i.parallelId === null);
+                const ownedCount = baseItems
+                  .filter((i) => i.status !== "WANTED")
+                  .reduce((n, i) => n + i.quantity, 0);
+                const isWanted = baseItems.some((i) => i.status === "WANTED");
+                return (
+                  <div key={c.id} className="flex gap-3 py-2 text-sm">
+                    <span className="w-12 shrink-0 pt-0.5 font-mono text-xs text-on-surface-variant">
+                      {c.cardNumber}
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <div className="truncate font-medium">
+                        {c.player ? (
+                          <Link
+                            href={`/players/${c.player.slug}`}
+                            className="hover:underline"
+                          >
+                            {c.player.fullName}
+                          </Link>
+                        ) : (
+                          c.description ?? "—"
+                        )}
+                      </div>
+                      <div className="mb-1 flex flex-wrap items-center gap-1.5 text-xs text-on-surface-variant">
+                        {c.team && (
+                          <Link href={`/teams/${c.team.slug}`} className="hover:underline">
+                            {c.team.name}
+                          </Link>
+                        )}
+                        {c.kitType === "CLUB" && <Badge tone="blue">Club</Badge>}
+                        {c.kitType === "COUNTRY" && (
+                          <Badge tone="green">Country</Badge>
+                        )}
+                        {c.isRookie && <Badge tone="amber">RC</Badge>}
+                        {c.isAutograph && <Badge>Auto</Badge>}
+                        {c.isRelic && <Badge>Relic</Badge>}
+                      </div>
+                      <CardParallels cardId={c.id} parallelHint={parallelHint} />
                     </div>
-                    <div className="mb-1 flex flex-wrap items-center gap-1.5 text-xs text-on-surface-variant">
-                      {c.team && (
-                        <Link href={`/teams/${c.team.slug}`} className="hover:underline">
-                          {c.team.name}
-                        </Link>
-                      )}
-                      {c.kitType === "CLUB" && <Badge tone="blue">Club</Badge>}
-                      {c.kitType === "COUNTRY" && (
-                        <Badge tone="green">Country</Badge>
-                      )}
-                      {c.isRookie && <Badge tone="amber">RC</Badge>}
-                      {c.isAutograph && <Badge>Auto</Badge>}
-                      {c.isRelic && <Badge>Relic</Badge>}
-                    </div>
-                    <CardParallels cardId={c.id} parallelHint={parallelHint} />
+                    <QuickMark
+                      cardId={c.id}
+                      initialOwnedCount={ownedCount}
+                      initialWanted={isWanted}
+                    />
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
         </Card>
