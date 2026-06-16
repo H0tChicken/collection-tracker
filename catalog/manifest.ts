@@ -6,7 +6,7 @@
 
 export type CatalogKit = "CLUB" | "COUNTRY" | "NONE";
 
-export type CatalogFormat = "PANINI_CSV" | "TOPPS_XLSX" | "TOPPS_XLSX_V2";
+export type CatalogFormat = "PANINI_CSV" | "TOPPS_XLSX" | "TOPPS_XLSX_V2" | "TOPPS_XLSX_FLAT";
 
 /**
  * Spin a companion "Mania" set out of a TOPPS_XLSX_V2 source. Topps released
@@ -136,6 +136,16 @@ export const CATALOG_SOURCES: CatalogSourceEntry[] = [
     name: "Topps MLS Superstars",
     brand: "Topps",
     year: 2024,
+  },
+  // ── 2023 ──────────────────────────────────────────────────────────────────
+  {
+    externalId: "2023-topps-finest-mls",
+    format: "TOPPS_XLSX_FLAT",
+    file: "2023-topps-finest-mls.xlsx",
+    kitType: "CLUB",
+    name: "Topps Finest MLS",
+    brand: "Topps",
+    year: 2023,
   },
   // ── 2023-24 ───────────────────────────────────────────────────────────────
   {

@@ -18,6 +18,7 @@ import type { ParsedChecklist } from "../lib/import/checklist";
 import { parsePaniniCsv } from "../lib/import/panini";
 import { parseToppsRows } from "../lib/import/topps";
 import { parseToppsV2 } from "../lib/import/toppsV2";
+import { parseToppsFlatSection } from "../lib/import/toppsFlatSection";
 
 /**
  * Read one worksheet of an .xlsx as an array of cell-string rows. Defaults to
@@ -131,6 +132,12 @@ function build() {
         kitType: entry.kitType,
         teamType,
         splitPlayerName: entry.splitPlayerName,
+        meta: { brand: entry.brand, year: entry.year, program: entry.name },
+      });
+    } else if (format === "TOPPS_XLSX_FLAT") {
+      parsed = parseToppsFlatSection(readXlsxRows(srcPath, sheet), {
+        kitType: entry.kitType,
+        teamType,
         meta: { brand: entry.brand, year: entry.year, program: entry.name },
       });
     } else {
