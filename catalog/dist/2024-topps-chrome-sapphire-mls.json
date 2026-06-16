@@ -2,12 +2,12 @@
   "formatVersion": 1,
   "externalId": "2024-topps-chrome-sapphire-mls",
   "sport": "Soccer",
-  "name": "Topps Chrome Sapphire MLS (2024)",
+  "name": "Topps Chrome Sapphire Edition MLS",
   "brand": "Topps",
   "year": 2024,
   "season": null,
-  "description": "2024 Topps Chrome Sapphire MLS — club product. Compiled from the official checklist.",
-  "contentHash": "ce2764ebf0ecd5c6cbe6121b85d69a25ed739ab5c78b537c444179aaa6c87dbb",
+  "description": null,
+  "contentHash": "a4a8e30196c9fc93bea0ad2ddc89f99d6db5564468228961c58dd6088ef8fc2b",
   "parallels": [
     {
       "subset": "",

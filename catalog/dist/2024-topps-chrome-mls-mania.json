@@ -2,12 +2,12 @@
   "formatVersion": 1,
   "externalId": "2024-topps-chrome-mls-mania",
   "sport": "Soccer",
-  "name": "Topps Chrome MLS Mania (2024)",
+  "name": "Topps Chrome MLS Mania",
   "brand": "Topps",
   "year": 2024,
   "season": null,
-  "description": "2024 Topps Chrome MLS Mania — companion product. Mania-exclusive and shared subsets, Mania-channel parallels.",
-  "contentHash": "93382518f5c789a7112cd8bbf42ac3ef6f2bd597fd4dc91c1eeddcd6085c9739",
+  "description": null,
+  "contentHash": "98c04320d5fafb7512dcb88aba80b94c35aa23488e848e7e5205000765b578a2",
   "parallels": [
     {
       "subset": "Mania Autographs",

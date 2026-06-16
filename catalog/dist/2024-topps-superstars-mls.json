@@ -2,12 +2,12 @@
   "formatVersion": 1,
   "externalId": "2024-topps-superstars-mls",
   "sport": "Soccer",
-  "name": "Topps Superstars MLS (2024)",
+  "name": "Topps MLS Superstars",
   "brand": "Topps",
   "year": 2024,
   "season": null,
-  "description": "2024 Topps Superstars MLS — club product. Compiled from the official checklist.",
-  "contentHash": "a6888f6d88ddd9b6d17baccc75340cbc9c4754dad1d21c3100a0a9b08ae776db",
+  "description": null,
+  "contentHash": "335d0e9b5d7c04971eca7a86cf075c89d8931437d53fec9ec5dcc6a62891fbbe",
   "parallels": [
     {
       "subset": "",

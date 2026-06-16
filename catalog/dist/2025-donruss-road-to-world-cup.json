@@ -2,12 +2,12 @@
   "formatVersion": 1,
   "externalId": "2025-donruss-road-to-world-cup",
   "sport": "Soccer",
-  "name": "Donruss Road to World Cup (25-26)",
+  "name": "Donruss Road to World Cup",
   "brand": "Donruss",
   "year": 2025,
-  "season": null,
-  "description": "2025 Donruss Road to World Cup — national-team product. Compiled from the official checklist.",
-  "contentHash": "1cd003d8cee372468937119ea10e26b1418351d48ef679c3c09da106ac83db6e",
+  "season": "2025-26",
+  "description": null,
+  "contentHash": "c809861a674f5516462caa360174c082f085a94b54ec70a2231f9465e04be388",
   "parallels": [
     {
       "subset": "Animation",

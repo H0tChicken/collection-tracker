@@ -2,12 +2,12 @@
   "formatVersion": 1,
   "externalId": "2024-topps-finest-mls",
   "sport": "Soccer",
-  "name": "Topps Finest MLS (2024)",
+  "name": "Topps Finest MLS",
   "brand": "Topps",
   "year": 2024,
   "season": null,
-  "description": "2024 Topps Finest MLS — club product. Compiled from the official checklist.",
-  "contentHash": "a9f30f8c49535cd528ef6916a8a0e15ed9418a15ae90665bda25dc7cb332df68",
+  "description": null,
+  "contentHash": "f0cb077cb1211656420a3cbe2be62dbf6407c4b2467f46f00b12de569c4bd259",
   "parallels": [
     {
       "subset": "",

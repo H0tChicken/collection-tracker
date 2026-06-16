@@ -2,12 +2,12 @@
   "formatVersion": 1,
   "externalId": "2025-panini-select-ligue-1",
   "sport": "Soccer",
-  "name": "Panini Select Ligue 1 (25-26)",
+  "name": "Panini Select Ligue 1",
   "brand": "Panini",
   "year": 2025,
   "season": "2025-26",
-  "description": "2025 Panini Select Ligue 1 — club product. Compiled from the official checklist.",
-  "contentHash": "4067d56ac56e331f1124013f773bf03c975bae9d593a95705bdd52cd6a140fbf",
+  "description": null,
+  "contentHash": "2cd7bf937d79564d480edd303e2f892ac15de47b97381c60bde3161f020d70f1",
   "parallels": [
     {
       "subset": "Artistic Impressions Ligue 1",

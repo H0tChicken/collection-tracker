@@ -2,12 +2,12 @@
   "formatVersion": 1,
   "externalId": "2025-topps-chrome-mls",
   "sport": "Soccer",
-  "name": "Topps Chrome MLS (2025)",
+  "name": "Topps Chrome MLS",
   "brand": "Topps",
   "year": 2025,
   "season": null,
-  "description": "2025 Topps Chrome MLS — club product. Compiled from the official checklist.",
-  "contentHash": "5276a6ee2319c20189ba294f8c7c586d1439c75ff390544830dee6255f08ed70",
+  "description": null,
+  "contentHash": "433409d8c93a001b69c44a0b391a2043eff9931c88774ea2c0e3549143a51359",
   "parallels": [
     {
       "subset": "",

@@ -2,12 +2,12 @@
   "formatVersion": 1,
   "externalId": "2024-topps-chrome-mls",
   "sport": "Soccer",
-  "name": "Topps Chrome MLS (2024)",
+  "name": "Topps Chrome MLS",
   "brand": "Topps",
   "year": 2024,
   "season": null,
-  "description": "2024 Topps Chrome MLS — club product. Compiled from the official checklist (multi-tab workbook).",
-  "contentHash": "ba5b8c3d7497dfb1a8fe93f17548c2bb2ce4af10436c03da33d145d40e790b5c",
+  "description": null,
+  "contentHash": "fbcfa67d39bc2197b802dac341bd3fecdf7a3776feb09d29e855b8a670e1b053",
   "parallels": [
     {
       "subset": "",

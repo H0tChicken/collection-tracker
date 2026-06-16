@@ -2,12 +2,12 @@
   "formatVersion": 1,
   "externalId": "2025-26-topps-merlin-uefa-club-competitions",
   "sport": "Soccer",
-  "name": "Topps Merlin UEFA Club Competitions (25-26)",
+  "name": "Topps Merlin UEFA Club Competitions",
   "brand": "Topps",
   "year": 2025,
   "season": "2025-26",
-  "description": "2025-26 Topps Merlin UEFA Club Competitions — club product. Compiled from the official checklist.",
-  "contentHash": "698998f80876b1ab3a82e63a85bc3014a28d8a0ca3184f43b3bc1154551208b8",
+  "description": null,
+  "contentHash": "eda19c39820aa4974ef759ff67dedf37b8ce8d75f3285fd332c16c6e0989c0fe",
   "parallels": [
     {
       "subset": "",

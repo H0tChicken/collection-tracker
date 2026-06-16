@@ -2,12 +2,12 @@
   "formatVersion": 1,
   "externalId": "2023-24-topps-chrome-womens-ucl",
   "sport": "Soccer",
-  "name": "Topps Chrome UEFA Women's Champions League (23-24)",
+  "name": "Topps Chrome UEFA Women's Champions League",
   "brand": "Topps",
   "year": 2023,
   "season": "2023-24",
-  "description": "2023-24 Topps Chrome UEFA Women's Champions League — club product. Compiled from the official checklist.",
-  "contentHash": "419207129e88d3d36c0f66844cc7b54381d33043978d7ee514e9ad06ecc913ab",
+  "description": null,
+  "contentHash": "60aeb026ae3afc1ff7475fa64b3c957ab4e01585343791885f7db44b4548694d",
   "parallels": [
     {
       "subset": "",
