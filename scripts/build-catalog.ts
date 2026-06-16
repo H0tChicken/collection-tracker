@@ -130,6 +130,7 @@ function build() {
       parsed = parseToppsV2(readXlsxSheets(srcPath), {
         kitType: entry.kitType,
         teamType,
+        splitPlayerName: entry.splitPlayerName,
         meta: { brand: entry.brand, year: entry.year, program: entry.name },
       });
     } else {

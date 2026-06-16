@@ -42,6 +42,8 @@ export interface CatalogSourceEntry {
   description?: string;
   /** TOPPS_XLSX only: worksheet/tab to read (default: first sheet). */
   sheet?: string;
+  /** TOPPS_XLSX_V2 only: player name is split across two columns (first, last). */
+  splitPlayerName?: boolean;
   /** TOPPS_XLSX_V2 only: also emit a companion Mania set. */
   maniaSplit?: ManiaSplit;
 }
@@ -143,5 +145,27 @@ export const CATALOG_SOURCES: CatalogSourceEntry[] = [
     year: 2024,
     description:
       "2024 Topps Chrome Sapphire MLS — club product. Compiled from the official checklist.",
+  },
+  {
+    externalId: "2024-topps-finest-mls",
+    file: "2024-topps-finest-mls.xlsx",
+    kitType: "CLUB",
+    name: "Topps Finest MLS (2024)",
+    brand: "Topps",
+    year: 2024,
+    description:
+      "2024 Topps Finest MLS — club product. Compiled from the official checklist.",
+  },
+  {
+    externalId: "2023-24-topps-chrome-womens-ucl",
+    file: "2023-24-topps-chrome-womens-ucl.xlsx",
+    kitType: "CLUB",
+    splitPlayerName: true,
+    name: "Topps Chrome UEFA Women's Champions League (23-24)",
+    brand: "Topps",
+    year: 2023,
+    season: "2023-24",
+    description:
+      "2023-24 Topps Chrome UEFA Women's Champions League — club product. Compiled from the official checklist.",
   },
 ];

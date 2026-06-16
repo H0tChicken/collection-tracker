@@ -30,6 +30,8 @@ export interface ToppsV2Options {
   kitType?: "CLUB" | "COUNTRY" | "NONE";
   teamType?: "CLUB" | "NATIONAL";
   meta?: { sport?: string; year?: number; brand?: string; program?: string };
+  /** Some Topps exports split player name across two columns (first, last). */
+  splitPlayerName?: boolean;
 }
 
 const AUTO_RE = /\b(autograph|signature|auto|ink)/i;
@@ -147,22 +149,27 @@ function cardsFromMaster(
 ): ChecklistRow[] {
   const kitType = opts.kitType ?? "CLUB";
   const teamType = opts.teamType ?? (kitType === "COUNTRY" ? "NATIONAL" : "CLUB");
+  const split = opts.splitPlayerName ?? false;
   const out = new Map<string, ChecklistRow>();
 
   for (const cells of rows) {
     const subsetRaw = (cells[0] ?? "").trim();
     const cardNumber = (cells[1] ?? "").trim();
-    const player = (cells[2] ?? "").trim();
-    const team = (cells[3] ?? "").trim();
+    // Some exports put first and last name in separate columns.
+    const player = split
+      ? [(cells[2] ?? "").trim(), (cells[3] ?? "").trim()].filter(Boolean).join(" ")
+      : (cells[2] ?? "").trim();
+    const team = (cells[split ? 4 : 3] ?? "").trim();
     if (!subsetRaw || !cardNumber || !player) continue;
     // header/odds rows have no numeric-ish card number in col1
     if (!/^[A-Za-z0-9][A-Za-z0-9-]*$/.test(cardNumber)) continue;
 
     const subset = SUBSET_LABEL(subsetRaw);
-    // Flags can appear in col4+ ("RC", "Rookie", "- Pitch Prodigies").
-    const tail = cells.slice(4).join(" ");
+    // Flags can appear after the team column ("RC", "Rookie", etc.).
+    const flagStart = split ? 5 : 4;
+    const tail = cells.slice(flagStart).join(" ");
     const isRookie =
-      ROOKIE_FLAG_RE.test(cells[4] ?? "") || /\b(rc|rookie)\b/i.test(tail);
+      ROOKIE_FLAG_RE.test(cells[flagStart] ?? "") || /\b(rc|rookie)\b/i.test(tail);
 
     const key = `${subset}|${cardNumber}`;
     if (out.has(key)) {
