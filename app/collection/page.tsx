@@ -5,7 +5,7 @@ import { Card, PageHeader, Badge, EmptyState, SegmentedButtons } from "@/compone
 import { SearchInput } from "@/components/search-input";
 import { SlabImages } from "@/components/slab-images";
 import { CollectionItemEditor } from "@/components/collection-item-editor";
-import { formatMoney, setLabel } from "@/lib/utils";
+import { setLabel } from "@/lib/utils";
 import type { Prisma } from "@prisma/client";
 
 export const dynamic = "force-dynamic";
@@ -141,7 +141,6 @@ export default async function CollectionPage({
                   <CollectionItemEditor item={it} storageLocations={storageLocations} />
                 </div>
                 <div className="shrink-0 text-right text-xs text-on-surface-variant">
-                  <div>{formatMoney(it.estimatedValueCents)}</div>
                   <Badge
                     tone={
                       it.status === "OWNED"

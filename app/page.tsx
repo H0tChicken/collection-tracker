@@ -4,7 +4,7 @@ import { getSetCompletion } from "@/lib/completion";
 import { prisma } from "@/lib/db";
 import { Card, PageHeader, StatCard } from "@/components/ui";
 import { CompletionBar } from "@/components/completion-bar";
-import { formatMoney, setLabel } from "@/lib/utils";
+import { setLabel } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -26,10 +26,7 @@ export default async function DashboardPage() {
         <StatCard label="Cards owned" value={stats.owned} href="/collection" />
         <StatCard label="On wishlist" value={stats.wanted} href="/wishlist" />
         <StatCard label="Sets tracked" value={stats.setsTracked} href="/sets" />
-        <StatCard
-          label="Est. value"
-          value={formatMoney(stats.estValueCents)}
-        />
+        <StatCard label="Players" value={stats.players} href="/players" />
       </div>
 
       <h2 className="mb-3 mt-8 text-lg font-semibold">Sets in progress</h2>

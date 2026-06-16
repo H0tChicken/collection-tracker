@@ -61,8 +61,6 @@ export async function updateCopy(formData: FormData) {
       grade: String(formData.get("grade") ?? "").trim() || null,
       certNumber: String(formData.get("certNumber") ?? "").trim() || null,
       serialNumber: String(formData.get("serialNumber") ?? "").trim() || null,
-      purchasePriceCents: parseMoneyToCents(String(formData.get("purchasePrice") ?? "")),
-      estimatedValueCents: parseMoneyToCents(String(formData.get("estimatedValue") ?? "")),
       storageLocationId: formData.get("storageLocationId")
         ? String(formData.get("storageLocationId"))
         : null,
@@ -132,13 +130,6 @@ export async function upsertCollectionItem(formData: FormData) {
     grade: String(formData.get("grade") ?? "").trim() || null,
     certNumber: String(formData.get("certNumber") ?? "").trim() || null,
     serialNumber: String(formData.get("serialNumber") ?? "").trim() || null,
-    purchasePriceCents: parseMoneyToCents(
-      String(formData.get("purchasePrice") ?? ""),
-    ),
-    estimatedValueCents: parseMoneyToCents(
-      String(formData.get("estimatedValue") ?? ""),
-    ),
-    purchaseSource: String(formData.get("purchaseSource") ?? "").trim() || null,
     storageLocationId: formData.get("storageLocationId")
       ? String(formData.get("storageLocationId"))
       : null,

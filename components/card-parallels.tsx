@@ -8,7 +8,7 @@ import {
   updateCopy,
   removeCopy,
 } from "@/lib/actions";
-import { cn, formatMoney, displayOdds } from "@/lib/utils";
+import { cn, displayOdds } from "@/lib/utils";
 import { Badge } from "@/components/ui";
 import { Ripple } from "@/components/ripple";
 
@@ -43,9 +43,6 @@ function CopyEditor({
       : "Raw",
     copy.serialNumber ? `#${copy.serialNumber}` : null,
     copy.quantity > 1 ? `×${copy.quantity}` : null,
-    copy.estimatedValueCents != null
-      ? formatMoney(copy.estimatedValueCents)
-      : null,
     copy.storageLocation?.name ?? null,
   ]
     .filter(Boolean)
@@ -118,26 +115,6 @@ function CopyEditor({
           <label className="flex flex-col gap-0.5">
             <span className="text-on-surface-variant">Serial (e.g. 23/99)</span>
             <input name="serialNumber" defaultValue={copy.serialNumber ?? ""} className={inputCls} />
-          </label>
-
-          <label className="flex flex-col gap-0.5">
-            <span className="text-on-surface-variant">Paid</span>
-            <input
-              name="purchasePrice"
-              defaultValue={copy.purchasePriceCents != null ? (copy.purchasePriceCents / 100).toString() : ""}
-              placeholder="$"
-              className={inputCls}
-            />
-          </label>
-
-          <label className="flex flex-col gap-0.5">
-            <span className="text-on-surface-variant">Est. value</span>
-            <input
-              name="estimatedValue"
-              defaultValue={copy.estimatedValueCents != null ? (copy.estimatedValueCents / 100).toString() : ""}
-              placeholder="$"
-              className={inputCls}
-            />
           </label>
 
           <label className="flex flex-col gap-0.5">

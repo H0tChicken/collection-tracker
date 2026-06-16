@@ -9,7 +9,29 @@
       "Bash(echo \"npm: $\\(npm --version 2>&1\\)\")",
       "Bash(echo \"docker: $\\(docker --version 2>&1\\)\")",
       "Bash(echo \"gh: $\\(gh --version 2>&1)",
-      "Bash(command -v node npm docker python3 gh git)"
+      "Bash(command -v node npm docker python3 gh git)",
+      "Skill(run)",
+      "Bash(pg_isready)",
+      "Bash(psql *)",
+      "Bash(nc -z localhost 5432)",
+      "Bash(open *)",
+      "Bash(npx tsc *)",
+      "Bash(curl -s http://localhost:3001/sets)",
+      "Bash(curl -s \"http://localhost:3001/sets\")",
+      "WebFetch(domain:my.taggrading.com)",
+      "Bash(npx prisma *)",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(npm run *)",
+      "Bash(echo \"PID: $!\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3001/collection)",
+      "Bash(git add *)",
+      "Bash(node *)",
+      "Bash(cp \"/Users/seanwilliams/Downloads/2024-Topps-Finest-MLS-1.xlsx\" /Users/seanwilliams/Documents/Projects/Collection-Tracker/catalog/sources/2024-topps-finest-mls.xlsx)",
+      "Bash(cp \"/Users/seanwilliams/Downloads/2023-24-Topps-Chrome-UEFA-Womens-Champions-League-Checklist.xlsx\" /Users/seanwilliams/Documents/Projects/Collection-Tracker/catalog/sources/2023-24-topps-chrome-womens-ucl.xlsx)",
+      "WebFetch(domain:xcdn.checklistinsider.com)",
+      "Bash(pdftotext \"/Users/seanwilliams/.claude/projects/-Users-seanwilliams-Documents-Projects-Collection-Tracker/6b1cd6d5-ff08-47c8-8256-2474cad0cc57/tool-results/webfetch-1781573692544-q24zed.pdf\" -)",
+      "Bash(gs -dBATCH -dNOPAUSE -sDEVICE=txtwrite -sOutputFile=- \"/Users/seanwilliams/.claude/projects/-Users-seanwilliams-Documents-Projects-Collection-Tracker/6b1cd6d5-ff08-47c8-8256-2474cad0cc57/tool-results/webfetch-1781573692544-q24zed.pdf\")",
+      "Bash(grep *)"
     ]
   }
 }

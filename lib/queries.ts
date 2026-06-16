@@ -64,24 +64,13 @@ export async function getCardOwnership(cardId: string) {
 
 /** Dashboard summary stats. */
 export async function getDashboardStats() {
-  const [owned, wanted, setsTracked, players, valueAgg] = await Promise.all([
+  const [owned, wanted, setsTracked, players] = await Promise.all([
     prisma.collectionItem.count({ where: { status: "OWNED" } }),
     prisma.collectionItem.count({ where: { status: "WANTED" } }),
     prisma.setEntity.count(),
     prisma.player.count(),
-    prisma.collectionItem.aggregate({
-      where: { status: "OWNED" },
-      _sum: { estimatedValueCents: true, purchasePriceCents: true },
-    }),
   ]);
-  return {
-    owned,
-    wanted,
-    setsTracked,
-    players,
-    estValueCents: valueAgg._sum.estimatedValueCents ?? 0,
-    spentCents: valueAgg._sum.purchasePriceCents ?? 0,
-  };
+  return { owned, wanted, setsTracked, players };
 }
 
 /** Player detail with cards split by kit type. */

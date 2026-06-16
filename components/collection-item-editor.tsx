@@ -3,7 +3,6 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { updateCopy, removeCopy } from "@/lib/actions";
-import { formatMoney } from "@/lib/utils";
 
 const GRADERS = ["RAW", "PSA", "BGS", "SGC", "CSG", "TAG", "OTHER"] as const;
 
@@ -18,8 +17,6 @@ type Item = {
   grade: string | null;
   certNumber: string | null;
   serialNumber: string | null;
-  purchasePriceCents: number | null;
-  estimatedValueCents: number | null;
   notes: string | null;
   storageLocation: { id: string; name: string } | null;
 };
@@ -141,34 +138,6 @@ export function CollectionItemEditor({
             <input
               name="serialNumber"
               defaultValue={item.serialNumber ?? ""}
-              className={inputCls}
-            />
-          </label>
-
-          <label className="flex flex-col gap-0.5">
-            <span className="text-on-surface-variant">Paid</span>
-            <input
-              name="purchasePrice"
-              defaultValue={
-                item.purchasePriceCents != null
-                  ? (item.purchasePriceCents / 100).toString()
-                  : ""
-              }
-              placeholder="$"
-              className={inputCls}
-            />
-          </label>
-
-          <label className="flex flex-col gap-0.5">
-            <span className="text-on-surface-variant">Est. value</span>
-            <input
-              name="estimatedValue"
-              defaultValue={
-                item.estimatedValueCents != null
-                  ? (item.estimatedValueCents / 100).toString()
-                  : ""
-              }
-              placeholder="$"
               className={inputCls}
             />
           </label>
