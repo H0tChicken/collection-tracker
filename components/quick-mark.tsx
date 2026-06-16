@@ -10,19 +10,22 @@ export function QuickMark({
   cardId,
   initialOwnedCount,
   initialWanted,
+  initialParallelOwnedCount = 0,
 }: {
   cardId: string;
   initialOwnedCount: number;
   initialWanted: boolean;
+  initialParallelOwnedCount?: number;
 }) {
   const router = useRouter();
   const [pending, start] = useTransition();
   const [owned, setOwned] = useState(initialOwnedCount);
   const [wanted, setWanted] = useState(initialWanted);
+  const [parallelOwned, setParallelOwned] = useState(initialParallelOwnedCount);
 
-  // Sync from server when router.refresh() delivers fresh props.
   useEffect(() => { setOwned(initialOwnedCount); }, [initialOwnedCount]);
   useEffect(() => { setWanted(initialWanted); }, [initialWanted]);
+  useEffect(() => { setParallelOwned(initialParallelOwnedCount); }, [initialParallelOwnedCount]);
 
   function have() {
     setOwned((n) => n + 1);
@@ -43,6 +46,9 @@ export function QuickMark({
   return (
     <div className="flex shrink-0 items-center gap-1.5 pt-0.5">
       {owned > 0 && <Badge tone="green">{owned} owned</Badge>}
+      {parallelOwned > 0 && (
+        <Badge tone="blue">+{parallelOwned} parallel{parallelOwned !== 1 ? "s" : ""}</Badge>
+      )}
       <button
         type="button"
         disabled={pending}

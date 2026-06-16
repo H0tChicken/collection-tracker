@@ -25,6 +25,7 @@ export interface ParallelProgress {
 }
 
 export interface SetCompletion {
+  /** Cards in the base subset only (used for completion ratio). */
   totalCards: number;
   baseOwned: number;
   baseRatio: number;
@@ -84,10 +85,13 @@ export function computeCompletion(
   };
 }
 
-/** DB wrapper: compute completion for a given set. */
+/** DB wrapper: compute base-subset completion for a given set. */
 export async function getSetCompletion(setId: string): Promise<SetCompletion> {
-  const [totalCards, items, parallels] = await Promise.all([
-    prisma.card.count({ where: { setId, retired: false } }),
+  const [allCards, items, parallels] = await Promise.all([
+    prisma.card.findMany({
+      where: { setId, retired: false },
+      select: { id: true, subset: true },
+    }),
     prisma.collectionItem.findMany({
       where: { card: { setId } },
       select: { cardId: true, parallelId: true, status: true },
@@ -99,9 +103,15 @@ export async function getSetCompletion(setId: string): Promise<SetCompletion> {
     }),
   ]);
 
+  // Only count base-subset cards for the completion ratio.
+  const baseCardIds = new Set(
+    allCards.filter((c) => c.subset === "").map((c) => c.id),
+  );
+  const baseItems = items.filter((i) => baseCardIds.has(i.cardId));
+
   return computeCompletion(
-    totalCards,
-    items.map((i) => ({
+    baseCardIds.size,
+    baseItems.map((i) => ({
       cardId: i.cardId,
       parallelId: i.parallelId,
       status: i.status as OwnedTuple["status"],

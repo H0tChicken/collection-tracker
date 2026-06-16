@@ -56,7 +56,7 @@ export default async function SetsPage() {
                       {set.manufacturer?.name} · {set.sport.name}
                     </div>
                     <CompletionBar
-                      label="Base completion"
+                      label="Base"
                       owned={c.baseOwned}
                       total={c.totalCards}
                       ratio={c.baseRatio}

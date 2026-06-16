@@ -147,6 +147,9 @@ export default async function SetDetailPage({
                   .filter((i) => i.status !== "WANTED")
                   .reduce((n, i) => n + i.quantity, 0);
                 const isWanted = baseItems.some((i) => i.status === "WANTED");
+                const parallelOwnedCount = c.items.filter(
+                  (i) => i.parallelId !== null && i.status !== "WANTED",
+                ).length;
                 return (
                   <div key={c.id} className="flex gap-3 py-2 text-sm">
                     <span className="w-12 shrink-0 pt-0.5 font-mono text-xs text-on-surface-variant">
@@ -185,6 +188,7 @@ export default async function SetDetailPage({
                       cardId={c.id}
                       initialOwnedCount={ownedCount}
                       initialWanted={isWanted}
+                      initialParallelOwnedCount={parallelOwnedCount}
                     />
                   </div>
                 );

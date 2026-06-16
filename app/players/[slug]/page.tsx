@@ -12,6 +12,9 @@ type PlayerCard = NonNullable<
 >["club"][number];
 
 function CardRow({ c }: { c: PlayerCard }) {
+  const owned = c.items.some((i) => i.status === "OWNED" || i.status === "DUPLICATE");
+  const wanted = !owned && c.items.some((i) => i.status === "WANTED");
+
   return (
     <div className="flex gap-3 py-2 text-sm">
       <span className="w-14 shrink-0 pt-0.5 font-mono text-xs text-on-surface-variant">
@@ -24,6 +27,8 @@ function CardRow({ c }: { c: PlayerCard }) {
           {c.isRookie && <Badge tone="amber">RC</Badge>}
           {c.isAutograph && <Badge>Auto</Badge>}
           {c.isRelic && <Badge>Relic</Badge>}
+          {owned && <Badge tone="green">Owned</Badge>}
+          {wanted && <Badge tone="amber">Wanted</Badge>}
         </div>
         <CardParallels cardId={c.id} parallelHint={c.parallelCount} />
       </div>
@@ -58,7 +63,15 @@ function Section({
     <Card>
       <h3 className="mb-3 flex items-center gap-2 text-title-sm text-on-surface">
         <Badge tone={tone}>{title}</Badge>
-        <span className="text-on-surface-variant">{cards.length}</span>
+        <span className="text-on-surface-variant">{cards.length} cards</span>
+        {(() => {
+          const ownedCount = cards.filter((c) =>
+            c.items.some((i) => i.status === "OWNED" || i.status === "DUPLICATE"),
+          ).length;
+          return ownedCount > 0 ? (
+            <Badge tone="green">{ownedCount} owned</Badge>
+          ) : null;
+        })()}
       </h3>
       {cards.length === 0 ? (
         <EmptyState message={`No ${title.toLowerCase()} cards.`} />
