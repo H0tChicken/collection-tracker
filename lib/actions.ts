@@ -57,6 +57,7 @@ export async function updateCopy(formData: FormData) {
         | "BGS"
         | "SGC"
         | "CSG"
+        | "TAG"
         | "OTHER",
       grade: String(formData.get("grade") ?? "").trim() || null,
       certNumber: String(formData.get("certNumber") ?? "").trim() || null,

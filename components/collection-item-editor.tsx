@@ -33,7 +33,6 @@ export function CollectionItemEditor({
   const router = useRouter();
   const [pending, start] = useTransition();
   const [open, setOpen] = useState(false);
-  const [version, setVersion] = useState(0);
 
   function handleRemove() {
     if (!confirm("Remove this item from your collection?")) return;
@@ -67,11 +66,10 @@ export function CollectionItemEditor({
 
       {open && (
         <form
-          key={version}
+          key={`${item.gradingCompany}-${item.grade ?? ""}-${item.status}-${item.certNumber ?? ""}-${item.serialNumber ?? ""}`}
           action={(fd) =>
             start(async () => {
               await updateCopy(fd);
-              setVersion((v) => v + 1);
               router.refresh();
             })
           }

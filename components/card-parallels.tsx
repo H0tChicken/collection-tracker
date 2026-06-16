@@ -35,7 +35,6 @@ function CopyEditor({
 }) {
   const [pending, start] = useTransition();
   const [open, setOpen] = useState(false);
-  const [version, setVersion] = useState(0);
 
   const summary = [
     copy.gradingCompany !== "RAW"
@@ -71,8 +70,8 @@ function CopyEditor({
 
       {open && (
         <form
-          key={version}
-          action={(fd) => start(() => updateCopy(fd).then(() => { setVersion((v) => v + 1); onChanged(); }))}
+          key={`${copy.gradingCompany}-${copy.grade ?? ""}-${copy.status}-${copy.certNumber ?? ""}-${copy.serialNumber ?? ""}`}
+          action={(fd) => start(() => updateCopy(fd).then(onChanged))}
           className="grid grid-cols-2 gap-2 border-t border-outline-variant p-3 text-body-sm"
         >
           <input type="hidden" name="id" value={copy.id} />
