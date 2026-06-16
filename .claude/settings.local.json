@@ -31,7 +31,9 @@
       "WebFetch(domain:xcdn.checklistinsider.com)",
       "Bash(pdftotext \"/Users/seanwilliams/.claude/projects/-Users-seanwilliams-Documents-Projects-Collection-Tracker/6b1cd6d5-ff08-47c8-8256-2474cad0cc57/tool-results/webfetch-1781573692544-q24zed.pdf\" -)",
       "Bash(gs -dBATCH -dNOPAUSE -sDEVICE=txtwrite -sOutputFile=- \"/Users/seanwilliams/.claude/projects/-Users-seanwilliams-Documents-Projects-Collection-Tracker/6b1cd6d5-ff08-47c8-8256-2474cad0cc57/tool-results/webfetch-1781573692544-q24zed.pdf\")",
-      "Bash(grep *)"
+      "Bash(grep *)",
+      "Bash(git commit -m ' *)",
+      "Bash(npx tsx *)"
     ]
   }
 }

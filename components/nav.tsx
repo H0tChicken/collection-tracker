@@ -10,6 +10,7 @@ import {
   Boxes,
   Heart,
   Archive,
+  Upload,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Ripple } from "@/components/ripple";
@@ -22,6 +23,7 @@ const links = [
   { href: "/collection", label: "Collection", icon: Boxes },
   { href: "/wishlist", label: "Wishlist", icon: Heart },
   { href: "/storage", label: "Storage", icon: Archive },
+  { href: "/import/tag", label: "Import", icon: Upload },
 ];
 
 function isActive(pathname: string, href: string): boolean {
