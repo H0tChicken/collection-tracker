@@ -18,7 +18,11 @@ export default async function TeamDetailPage({
     include: {
       cards: {
         where: { retired: false },
-        include: { player: true, set: true },
+        include: {
+          player: true,
+          set: true,
+          items: { select: { id: true, status: true } },
+        },
       },
     },
   });
@@ -81,7 +85,13 @@ export default async function TeamDetailPage({
           <EmptyState message="No cards for this team yet." />
         ) : (
           <div className="space-y-4">
-            {groups.map((g) => (
+            {groups.map((g) => {
+              const ownedCount = g.cards.filter((c) =>
+                c.items.some(
+                  (i) => i.status === "OWNED" || i.status === "DUPLICATE",
+                ),
+              ).length;
+              return (
               <div key={g.set.id}>
                 <div className="mb-1 flex items-baseline justify-between gap-2 border-b border-outline-variant pb-1">
                   <Link
@@ -90,12 +100,21 @@ export default async function TeamDetailPage({
                   >
                     {setLabel(g.set)}
                   </Link>
-                  <span className="shrink-0 text-xs text-on-surface-variant">
-                    {g.cards.length} card{g.cards.length === 1 ? "" : "s"}
-                  </span>
+                  <div className="flex shrink-0 items-center gap-2 text-xs text-on-surface-variant">
+                    {ownedCount > 0 && (
+                      <span className="text-green-600">{ownedCount} owned</span>
+                    )}
+                    <span>{g.cards.length} card{g.cards.length === 1 ? "" : "s"}</span>
+                  </div>
                 </div>
                 <div className="divide-y divide-outline-variant/50">
-                  {g.cards.map((c) => (
+                  {g.cards.map((c) => {
+                    const owned = c.items.some(
+                      (i) => i.status === "OWNED" || i.status === "DUPLICATE",
+                    );
+                    const wanted =
+                      !owned && c.items.some((i) => i.status === "WANTED");
+                    return (
                     <div key={c.id} className="flex gap-3 py-2 text-sm">
                       <span className="w-14 shrink-0 pt-0.5 font-mono text-xs text-on-surface-variant">
                         {c.cardNumber}
@@ -122,6 +141,8 @@ export default async function TeamDetailPage({
                           {c.isRookie && <Badge tone="amber">RC</Badge>}
                           {c.isAutograph && <Badge>Auto</Badge>}
                           {c.isRelic && <Badge>Relic</Badge>}
+                          {owned && <Badge tone="green">Owned</Badge>}
+                          {wanted && <Badge tone="amber">Wanted</Badge>}
                         </div>
                         <CardParallels
                           cardId={c.id}
@@ -131,10 +152,12 @@ export default async function TeamDetailPage({
                         />
                       </div>
                     </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </Card>
